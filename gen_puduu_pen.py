@@ -174,11 +174,15 @@ def TABBAR(active):
 
 def SCREEN(name, x, head, body, tab):
     col = [head,
-           R(350, None, "paper", 0, f"{name}Bd", "vertical",
-             body, gap=0, padding=[0, 0, 0, 0]),
+           R(358, None, "paper", 0, f"{name}Bd", "vertical",
+             body, gap=0, padding=[0, 4, 0, 4]),
            TABBAR(tab)]
     return {"id": nid(), "type": "frame", "name": name, "x": x,
-            "y": 0, "width": 390, "height": 844, "fill": C["paper"],
+            "y": 0, "width": 390,
+            "height": {"01 Today": 1250, "02 Focus": 980,
+                       "03 Reset": 844, "04 Progress": 844,
+                       "05 Yours": 844}.get(name, 844),
+            "fill": C["paper"],
             "layout": "vertical", "alignItems": "center",
             "children": col}
 
@@ -306,7 +310,7 @@ def main():
          ], "Yours")
 
     screens = [s1, s2, s3, s4, s5]
-    doc = {"version": "2.19", "name": "Puduu v5 Ledger",
+    doc = {"version": "2.19",
            "variables": {k: {"type": "color", "value": v}
                          for k, v in C.items()},
            "children": [GLYPH()] + screens + LABELS(screens)}

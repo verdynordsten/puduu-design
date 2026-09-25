@@ -1,136 +1,156 @@
 <!DOCTYPE html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Puduu — MVP Prototype v2 (professional, zero-emoji)</title>
+<title>Puduu — MVP Prototype v3 (premium soft-card)</title>
 <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
 <style>
-:root{--p:#2563EB;--pd:#1D4ED8;--s:#0E7490;--ss:#E0F2F7;--a:#EA580C;--as:#FFF1E7;--bg:#F6F8FC;--ink:#0F172A;--sl:#475569;--ln:#E2E8F0;--ok:#15803D;--oks:#E7F6EC}
+:root{--p:#2563EB;--pd:#1E40AF;--pale:#EFF4FF;--s:#0E7490;--ss:#E0F2F7;--a:#EA580C;--as:#FFF1E7;--bg:#F6F8FC;--ink:#0F172A;--sl:#334155;--ln:#E2E8F0;--ok:#15803D;--oks:#E7F6EC;--pur:#7C3AED;--pus:#F1E9FF}
 *{box-sizing:border-box;margin:0}body{font-family:Nunito,sans-serif;background:#0B1220;color:var(--ink);display:flex;gap:22px;flex-wrap:wrap;justify-content:center;padding:26px}
 h1{font-family:Fredoka;width:100%;text-align:center;color:#fff;font-weight:600;font-size:22px}h1 small{display:block;font-family:Nunito;font-size:13px;color:#94A3B8;margin-top:6px}
 .phone{width:390px;height:844px;background:var(--bg);border-radius:44px;overflow:hidden;position:relative;box-shadow:0 30px 80px rgba(0,0,0,.5);display:flex;flex-direction:column}
-.screen{flex:1;overflow-y:auto;padding:16px 16px 112px}.screen{display:none}.screen.on{display:block}
-.nav{position:absolute;bottom:0;left:0;right:0;background:#fff;border-top:1px solid var(--ln);display:flex;padding:10px 8px 22px}
-.nav button{flex:1;border:0;background:none;font-family:Nunito;font-size:10px;font-weight:800;letter-spacing:.3px;color:var(--sl);cursor:pointer;padding:8px 2px;border-radius:12px;display:flex;flex-direction:column;align-items:center;gap:3px}
-.nav button.on{color:var(--p);background:#EFF4FF}
+.screen{flex:1;overflow-y:auto;padding:14px 16px 150px}.screen{display:none}.screen.on{display:block}
+.nav{position:absolute;bottom:0;left:0;right:0;background:#fff;border-top:1px solid var(--ln);display:flex;padding:10px 8px 22px;gap:3px}
+.nav button{flex:1;border:0;background:none;font-family:Nunito;font-size:10px;font-weight:800;color:var(--sl);cursor:pointer;padding:8px 2px;border-radius:16px;display:flex;flex-direction:column;align-items:center;gap:3px}
+.nav button.on{color:var(--p);background:var(--pale)}
 .nav svg{width:22px;height:22px}
-.top{display:flex;align-items:center;gap:10px;margin-bottom:4px}
-.avatar{width:38px;height:38px;border-radius:13px;background:var(--p);display:flex;align-items:center;justify-content:center;color:#fff;font-family:Fredoka;font-weight:700;font-size:18px}
-.tt{font-family:Fredoka;font-size:22px;font-weight:600}.sub{color:var(--sl);font-size:13px;margin:2px 0 12px}
-.micro{font-size:11px;font-weight:800;letter-spacing:.6px;text-transform:uppercase;color:var(--sl);margin:16px 0 8px}
-.card{background:#fff;border:1px solid var(--ln);border-radius:16px;padding:13px 14px;margin-bottom:10px;box-shadow:0 1px 2px rgba(15,23,42,.05)}
-.blk{border-radius:16px;padding:13px 14px;color:#fff;margin-bottom:10px;display:flex;gap:12px;align-items:center;box-shadow:0 1px 2px rgba(15,23,42,.12)}
-.blk .t{font-size:12px;font-weight:800;opacity:.92;min-width:48px;letter-spacing:.3px}.blk .n{font-weight:800;font-size:15px}.blk .d{font-size:12.5px;opacity:.9}
-.blk.done{opacity:.6}.blk.done .n{text-decoration:line-through}
-.blk svg{width:26px;height:26px;flex:none}
-.row{display:flex;gap:10px}.btn{flex:1;border:0;border-radius:999px;padding:14px;font-family:Nunito;font-weight:800;font-size:14px;cursor:pointer}
-.btn:active{transform:scale(.97)}.bp{background:var(--p);color:#fff}.ba{background:var(--a);color:#fff}.bg{background:#EFF4FF;color:var(--p)}.bw{background:#fff;color:var(--p);border:1.5px solid var(--p)}
-.inp{width:100%;border:1.5px solid var(--ln);border-radius:12px;padding:12px;font-size:14px;font-family:Nunito;background:#fff;color:var(--ink)}
-.rescue-banner{background:var(--as);border:1px solid #F5C9A8;border-radius:16px;padding:13px 14px;margin:14px 0 4px;display:flex;gap:10px;align-items:center}
-.rescue-banner b{font-size:14px}.rescue-banner span{font-size:12.5px;color:#9A3412;display:block}
-.opt{display:flex;gap:12px;align-items:center}.opt .ic{width:44px;height:44px;border-radius:14px;display:flex;align-items:center;justify-content:center;flex:none}
-.opt b{font-size:14.5px}.opt span{font-size:12.5px;color:var(--sl)}
-.opt svg{width:22px;height:22px}
-.dial{width:200px;height:200px;border-radius:50%;margin:14px auto;background:conic-gradient(var(--s) 65%,#E2E8F0 0);display:flex;align-items:center;justify-content:center}
-.dial div{width:154px;height:154px;background:#fff;border-radius:50%;display:flex;flex-direction:column;align-items:center;justify-content:center}
-.dial b{font-family:Fredoka;font-size:32px;font-weight:600}
-.seg{display:flex;background:#fff;border:1px solid var(--ln);border-radius:999px;padding:4px;gap:4px;margin-bottom:10px}
-.seg button{flex:1;border:0;background:none;border-radius:999px;padding:10px;font-family:Nunito;font-weight:800;font-size:13px;color:var(--sl);cursor:pointer}
-.seg button.on{background:#EFF4FF;color:var(--p)}
-.bar{height:12px;background:#E8EEF7;border-radius:999px;overflow:hidden;margin-top:8px}.bar i{display:block;height:100%;background:linear-gradient(90deg,var(--s),var(--p));border-radius:999px}
-.step{display:flex;gap:12px;align-items:flex-start}.step .n{width:30px;height:30px;border-radius:50%;background:var(--p);color:#fff;font-weight:800;display:flex;align-items:center;justify-content:center;flex:none;font-size:14px}
-.mood{display:flex;justify-content:space-between;margin:10px 0 4px}.mood button{width:56px;height:64px;border-radius:16px;border:1.5px solid var(--ln);background:#fff;cursor:pointer;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;font-size:10px;font-weight:800;color:var(--sl)}
-.mood button.on{border-color:var(--p);background:#EFF4FF;color:var(--p)}
-.mood svg{width:22px;height:22px}
-.note{background:#EFF4FF;border-radius:12px;padding:11px 12px;font-size:12.5px;color:var(--sl);margin-top:12px}
-.ic18{width:18px;height:18px;vertical-align:-3px}
 svg{stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
-.fill svg{fill:currentColor;stroke:none}
+.wmrow{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px}
+.wm{font-family:Fredoka;font-weight:700;font-size:14px;letter-spacing:2px;color:var(--p)}
+.datepill{background:#fff;border:1px solid var(--ln);border-radius:999px;padding:6px 12px;font-size:12px;font-weight:700;color:var(--sl);display:flex;gap:6px;align-items:center}
+.datepill svg{width:14px;height:14px}
+.greet{display:flex;justify-content:space-between;align-items:center;margin-bottom:6px}
+.greet .tt{font-family:Fredoka;font-size:24px;font-weight:600}
+.greet .sub{color:var(--sl);font-size:13px;margin-top:2px}
+.masc{width:56px;height:56px;border-radius:18px;flex:none}
+.hero{background:linear-gradient(135deg,#2563EB,#1E40AF);border-radius:20px;padding:16px;color:#fff;display:flex;gap:8px;align-items:center;margin:10px 0 4px}
+.hero .k{font-size:10px;font-weight:800;letter-spacing:1px;opacity:.85}
+.hero .t{font-family:Fredoka;font-size:19px;font-weight:600;margin:2px 0}
+.hero .d{font-size:12px;opacity:.88}
+.hero .go{background:rgba(255,255,255,.16);border-radius:16px;padding:10px 14px;text-align:center;font-size:12px;font-weight:800}
+.hero .go svg{width:28px;height:28px}
+.sec{display:flex;justify-content:space-between;align-items:center;margin:16px 0 8px}
+.sec span{font-size:11px;font-weight:800;letter-spacing:.8px;color:var(--sl)}
+.sec a{font-size:12px;font-weight:800;color:var(--p);text-decoration:none;cursor:pointer}
+.card{background:#fff;border:1px solid var(--ln);border-radius:18px;padding:12px;margin-bottom:10px;box-shadow:0 1px 2px rgba(15,23,42,.05);display:flex;gap:10px;align-items:center}
+.rail{width:5px;border-radius:3px;align-self:stretch;flex:none}
+.tile{width:46px;height:46px;border-radius:15px;display:flex;align-items:center;justify-content:center;flex:none}
+.tile svg{width:24px;height:24px}
+.tx b{font-size:15px;display:block}.tx span{font-size:12px;color:var(--sl);display:block;margin-top:1px}
+.tx .hm{font-size:10px;font-weight:800;letter-spacing:.5px;color:var(--sl)}
+.st{width:30px;height:30px;flex:none}.st svg{width:30px;height:30px}
+.cta{border:0;border-radius:999px;padding:15px;font-family:Nunito;font-weight:800;font-size:15px;cursor:pointer;width:100%;margin-top:4px}
+.cta.p{background:var(--p);color:#fff}.cta.a{background:var(--a);color:#fff}
+.ghost{background:#fff;border:1.5px solid var(--p);color:var(--p);border-radius:999px;padding:13px;width:100%;font-family:Nunito;font-weight:800;font-size:14px;cursor:pointer;margin-top:8px}
+.inp{width:100%;border:1.5px solid var(--ln);border-radius:12px;padding:12px;font-size:14px;font-family:Nunito;background:#fff;color:var(--ink)}
+.dialcard{background:#fff;border:1px solid var(--ln);border-radius:22px;padding:20px;text-align:center;margin:10px 0}
+.ring{width:150px;height:150px;border-radius:50%;margin:0 auto;background:conic-gradient(var(--s) 65%,#E8EEF7 0);display:flex;align-items:center;justify-content:center}
+.ring div{width:118px;height:118px;background:#fff;border-radius:50%;display:flex;flex-direction:column;align-items:center;justify-content:center}
+.ring b{font-family:Fredoka;font-size:30px;font-weight:600}
+.seg{display:flex;background:#fff;border:1px solid var(--ln);border-radius:999px;padding:5px;gap:4px;margin-bottom:6px}
+.seg button{flex:1;border:0;background:none;border-radius:999px;padding:10px;font-family:Nunito;font-weight:800;font-size:13px;color:var(--sl);cursor:pointer}
+.seg button.on{background:var(--pale);color:var(--p)}
+.pro{background:linear-gradient(135deg,#2563EB,#1E40AF);border-radius:22px;padding:16px;color:#fff;margin:10px 0}
+.pro .k{font-size:10px;font-weight:800;letter-spacing:1px;opacity:.85}
+.pro .t{font-family:Fredoka;font-size:19px;margin:2px 0}
+.pro .d{font-size:12px;opacity:.88;margin-bottom:12px}
+.pro button{border:0;background:#fff;color:var(--p);border-radius:999px;padding:13px;width:100%;font-family:Nunito;font-weight:800;font-size:14px;cursor:pointer}
+.cons{background:#fff;border:1px solid var(--ln);border-radius:20px;padding:14px;margin:10px 0}
+.bar{height:12px;background:#E8EEF7;border-radius:999px;overflow:hidden;margin:8px 0}.bar i{display:block;height:100%;width:71%;background:linear-gradient(90deg,var(--s),var(--p));border-radius:999px}
+.moodrow{display:flex;gap:10px;justify-content:center;background:#fff;border:1px solid var(--ln);border-radius:16px;padding:12px;margin-bottom:10px}
+.moodrow div{width:52px;height:60px;border-radius:14px;border:1.5px solid var(--ln);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;font-size:9px;font-weight:800;color:var(--sl)}
+.moodrow div.on{border-color:var(--p);background:var(--pale);color:var(--p)}
+.moodrow svg{width:22px;height:22px}
+.note{background:var(--pale);border-radius:14px;padding:11px 12px;font-size:12px;color:var(--sl);margin-top:10px;display:flex;gap:8px;align-items:center}
+.note svg{width:18px;height:18px;flex:none}
+.stepn{width:30px;height:30px;border-radius:50%;color:#fff;font-weight:800;display:flex;align-items:center;justify-content:center;flex:none;font-size:14px}
+.pbar{display:flex;gap:8px;margin:8px 0 4px}.pbar i{height:8px;border-radius:4px;flex:1;background:var(--ln)}.pbar i.on{background:var(--p)}
 </style></head><body>
-<h1>Puduu — MVP Prototype v2 <small>Professional rebuild: Lucide icons only, zero emoji, verified contrast. Tap bottom tabs.</small></h1>
-
-<!-- ============ PHONE ============ -->
+<h1>Puduu — MVP Prototype v3 <small>Total rebuild: premium soft-card system, zero emoji. Tap bottom tabs.</small></h1>
 <div class="phone">
 
 <!-- TODAY -->
 <div class="screen on" id="s-today">
-<div class="top"><div class="avatar">P</div><div><div class="tt">Good morning</div><div class="sub">Thursday · 4 blocks · Small steps count.</div></div></div>
-<div class="micro">Today's timeline</div>
-<div class="blk" style="background:linear-gradient(135deg,#2563EB,#1D4ED8)"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg><div><div class="t">08:00 · 25 MIN</div><div class="n">Morning reset</div><div class="d">Meds · water · 5-min tidy</div></div></div>
-<div class="blk" style="background:linear-gradient(135deg,#0E7490,#155E75)"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M8 3v4M16 3v4M3 10h18"/></svg><div><div class="t">09:00 · 50 MIN</div><div class="n">Deep work: portfolio</div><div class="d">Timer ready · step 2 of 4</div></div></div>
-<div class="blk done" style="background:linear-gradient(135deg,#15803D,#166534)"><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg><div><div class="t">11:00 · 15 MIN</div><div class="n">Walk outside</div><div class="d">Completed</div></div></div>
-<div class="blk" style="background:linear-gradient(135deg,#EA580C,#C2410C)"><svg viewBox="0 0 24 24"><path d="M13 2 3 14h7l-1 8 10-12h-7z"/></svg><div><div class="t">13:00 · 30 MIN</div><div class="n">Admin batch</div><div class="d">Bills + inbox</div></div></div>
-<div class="micro">Inbox — brain dump</div>
-<div class="card"><input class="inp" placeholder="Capture it here… e.g. call dentist"><div class="row" style="margin-top:10px"><button class="btn bg">Add</button><button class="btn bp">Sort for me</button></div></div>
-<div class="rescue-banner" style="cursor:pointer" onclick="go('rescue')"><svg viewBox="0 0 24 24" width="26" height="26" style="color:#EA580C;flex:none"><path d="M12 2v20M4 6l16 12M20 6 4 18"/></svg><div><b>Feeling stuck?</b><span>Get one tiny step. Two minutes counts.</span></div></div>
+<div class="wmrow"><div class="wm" style="display:flex;align-items:center;gap:8px"><img src="/assets/puduu-mascot.png" style="width:28px;height:28px;border-radius:9px" alt="">PUDUU</div><div class="datepill"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M8 3v4M16 3v4M3 10h18M9 15l2 2 4-4"/></svg>Thu, Sep 25</div></div>
+<div class="greet"><div><div class="tt">Good morning, Alex</div><div class="sub">Thursday · 4 blocks · 2 done, steady pace.</div></div><img class="masc" src="/assets/puduu-mascot.png" alt="Puduu"></div>
+<div class="hero"><div style="flex:1"><div class="k">TODAY'S FOCUS</div><div class="t">Deep work: portfolio</div><div class="d">09:00 · 50 min · step 2 of 4</div></div><div class="go"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><polygon points="10 8 16 12 10 16 10 8"/></svg><br>Start</div></div>
+<div class="sec"><span>UP NEXT</span><a>See all</a></div>
+<div class="card"><div class="rail" style="background:#2563EB"></div><div class="tile" style="background:#EFF4FF;color:#2563EB"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg></div><div class="tx" style="flex:1"><span class="hm">08:00 · 25 MIN</span><b>Morning reset</b><span>Meds · water · 5-min tidy</span></div></div>
+<div class="card"><div class="rail" style="background:#0E7490"></div><div class="tile" style="background:#E0F2F7;color:#0E7490"><svg viewBox="0 0 24 24"><circle cx="12" cy="13" r="8"/><path d="M12 9v4l2 2M9 2h6"/></svg></div><div class="tx" style="flex:1"><span class="hm">09:00 · 50 MIN</span><b>Deep work: portfolio</b><span>Timer ready · step 2 of 4</span></div></div>
+<div class="card" style="opacity:.65"><div class="rail" style="background:#15803D"></div><div class="tile" style="background:#E7F6EC;color:#15803D"><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg></div><div class="tx" style="flex:1"><span class="hm">11:00 · 15 MIN</span><b style="text-decoration:line-through">Walk outside</b><span>Completed</span></div><div class="st" style="color:#15803D"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M20 6 9 17l-5-5"/></svg></div></div>
+<div class="card"><div class="rail" style="background:#EA580C"></div><div class="tile" style="background:#FFF1E7;color:#EA580C"><svg viewBox="0 0 24 24"><path d="M13 2 3 14h7l-1 8 10-12h-7z"/></svg></div><div class="tx" style="flex:1"><span class="hm">13:00 · 30 MIN</span><b>Admin batch</b><span>Bills + inbox</span></div></div>
+<div class="sec"><span>INBOX</span><a>3 waiting</a></div>
+<div class="card" style="display:block"><input class="inp" placeholder="Capture a task, idea, or reminder…"><button class="cta p" style="margin-top:10px">Sort into my day</button></div>
+<div class="card"><div class="tile" style="background:#FFF1E7;color:#EA580C"><svg viewBox="0 0 24 24"><path d="M12 2v20M4 6l16 12M20 6 4 18"/></svg></div><div class="tx" style="flex:1"><b>Stalling?</b><span>Take a 2-minute reset.</span></div></div>
 </div>
 
 <!-- FOCUS -->
 <div class="screen" id="s-focus">
-<div class="top"><div class="avatar" style="background:var(--s)">F</div><div><div class="tt">Deep work: portfolio</div><div class="sub">Step 2 of 4 · Sketch hero section</div></div></div>
-<div class="dial"><div><b>32:10</b><span style="color:var(--sl);font-size:12px">left · gentle chime at end</span></div></div>
+<div class="wmrow"><div class="wm" style="display:flex;align-items:center;gap:8px"><img src="/assets/puduu-mascot.png" style="width:28px;height:28px;border-radius:9px" alt="">PUDUU</div><div class="datepill"><svg viewBox="0 0 24 24"><circle cx="12" cy="13" r="8"/><path d="M12 9v4l2 2M9 2h6"/></svg>32:10 left</div></div>
+<div class="greet"><div><div class="tt">Stay with it</div><div class="sub">Deep work: portfolio · step 2 of 4.</div></div></div>
+<div class="dialcard"><div class="ring"><div><b>32:10</b><span style="font-size:10px;font-weight:800;letter-spacing:1px;color:var(--sl)">LEFT</span></div></div><div class="sub" style="margin-top:10px">Sketch hero section · gentle chime at end</div></div>
 <div class="seg"><button>Pause</button><button>+5 min</button><button class="on">End</button></div>
-<div class="micro">Sub-steps</div>
-<div class="card opt"><div class="ic" style="background:var(--oks);color:var(--ok)"><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg></div><div><b>Open file and music</b><span>Done</span></div></div>
-<div class="card opt" style="border:2px solid var(--s)"><div class="ic" style="background:var(--ss);color:var(--s)"><svg viewBox="0 0 24 24"><polygon points="6 3 20 12 6 21 6 3"/></svg></div><div><b>Sketch hero section</b><span>In progress · 10-min timer</span></div></div>
-<div class="card opt" style="opacity:.65"><div class="ic" style="background:#F1F5F9;color:var(--sl)"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/></svg></div><div><b>Export PNG</b><span>Up next</span></div></div>
-<div class="card"><button class="btn bw" style="width:100%" onclick="go('ritual')">Next task — start Switch Ritual</button></div>
+<div class="sec"><span>SUB-STEPS</span><a>2 of 3</a></div>
+<div class="card"><div class="tile" style="background:#E7F6EC;color:#15803D"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M20 6 9 17l-5-5"/></svg></div><div class="tx" style="flex:1"><b>Open file and music</b><span>Done</span></div></div>
+<div class="card" style="border:2px solid #0E7490"><div class="tile" style="background:#E0F2F7;color:#0E7490"><svg viewBox="0 0 24 24"><circle cx="12" cy="13" r="8"/><path d="M12 9v4l2 2M9 2h6"/></svg></div><div class="tx" style="flex:1"><b>Sketch hero section</b><span>In progress · 10-min timer</span></div></div>
+<div class="card" style="opacity:.65"><div class="tile" style="background:#EFF4FF;color:#2563EB"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></div><div class="tx" style="flex:1"><b>Export PNG</b><span>Up next</span></div></div>
+<button class="ghost" onclick="go('ritual')">Next task — start the 15-sec ritual</button>
 </div>
 
 <!-- RITUAL -->
-<div class="screen" id="s-ritual" style="text-align:center">
-<div class="micro" style="text-align:center">Transition · 15 seconds</div>
-<div class="tt">Close, breathe, begin</div><div class="sub">Fifteen seconds, then we start.</div>
-<div class="card step" style="text-align:left"><div class="n">1</div><div><b>Close</b><div class="sub">Portfolio file saved. Put it away.</div></div></div>
-<div class="card step" style="text-align:left"><div class="n">2</div><div><b>Breathe</b><div class="sub">One slow breath with the timer ring.</div></div></div>
-<div class="card step" style="text-align:left"><div class="n">3</div><div><b>Begin</b><div class="sub">Next up: Admin batch · 30 min</div></div></div>
-<button class="btn bp" style="width:100%" onclick="go('focus')">Begin Admin batch</button><br><br>
-<button class="btn bg" style="width:100%" onclick="go('today')">Not yet — back to Today</button>
+<div class="screen" id="s-ritual">
+<div class="wmrow"><div class="wm" style="display:flex;align-items:center;gap:8px"><img src="/assets/puduu-mascot.png" style="width:28px;height:28px;border-radius:9px" alt="">PUDUU</div><div class="datepill">Transition · 15 sec</div></div>
+<div class="tt" style="font-family:Fredoka;font-size:22px">Close, breathe, begin.</div>
+<div class="pbar"><i class="on"></i><i></i><i></i></div>
+<div class="card" style="margin-top:10px"><div class="stepn" style="background:#2563EB">1</div><div class="tx" style="flex:1"><b>Close</b><span>Portfolio file saved. Put it away.</span></div><div class="st" style="color:#15803D"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M20 6 9 17l-5-5"/></svg></div></div>
+<div class="card"><div class="stepn" style="background:#0E7490">2</div><div class="tx" style="flex:1"><b>Breathe</b><span>One slow breath with the ring.</span></div></div>
+<div class="card"><div class="stepn" style="background:#EA580C">3</div><div class="tx" style="flex:1"><b>Begin</b><span>Next up: Admin batch · 30 min.</span></div></div>
+<button class="cta p" onclick="go('focus')">Begin Admin batch</button>
+<button class="ghost" onclick="go('today')">Not yet — back to Today</button>
 </div>
 
-<!-- RESCUE -->
+<!-- RESET -->
 <div class="screen" id="s-rescue">
-<div class="micro">Freeze reset</div>
-<div class="tt">Feeling stuck?</div><div class="sub">Pick the tiniest step. Two minutes counts.</div>
-<div class="card opt"><div class="ic" style="background:var(--ss);color:var(--s)"><svg viewBox="0 0 24 24"><path d="M12 2v20M4 6l16 12M20 6 4 18"/></svg></div><div><b>Drink a glass of water</b><span>2 min · raises energy</span></div></div>
-<div class="card opt"><div class="ic" style="background:var(--oks);color:var(--ok)"><svg viewBox="0 0 24 24"><path d="M4 20 9 9M20 20l-5-11M12 4v3"/></svg></div><div><b>Clear one surface</b><span>2 min · just the desk corner</span></div></div>
-<div class="card opt"><div class="ic" style="background:#F3E8FF;color:#9333EA"><svg viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 6L22 7"/></svg></div><div><b>Open the difficult email</b><span>Just open it. Reply later.</span></div></div>
-<div class="card opt" style="border:2px solid var(--p)"><div class="ic" style="background:#EFF4FF;color:var(--p)"><svg viewBox="0 0 24 24"><path d="M12 3v3M12 18v3M3 12h3M18 12h3M5.6 5.6l2.2 2.2M16.2 16.2l2.2 2.2M18.4 5.6l-2.2 2.2M7.8 16.2l-2.2 2.2"/></svg></div><div><b>Sort my inbox</b><span>Rule-based now · assisted later</span></div></div>
-<div class="note">Free: 2 resets per day · Pro: unlimited + custom menus. Skipping is allowed — Puduu waits.</div>
+<div class="wmrow"><div class="wm" style="display:flex;align-items:center;gap:8px"><img src="/assets/puduu-mascot.png" style="width:28px;height:28px;border-radius:9px" alt="">PUDUU</div><div class="datepill">Freeze reset · free 2/day</div></div>
+<div class="card"><img class="masc" src="/assets/puduu-mascot.png" alt="Puduu" style="width:92px;height:92px"><div class="tx" style="flex:1"><span class="hm">HOW IT WORKS</span><b style="font-family:Fredoka;font-size:17px">Pick the tiniest step.</b><span>Puduu the pudu deer: slow is still moving. Two minutes unsticks most walls.</span></div></div>
+<div class="sec"><span>TINY STEPS</span><a>Custom menus in Pro</a></div>
+<div class="card" style="border:2px solid #2563EB"><div class="tile" style="background:#E0F2F7;color:#0E7490"><svg viewBox="0 0 24 24"><path d="M12 2.7s6 6.3 6 10a6 6 0 0 1-12 0c0-3.7 6-10 6-10z"/></svg></div><div class="tx" style="flex:1"><b>Drink a glass of water</b><span>2 min · raises energy</span></div></div>
+<div class="card"><div class="tile" style="background:#E7F6EC;color:#15803D"><svg viewBox="0 0 24 24"><path d="M4 20 9 9M20 20l-5-11M12 4v3"/></svg></div><div class="tx" style="flex:1"><b>Clear one surface</b><span>2 min · just the desk corner</span></div></div>
+<div class="card"><div class="tile" style="background:#F1E9FF;color:#7C3AED"><svg viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 6L22 7"/></svg></div><div class="tx" style="flex:1"><b>Open the difficult email</b><span>Just open it. Reply later.</span></div></div>
+<div class="card"><div class="tile" style="background:#EFF4FF;color:#2563EB"><svg viewBox="0 0 24 24"><path d="M12 3v3M12 18v3M3 12h3M18 12h3M5.6 5.6l2.2 2.2M16.2 16.2l2.2 2.2M18.4 5.6l-2.2 2.2M7.8 16.2l-2.2 2.2"/></svg></div><div class="tx" style="flex:1"><b>Sort my inbox</b><span>Rule-based now · assisted later</span></div></div>
+<div class="note"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg>Skipping is allowed — Puduu waits.</div>
 </div>
 
 <!-- GROWS -->
 <div class="screen" id="s-progress">
-<div class="tt">Your week</div><div class="sub">Good days this week: <b>5 of 7</b> · never resets to zero.</div>
-<div class="card"><b>Consistency</b><div class="bar"><i style="width:71%"></i></div><div style="font-size:12.5px;color:var(--sl);margin-top:6px">5 steady days · 2 slow days · both are fine</div></div>
-<div class="card opt"><div class="ic" style="background:var(--as);color:var(--a)"><svg viewBox="0 0 24 24"><path d="M8 21h8M12 17v4M7 4h10v5a5 5 0 0 1-10 0zM7 6H4a1 1 0 0 0-1 1c0 2 2 3 4 3M17 6h3a1 1 0 0 1 1 1c0 2-2 3-4 3"/></svg></div><div><b>Trophies</b><span>Early starter ×3 · Reset used ×5 · 25-min focus ×8</span></div></div>
-<div class="micro">How was today?</div>
-<div class="card"><div class="mood">
-<button><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M8 16s1.5-2 4-2 4 2 4 2M9 9h.01M15 9h.01"/></svg>Low</button>
-<button><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M8 15h8M9 9h.01M15 9h.01"/></svg>Flat</button>
-<button class="on"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M8 14s1.5 2 4 2 4-2 4-2M9 9h.01M15 9h.01"/></svg>Okay</button>
-<button><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M8 14s1.5 2 4 2 4-2 4-2M9 9h.01M15 9h.01"/></svg>Good</button>
-<button><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M8 14s1.5 2 4 2 4-2 4-2M9 9h.01M15 9h.01"/></svg>Great</button>
-</div><div class="row" style="margin-top:10px"><button class="btn bg">Reflect</button><button class="btn bp">Save</button></div></div>
+<div class="wmrow"><div class="wm" style="display:flex;align-items:center;gap:8px"><img src="/assets/puduu-mascot.png" style="width:28px;height:28px;border-radius:9px" alt="">PUDUU</div><div class="datepill">Week 39</div></div>
+<div class="greet"><div><div class="tt">Keep growing</div><div class="sub">Good days: <b>5 of 7</b> · never resets to zero.</div></div></div>
+<div class="cons"><div style="display:flex;justify-content:space-between;align-items:center"><span class="hm" style="font-size:10px;font-weight:800;letter-spacing:.8px;color:var(--sl)">CONSISTENCY</span><b style="font-family:Fredoka;font-size:20px">71%</b></div><div class="bar"><i></i></div><div class="sub">5 steady days · 2 slow days · both are fine</div></div>
+<div class="sec"><span>TROPHIES</span><a>View all</a></div>
+<div class="card"><div class="tile" style="background:#FFF1E7;color:#EA580C"><svg viewBox="0 0 24 24"><path d="M8 21h8M12 17v4M7 4h10v5a5 5 0 0 1-10 0zM7 6H4a1 1 0 0 0-1 1c0 2 2 3 4 3M17 6h3a1 1 0 0 1 1 1c0 2-2 3-4 3"/></svg></div><div class="tx" style="flex:1"><b>Weekly shelf</b><span>Early starter ×3 · Reset used ×5 · Focus 25m ×8</span></div></div>
+<div class="card"><div class="tile" style="background:#E7F6EC;color:#15803D"><svg viewBox="0 0 24 24"><path d="M23 6l-9.5 9.5-5-5L1 18M17 6h6v6"/></svg></div><div class="tx" style="flex:1"><b>Focus trend</b><span>Up 20% vs last week · mornings work best</span></div></div>
+<div class="sec"><span>MOOD TODAY</span><a>Okay</a></div>
+<div class="moodrow"><div>Low</div><div>Flat</div><div class="on">Okay</div><div>Good</div><div>Great</div></div>
+<div class="row" style="display:flex;gap:10px"><button class="cta p" style="background:#EFF4FF;color:var(--p)">Reflect</button><button class="cta p">Save</button></div>
 </div>
 
 <!-- YOURS -->
 <div class="screen" id="s-settings">
-<div class="tt">Settings</div><div class="sub">Make Puduu yours.</div>
-<div class="card" style="border:2px solid var(--p)"><b>Puduu Pro — $6.99/mo</b><div class="sub">Unlimited resets · assisted planning (soon) · widgets · yearly $49.99</div><button class="btn ba" style="width:100%">Try 7 days free</button></div>
-<div class="card opt"><div class="ic" style="background:var(--as);color:var(--a)"><svg viewBox="0 0 24 24"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9M10.3 21a2 2 0 0 0 3.4 0"/></svg></div><div><b>Gentle nudges</b><span>Max 6 per day · quiet hours 22:00–07:00 on</span></div></div>
-<div class="card opt"><div class="ic" style="background:var(--ss);color:var(--s)"><svg viewBox="0 0 24 24"><path d="M11 5 6 9H2v6h4l5 4zM15.5 8.5a5 5 0 0 1 0 7M19 5a9 9 0 0 1 0 14"/></svg></div><div><b>Sounds and haptics</b><span>Calm chime · soft vibration on</span></div></div>
-<div class="card opt"><div class="ic" style="background:#F1F5F9;color:var(--sl)"><svg viewBox="0 0 24 24"><path d="M4 7V5h16v2M9 20h6M12 5v15"/></svg></div><div><b>Text size</b><span>Default · Large · XL spacing</span></div></div>
-<div class="card opt"><div class="ic" style="background:#F1F5F9;color:var(--sl)"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 3.6-6 8-6s8 2 8 6"/></svg></div><div><b>Account</b><span>you@puduu.app · Sign out</span></div></div>
-<div class="note">Private by design: on-device first, ad-free, export anytime.</div>
+<div class="wmrow"><div class="wm" style="display:flex;align-items:center;gap:8px"><img src="/assets/puduu-mascot.png" style="width:28px;height:28px;border-radius:9px" alt="">PUDUU</div><div class="datepill">Free plan</div></div>
+<div class="greet"><div><div class="tt">Make it yours</div><div class="sub">Settings, plan, and backup.</div></div></div>
+<div class="pro"><div class="k">PUDUU PRO</div><div class="t">$6.99/mo · yearly $49.99</div><div class="d">Unlimited resets · assisted planning (soon) · widgets on every device.</div><button>Try 7 days free</button></div>
+<div class="sec"><span>PREFERENCES</span><a></a></div>
+<div class="card"><div class="tile" style="background:#FFF1E7;color:#EA580C"><svg viewBox="0 0 24 24"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9M10.3 21a2 2 0 0 0 3.4 0"/></svg></div><div class="tx" style="flex:1"><b>Gentle nudges</b><span>Max 6 per day · quiet 22:00–07:00 on</span></div></div>
+<div class="card"><div class="tile" style="background:#FFF1E7;color:#EA580C"><svg viewBox="0 0 24 24"><path d="M12 2.7s6 6.3 6 10a6 6 0 0 1-12 0c0-3.7 6-10 6-10zM9 18h6"/></svg></div><div class="tx" style="flex:1"><b>Sounds and haptics</b><span>Calm chime · soft vibration on</span></div></div>
+<div class="card"><div class="tile" style="background:#EFF4FF;color:#2563EB"><svg viewBox="0 0 24 24"><path d="m5 8 6 6M4 14l6-6 2-3M2 5h12M7 3h1M22 22l-5-10-5 10M14 18h6"/></svg></div><div class="tx" style="flex:1"><b>Language and text</b><span>English · Large text available</span></div></div>
+<div class="card"><div class="tile" style="background:#F1E9FF;color:#7C3AED"><svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="7" rx="2"/><path d="M2 10v3a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-3M12 15v3"/></svg></div><div class="tx" style="flex:1"><b>Backup and export</b><span>On-device first · export anytime</span></div></div>
 </div>
 
 <div class="nav">
 <button class="on" id="t-today" onclick="go('today')"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>Today</button>
 <button id="t-focus" onclick="go('focus')"><svg viewBox="0 0 24 24"><circle cx="12" cy="13" r="8"/><path d="M12 9v4l2 2M9 2h6"/></svg>Focus</button>
 <button id="t-rescue" onclick="go('rescue')"><svg viewBox="0 0 24 24"><path d="M12 2v20M4 6l16 12M20 6 4 18"/></svg>Reset</button>
-<button id="t-progress" onclick="go('progress')"><svg viewBox="0 0 24 24"><path d="M8 21h8M12 17v4M7 4h10v5a5 5 0 0 1-10 0zM7 6H4a1 1 0 0 0-1 1c0 2 2 3 4 3M17 6h3a1 1 0 0 1 1 1c0 2-2 3-4 3"/></svg>Grows</button>
-<button id="t-settings" onclick="go('settings')"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.9l.1.1a2 2 0 1 1-2.9 2.9l-.1-.1a1.7 1.7 0 0 0-1.9-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1-1.6 1.7 1.7 0 0 0-1.9.3l-.1.1a2 2 0 1 1-2.9-2.9l.1-.1a1.7 1.7 0 0 0 .3-1.9 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.6-1 1.7 1.7 0 0 0-.3-1.9l-.1-.1a2 2 0 1 1 2.9-2.9l.1.1a1.7 1.7 0 0 0 1.9.3h0a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5h0a1.7 1.7 0 0 0 1.9-.3l.1-.1a2 2 0 1 1 2.9 2.9l-.1.1a1.7 1.7 0 0 0-.3 1.9v0a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"/></svg>Yours</button>
+<button id="t-progress" onclick="go('progress')"><svg viewBox="0 0 24 24"><path d="M8 21h8M12 17v4M7 4h10v5a5 5 0 0 1-10 0zM7 6H4a1 1 0 0 0-1 1c0 2 2 3 4 3M17 6h3a1 1 0 0 1 1 1c0 2-2 3-4 3"/></svg>Progress</button>
+<button id="t-settings" onclick="go('settings')"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M19.1 4.9l-1.4 1.4M6.3 17.7l-1.4 1.4"/></svg>Yours</button>
 </div></div>
 <script>
 function go(n){document.querySelectorAll('.screen').forEach(s=>s.classList.remove('on'));document.getElementById('s-'+n).classList.add('on');document.querySelectorAll('.nav button').forEach(b=>b.classList.remove('on'));var t=document.getElementById('t-'+n);if(t)t.classList.add('on')}
-document.querySelectorAll('.mood button').forEach(s=>s.onclick=()=>{document.querySelectorAll('.mood button').forEach(x=>x.classList.remove('on'));s.classList.add('on')});
 </script></body></html>

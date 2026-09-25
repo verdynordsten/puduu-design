@@ -1,0 +1,35 @@
+{
+  "meta": { "name": "Puduu", "version": "1.0.0", "updated": "2026-09-25" },
+  "color": {
+    "primary": "#2563EB",
+    "onPrimary": "#FFFFFF",
+    "secondary": "#0891B2",
+    "onSecondary": "#002430",
+    "accent": "#EA580C",
+    "onAccent": "#FFFFFF",
+    "background": "#F8FAFC",
+    "foreground": "#0F172A",
+    "card": "#FFFFFF",
+    "cardForeground": "#0F172A",
+    "muted": "#F1F5FD",
+    "mutedForeground": "#475569",
+    "border": "#E4ECFC",
+    "success": "#16A34A",
+    "warning": "#D97706",
+    "destructive": "#DC2626",
+    "onDestructive": "#FFFFFF",
+    "ring": "#2563EB",
+    "timelineHues": ["#2563EB", "#0891B2", "#EA580C", "#16A34A", "#9333EA", "#E11D48"]
+  },
+  "typography": {
+    "display": "Fredoka",
+    "body": "Nunito",
+    "googleFontsUrl": "https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Nunito:wght@300;400;500;600;700&display=swap",
+    "scale": { "display": 32, "h1": 24, "h2": 20, "body": 16, "caption": 13, "minBody": 13 },
+    "lineHeight": 1.5
+  },
+  "shape": { "radiusSm": 12, "radiusMd": 18, "radiusLg": 26, "pill": 999 },
+  "motion": { "pressMs": 200, "ease": "ease-out", "screenMs": 260 },
+  "spacing": { "xs": 4, "sm": 8, "md": 16, "lg": 24, "xl": 32 },
+  "effects": "soft inner+outer shadows, fluffy cards, soft-press on tap, no hard lines"
+}

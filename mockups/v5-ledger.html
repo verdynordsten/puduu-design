@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Puduu v5 — Ledger</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Inter:wght@400;500;600;700&display=swap');
+  :root{
+    --paper:#F6F3EC; --deep:#EFE8D8; --card:#FFFDF8; --ink:#1C1917;
+    --soft:#44403C; --mute:#78716C; --faint:#6F655C; --line:#E3DAC7;
+    --ember:#B45309; --ember-deep:#92400E; --wash:#FAEDD7; --moss:#4D7C0F;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background:#141210;font-family:Inter,system-ui,sans-serif;color:var(--ink);
+    min-height:100vh;display:flex;flex-direction:column;align-items:center;padding:44px 20px 60px}
+  .kicker{color:#B9AE97;font-size:12px;letter-spacing:3px;font-weight:700;margin-bottom:10px}
+  h1{font-family:Fraunces,serif;color:#F6F3EC;font-size:30px;font-weight:600;letter-spacing:-.3px}
+  .sub{color:#8A8177;font-size:13px;margin:8px 0 30px}
+  .frame{background:var(--paper);border-radius:12px;padding:26px 24px 18px;width:390px;
+    box-shadow:0 40px 90px rgba(0,0,0,.5)}
+  .eyebrow{font-size:10.5px;font-weight:700;letter-spacing:1.6px;color:var(--mute)}
+  .headline{font-family:Fraunces,serif;font-size:29px;font-weight:600;letter-spacing:-.3px;
+    margin:7px 0 5px;line-height:1.12}
+  .stand{font-size:12.5px;color:var(--mute)}
+  .rule{border:none;border-top:1px solid var(--line);margin:14px 0 0}
+  .now{margin-top:16px;background:var(--card);border:1px solid var(--line);
+    border-radius:8px;padding:16px 18px}
+  .nowtop{display:flex;align-items:baseline;gap:8px}
+  .nowtag{font-size:10.5px;font-weight:700;letter-spacing:1.6px;color:var(--ember-deep)}
+  .nowmeta{font-size:12px;color:var(--mute)}
+  .nowtitle{font-family:Fraunces,serif;font-size:20px;font-weight:600;margin:6px 0 11px}
+  .bar{height:4px;border-radius:3px;background:var(--deep);overflow:hidden}
+  .bar i{display:block;height:100%;width:61%;background:var(--ember);border-radius:3px}
+  .btnrow{display:flex;gap:8px;margin-top:12px}
+  .btn{flex:1;background:var(--ink);color:#FFFDF8;border:none;border-radius:8px;
+    font:600 13.5px Inter;padding:13px;cursor:pointer}
+  .ghost{background:none;border:none;color:var(--ember-deep);font:600 13px Inter;cursor:pointer;padding:0 6px}
+  .sec{display:flex;justify-content:space-between;align-items:baseline;margin:24px 0 2px}
+  .seclbl{font-size:10.5px;font-weight:700;letter-spacing:1.6px;color:var(--mute)}
+  .seclink{font-size:12.5px;font-weight:600;color:var(--ember-deep)}
+  .day{padding:11px 0}
+  .day + .day{border-top:1px solid var(--line)}
+  .rowline{display:flex;gap:12px;align-items:flex-start}
+  .time{width:52px;text-align:right;flex:none}
+  .time b{font-size:13.5px;font-weight:700;font-variant-numeric:tabular-nums}
+  .time span{font-size:10.5px;color:var(--faint);font-variant-numeric:tabular-nums}
+  .tick{flex:none;display:flex;flex-direction:column;align-items:center}
+  .dot{width:9px;height:9px;border-radius:50%;margin-top:3px}
+  .stem{width:2.5px;height:32px;background:var(--deep)}
+  .txt b{font-size:14.5px;font-weight:600}
+  .txt p{font-size:12px;color:var(--faint);margin-top:2px}
+  .side{flex:none;font-size:11.5px;color:var(--faint);font-variant-numeric:tabular-nums;padding-top:2px}
+  .done-t{color:var(--moss)!important;font-weight:600;font-size:12px}
+  .begin{background:none;border:none;color:var(--ember-deep);font:600 12.5px Inter;cursor:pointer;padding:0}
+  .nav{margin-top:20px;border-top:1px solid var(--line);padding-top:12px;
+    display:flex;justify-content:space-around}
+  .nav div{font-size:11px;font-weight:500;color:var(--faint);text-align:center}
+  .nav .on{color:var(--ink);font-weight:700}
+  .nav small{display:block;font-size:10px;font-weight:700;letter-spacing:1px;color:var(--faint);margin-bottom:3px}
+  .nav .on small{color:var(--ember-deep)}
+</style>
+</head>
+<body>
+<div class="kicker">PUDUU — V5 LEDGER</div>
+<h1>Total rebuild. New language.</h1>
+<p class="sub">Warm paper · ink serif · one ember accent · no pastel tiles · no bottom-nav reliance</p>
+<div class="frame">
+  <div class="eyebrow">THURSDAY · SEPTEMBER 25</div>
+  <div class="headline">Good morning, Alex.</div>
+  <div class="stand">Four blocks planned. One thing at a time.</div>
+  <hr class="rule">
+  <div class="now">
+    <div class="nowtop"><span class="nowtag">NOW</span><span class="nowmeta">09:00 · 50 min · step 2 of 4</span></div>
+    <div class="nowtitle">Deep work: portfolio</div>
+    <div class="bar"><i></i></div>
+    <div class="btnrow"><button class="btn">▶&nbsp;&nbsp;Begin session</button><button class="ghost">Skip</button></div>
+  </div>
+  <div class="sec"><span class="seclbl">THE DAY</span><span class="seclink">See all</span></div>
+  <div class="day"><div class="rowline">
+    <div class="time"><b>08:00</b><br><span>25m</span></div>
+    <div class="tick"><div class="dot" style="border:2px solid var(--faint)"></div><div class="stem"></div></div>
+    <div class="txt" style="flex:1"><b>Morning reset</b><p>Meds, water, five-minute tidy</p></div>
+    <div class="side">25 min</div>
+  </div></div>
+  <div class="day"><div class="rowline">
+    <div class="time"><b>09:00</b><br><span>50m</span></div>
+    <div class="tick"><div class="dot" style="background:var(--ember);border:2px solid var(--ember)"></div><div class="stem"></div></div>
+    <div class="txt" style="flex:1"><b>Deep work: portfolio</b><p>Hero section, timer on, phone away</p></div>
+    <div class="side"><button class="begin">Begin</button></div>
+  </div></div>
+  <div class="day"><div class="rowline">
+    <div class="time"><b style="color:var(--faint)">11:00</b><br><span>15m</span></div>
+    <div class="tick"><div class="dot" style="background:var(--moss);border:2px solid var(--moss)"></div><div class="stem"></div></div>
+    <div class="txt" style="flex:1"><b style="color:var(--faint);text-decoration:line-through">Walk outside</b><p>Fifteen minutes, no podcast</p></div>
+    <div class="side done-t">✓ Done</div>
+  </div></div>
+  <div class="day"><div class="rowline">
+    <div class="time"><b>13:00</b><br><span>30m</span></div>
+    <div class="tick"><div class="dot" style="border:2px solid var(--faint)"></div><div class="stem"></div></div>
+    <div class="txt" style="flex:1"><b>Admin batch</b><p>Bills and inbox, one pass</p></div>
+    <div class="side">30 min</div>
+  </div></div>
+  <div class="sec"><span class="seclbl">IF YOU STALL</span></div>
+  <div class="day"><div class="rowline">
+    <div class="txt" style="flex:1"><b>Take a two-minute reset</b><p>Water, air, one small surface.</p></div>
+    <div class="side">2 min</div>
+  </div></div>
+  <div class="nav">
+    <div class="on"><small>01</small>Today</div>
+    <div><small>02</small>Focus</div>
+    <div><small>03</small>Reset</div>
+    <div><small>04</small>Progress</div>
+    <div><small>05</small>Yours</div>
+  </div>
+</div>
+</body>
+</html>

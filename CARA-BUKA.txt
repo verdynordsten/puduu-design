@@ -2,11 +2,12 @@ PUDUU  — CARA BUKA FILE DESAIN DI PEN.DEV
 ================================================
 
 ISI PAKET INI:
-- puduu.pen ........... file desain utama (7 layar HP 390px, buka di pen.dev)
+- puduu.pen ........... file desain utama v5 LEDGER (5 layar HP 390px, buka di pen.dev)
 - assets/ ............. WAJIB satu folder dengan puduu.pen (icon + mascot).
                         Jangan dipisah — kalau dipisah gambar jadi blank!
 - gen_puduu_pen.py .... script generator (kalau mau revisi, edit ini lalu
                         jalankan: python3 gen_puduu_pen.py)
+- preview-html/ ....... mockup HTML v5-ledger (buka di browser)
 - preview/ ............ screenshot tiap layar buat intip cepat tanpa buka app
 
 CARA BUKA (pilih satu):

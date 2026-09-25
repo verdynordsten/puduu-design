@@ -1,4 +1,4 @@
-# Puduu 🦌 — Design Repo
+# Puduu  — Design Repo
 
 English-first global visual ADHD planner. This repo = brand, tokens, mockups. App code lives in `../puduu-app`.
 

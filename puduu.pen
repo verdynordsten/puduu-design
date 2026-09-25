@@ -1,22 +1,38 @@
 {
  "version": "2.19",
- "name": "Puduu MVP",
+ "name": "Puduu MVP v2",
  "variables": {
   "pri": {
    "type": "color",
    "value": "#2563EB"
   },
+  "pdeep": {
+   "type": "color",
+   "value": "#1D4ED8"
+  },
   "sec": {
    "type": "color",
-   "value": "#0891B2"
+   "value": "#0E7490"
+  },
+  "ssoft": {
+   "type": "color",
+   "value": "#E0F2F7"
   },
   "acc": {
    "type": "color",
    "value": "#EA580C"
   },
+  "adeep": {
+   "type": "color",
+   "value": "#C2410C"
+  },
+  "asoft": {
+   "type": "color",
+   "value": "#FFF1E7"
+  },
   "bg": {
    "type": "color",
-   "value": "#F8FAFC"
+   "value": "#F6F8FC"
   },
   "ink": {
    "type": "color",
@@ -26,21 +42,25 @@
    "type": "color",
    "value": "#475569"
   },
+  "line": {
+   "type": "color",
+   "value": "#E2E8F0"
+  },
   "card": {
    "type": "color",
    "value": "#FFFFFF"
   },
-  "bd": {
-   "type": "color",
-   "value": "#E4ECFC"
-  },
   "mutbg": {
    "type": "color",
-   "value": "#F1F5FD"
+   "value": "#EFF4FF"
   },
   "ok": {
    "type": "color",
-   "value": "#16A34A"
+   "value": "#15803D"
+  },
+  "oksoft": {
+   "type": "color",
+   "value": "#E7F6EC"
   },
   "pink": {
    "type": "color",
@@ -55,11 +75,11 @@
   {
    "id": "cmpCard",
    "type": "frame",
-   "name": "CmpFluffyCard",
+   "name": "CmpCardShell",
    "x": 0,
    "y": 1200,
    "width": 358,
-   "height": 76,
+   "height": 74,
    "fill": "#FFFFFF",
    "cornerRadius": 16,
    "reusable": true,
@@ -67,10 +87,23 @@
    "padding": 12,
    "gap": 10,
    "alignItems": "center",
+   "stroke": "#E2E8F0",
+   "strokeWidth": 1,
    "slot": [
     "cmpSlot"
    ],
    "children": [
+    {
+     "id": "cmpTile",
+     "type": "frame",
+     "name": "SlotTile",
+     "x": 0,
+     "y": 0,
+     "width": 44,
+     "height": 44,
+     "fill": "#EFF4FF",
+     "cornerRadius": 14
+    },
     {
      "id": "cmpSlot",
      "type": "text",
@@ -81,34 +114,34 @@
      "fill": "#0F172A",
      "fontSize": 15,
      "fontFamily": "Nunito",
-     "fontWeight": "700",
+     "fontWeight": "800",
      "textAlign": "left",
      "textGrowth": "fixed-width",
-     "width": 300
+     "width": 250
     }
    ]
   },
   {
-   "id": "0000N",
+   "id": "0000W",
    "type": "frame",
    "name": "01 Today",
    "x": 0,
    "y": 0,
    "width": 390,
    "height": 844,
-   "fill": "#F8FAFC",
+   "fill": "#F6F8FC",
    "layout": "vertical",
    "alignItems": "center",
    "children": [
     {
-     "id": "0000w",
+     "id": "00005",
      "type": "frame",
-     "name": "01 TodayHd",
+     "name": "H1Bar",
      "x": 0,
      "y": 0,
      "width": 390,
-     "height": 64,
-     "fill": "#F8FAFC",
+     "height": 76,
+     "fill": "#F6F8FC",
      "cornerRadius": 0,
      "layout": "horizontal",
      "padding": [
@@ -123,12 +156,12 @@
       {
        "id": "00001",
        "type": "rectangle",
-       "name": "HdIc",
+       "name": "H1Ic",
        "x": 0,
        "y": 0,
-       "width": 32,
-       "height": 32,
-       "cornerRadius": 0,
+       "width": 40,
+       "height": 40,
+       "cornerRadius": 13,
        "fill": {
         "type": "image",
         "url": "./assets/icons/sun.png",
@@ -136,416 +169,569 @@
        }
       },
       {
-       "id": "00002",
-       "type": "text",
-       "name": "HdTi",
+       "id": "00004",
+       "type": "frame",
+       "name": "H1Tx",
        "x": 0,
        "y": 0,
-       "content": "Puduu - Today",
-       "fill": "#0F172A",
-       "fontSize": 20,
-       "fontFamily": "Fredoka",
-       "fontWeight": "600",
-       "textAlign": "left",
-       "width": 280,
-       "textGrowth": "fixed-width"
+       "width": 300,
+       "height": 56,
+       "fill": "#F6F8FC",
+       "cornerRadius": 0,
+       "layout": "vertical",
+       "gap": 1,
+       "children": [
+        {
+         "id": "00002",
+         "type": "text",
+         "name": "H1Ti",
+         "x": 0,
+         "y": 0,
+         "content": "Good morning",
+         "fill": "#0F172A",
+         "fontSize": 20,
+         "fontFamily": "Fredoka",
+         "fontWeight": "600",
+         "textAlign": "left",
+         "width": 300,
+         "textGrowth": "fixed-width"
+        },
+        {
+         "id": "00003",
+         "type": "text",
+         "name": "H1Sb",
+         "x": 0,
+         "y": 0,
+         "content": "Thursday - 4 blocks - small steps count.",
+         "fill": "#475569",
+         "fontSize": 13,
+         "fontFamily": "Nunito",
+         "fontWeight": "400",
+         "textAlign": "left",
+         "width": 300,
+         "textGrowth": "fixed-width"
+        }
+       ]
       }
      ]
     },
     {
-     "id": "0000v",
+     "id": "0000F",
      "type": "frame",
      "name": "01 TodayBd",
      "x": 0,
      "y": 0,
      "width": 358,
-     "fill": "#F8FAFC",
+     "fill": "#F6F8FC",
      "cornerRadius": 0,
      "layout": "vertical",
      "gap": 10,
      "children": [
       {
-       "id": "00003",
+       "id": "00006",
        "type": "text",
-       "name": "Gr",
+       "name": "C1",
        "x": 0,
        "y": 0,
-       "content": "Good morning",
-       "fill": "#0F172A",
-       "fontSize": 26,
-       "fontFamily": "Fredoka",
-       "fontWeight": "600",
-       "textAlign": "left",
-       "width": 358,
-       "textGrowth": "fixed-width"
-      },
-      {
-       "id": "00004",
-       "type": "text",
-       "name": "Txt",
-       "x": 0,
-       "y": 0,
-       "content": "Thursday - 4 blocks planned - Small steps count.",
+       "content": "TODAY'S TIMELINE",
        "fill": "#475569",
-       "fontSize": 14,
-       "fontFamily": "Sub",
-       "fontWeight": "400",
+       "fontSize": 11,
+       "fontFamily": "Nunito",
+       "fontWeight": "800",
        "textAlign": "left",
        "width": 358,
        "textGrowth": "fixed-width"
       },
       {
-       "id": "00009",
+       "id": "0000d",
        "type": "frame",
-       "name": "Tl1",
+       "name": "B1",
        "x": 0,
        "y": 0,
        "width": 358,
-       "height": 78,
+       "height": 82,
        "fill": "#2563EB",
-       "cornerRadius": 18,
+       "cornerRadius": 16,
        "layout": "horizontal",
        "padding": 12,
        "gap": 10,
        "alignItems": "center",
        "children": [
         {
-         "id": "00005",
-         "type": "text",
-         "name": "Tl1Tm",
+         "id": "00007",
+         "type": "rectangle",
+         "name": "B1Ic",
          "x": 0,
          "y": 0,
-         "content": "08:00",
-         "fill": "#FFFFFF",
-         "fontSize": 13,
-         "fontFamily": "Nunito",
-         "fontWeight": "700",
-         "textAlign": "left",
-         "width": 52,
-         "textGrowth": "fixed-width"
+         "width": 40,
+         "height": 40,
+         "cornerRadius": 13,
+         "fill": {
+          "type": "image",
+          "url": "./assets/icons/check.png",
+          "mode": "fill"
+         }
         },
         {
-         "id": "00008",
+         "id": "0000b",
          "type": "frame",
-         "name": "Tl1Tx",
+         "name": "B1Tx",
          "x": 0,
          "y": 0,
-         "width": 240,
-         "height": 54,
+         "width": 230,
+         "height": 58,
          "fill": "#2563EB",
          "cornerRadius": 0,
          "layout": "vertical",
-         "gap": 2,
+         "gap": 1,
          "children": [
           {
-           "id": "00006",
+           "id": "00008",
            "type": "text",
-           "name": "Tl1Ti",
+           "name": "B1Tm",
+           "x": 0,
+           "y": 0,
+           "content": "08:00 - 25 MIN",
+           "fill": "#FFFFFF",
+           "fontSize": 11,
+           "fontFamily": "Nunito",
+           "fontWeight": "800",
+           "textAlign": "left",
+           "width": 230,
+           "textGrowth": "fixed-width"
+          },
+          {
+           "id": "00009",
+           "type": "text",
+           "name": "B1Ti",
            "x": 0,
            "y": 0,
            "content": "Morning reset",
            "fill": "#FFFFFF",
            "fontSize": 15,
            "fontFamily": "Nunito",
-           "fontWeight": "700",
-           "textAlign": "left"
+           "fontWeight": "800",
+           "textAlign": "left",
+           "width": 230,
+           "textGrowth": "fixed-width"
           },
           {
-           "id": "00007",
+           "id": "0000a",
            "type": "text",
-           "name": "Tl1Sb",
+           "name": "B1Sb",
            "x": 0,
            "y": 0,
-           "content": "Meds - water - 5-min tidy - 25m",
+           "content": "Meds - water - 5-min tidy",
            "fill": "#FFFFFF",
-           "fontSize": 13,
+           "fontSize": 12,
            "fontFamily": "Nunito",
            "fontWeight": "400",
-           "textAlign": "left"
+           "textAlign": "left",
+           "width": 230,
+           "textGrowth": "fixed-width"
           }
          ]
+        },
+        {
+         "id": "0000c",
+         "type": "rectangle",
+         "name": "B1St",
+         "x": 0,
+         "y": 0,
+         "width": 26,
+         "height": 26,
+         "cornerRadius": 13,
+         "fill": {
+          "type": "image",
+          "url": "./assets/icons/chevron-right.png",
+          "mode": "fill"
+         }
         }
        ]
       },
       {
-       "id": "0000e",
+       "id": "0000k",
        "type": "frame",
-       "name": "Tl2",
+       "name": "B2",
        "x": 0,
        "y": 0,
        "width": 358,
-       "height": 78,
-       "fill": "#0891B2",
-       "cornerRadius": 18,
+       "height": 82,
+       "fill": "#0E7490",
+       "cornerRadius": 16,
        "layout": "horizontal",
        "padding": 12,
        "gap": 10,
        "alignItems": "center",
        "children": [
         {
-         "id": "0000a",
-         "type": "text",
-         "name": "Tl2Tm",
+         "id": "0000e",
+         "type": "rectangle",
+         "name": "B2Ic",
          "x": 0,
          "y": 0,
-         "content": "09:00",
-         "fill": "#FFFFFF",
-         "fontSize": 13,
-         "fontFamily": "Nunito",
-         "fontWeight": "700",
-         "textAlign": "left",
-         "width": 52,
-         "textGrowth": "fixed-width"
+         "width": 40,
+         "height": 40,
+         "cornerRadius": 13,
+         "fill": {
+          "type": "image",
+          "url": "./assets/icons/timer.png",
+          "mode": "fill"
+         }
         },
         {
-         "id": "0000d",
+         "id": "0000i",
          "type": "frame",
-         "name": "Tl2Tx",
+         "name": "B2Tx",
          "x": 0,
          "y": 0,
-         "width": 240,
-         "height": 54,
-         "fill": "#0891B2",
+         "width": 230,
+         "height": 58,
+         "fill": "#0E7490",
          "cornerRadius": 0,
          "layout": "vertical",
-         "gap": 2,
+         "gap": 1,
          "children": [
           {
-           "id": "0000b",
+           "id": "0000f",
            "type": "text",
-           "name": "Tl2Ti",
+           "name": "B2Tm",
+           "x": 0,
+           "y": 0,
+           "content": "09:00 - 50 MIN",
+           "fill": "#FFFFFF",
+           "fontSize": 11,
+           "fontFamily": "Nunito",
+           "fontWeight": "800",
+           "textAlign": "left",
+           "width": 230,
+           "textGrowth": "fixed-width"
+          },
+          {
+           "id": "0000g",
+           "type": "text",
+           "name": "B2Ti",
            "x": 0,
            "y": 0,
            "content": "Deep work: portfolio",
            "fill": "#FFFFFF",
            "fontSize": 15,
            "fontFamily": "Nunito",
-           "fontWeight": "700",
-           "textAlign": "left"
+           "fontWeight": "800",
+           "textAlign": "left",
+           "width": 230,
+           "textGrowth": "fixed-width"
           },
           {
-           "id": "0000c",
+           "id": "0000h",
            "type": "text",
-           "name": "Tl2Sb",
+           "name": "B2Sb",
            "x": 0,
            "y": 0,
-           "content": "50m - timer ready",
+           "content": "Timer ready - step 2 of 4",
            "fill": "#FFFFFF",
-           "fontSize": 13,
+           "fontSize": 12,
            "fontFamily": "Nunito",
            "fontWeight": "400",
-           "textAlign": "left"
+           "textAlign": "left",
+           "width": 230,
+           "textGrowth": "fixed-width"
           }
          ]
+        },
+        {
+         "id": "0000j",
+         "type": "rectangle",
+         "name": "B2St",
+         "x": 0,
+         "y": 0,
+         "width": 26,
+         "height": 26,
+         "cornerRadius": 13,
+         "fill": {
+          "type": "image",
+          "url": "./assets/icons/chevron-right.png",
+          "mode": "fill"
+         }
         }
        ]
       },
       {
-       "id": "0000j",
+       "id": "0000r",
        "type": "frame",
-       "name": "Tl3",
+       "name": "B3",
        "x": 0,
        "y": 0,
        "width": 358,
-       "height": 78,
-       "fill": "#16A34A",
-       "cornerRadius": 18,
+       "height": 82,
+       "fill": "#15803D",
+       "cornerRadius": 16,
        "layout": "horizontal",
        "padding": 12,
        "gap": 10,
        "alignItems": "center",
        "children": [
         {
-         "id": "0000f",
-         "type": "text",
-         "name": "Tl3Tm",
+         "id": "0000l",
+         "type": "rectangle",
+         "name": "B3Ic",
          "x": 0,
          "y": 0,
-         "content": "11:00",
-         "fill": "#FFFFFF",
-         "fontSize": 13,
-         "fontFamily": "Nunito",
-         "fontWeight": "700",
-         "textAlign": "left",
-         "width": 52,
-         "textGrowth": "fixed-width"
+         "width": 40,
+         "height": 40,
+         "cornerRadius": 13,
+         "fill": {
+          "type": "image",
+          "url": "./assets/icons/circle-check.png",
+          "mode": "fill"
+         }
         },
         {
-         "id": "0000i",
+         "id": "0000p",
          "type": "frame",
-         "name": "Tl3Tx",
+         "name": "B3Tx",
          "x": 0,
          "y": 0,
-         "width": 240,
-         "height": 54,
-         "fill": "#16A34A",
+         "width": 230,
+         "height": 58,
+         "fill": "#15803D",
          "cornerRadius": 0,
          "layout": "vertical",
-         "gap": 2,
+         "gap": 1,
          "children": [
           {
-           "id": "0000g",
+           "id": "0000m",
            "type": "text",
-           "name": "Tl3Ti",
+           "name": "B3Tm",
+           "x": 0,
+           "y": 0,
+           "content": "11:00 - 15 MIN",
+           "fill": "#FFFFFF",
+           "fontSize": 11,
+           "fontFamily": "Nunito",
+           "fontWeight": "800",
+           "textAlign": "left",
+           "width": 230,
+           "textGrowth": "fixed-width"
+          },
+          {
+           "id": "0000n",
+           "type": "text",
+           "name": "B3Ti",
            "x": 0,
            "y": 0,
            "content": "Walk outside",
            "fill": "#FFFFFF",
            "fontSize": 15,
            "fontFamily": "Nunito",
-           "fontWeight": "700",
-           "textAlign": "left"
+           "fontWeight": "800",
+           "textAlign": "left",
+           "width": 230,
+           "textGrowth": "fixed-width"
           },
           {
-           "id": "0000h",
+           "id": "0000o",
            "type": "text",
-           "name": "Tl3Sb",
+           "name": "B3Sb",
            "x": 0,
            "y": 0,
-           "content": "15m - done",
+           "content": "Completed",
            "fill": "#FFFFFF",
-           "fontSize": 13,
+           "fontSize": 12,
            "fontFamily": "Nunito",
            "fontWeight": "400",
-           "textAlign": "left"
+           "textAlign": "left",
+           "width": 230,
+           "textGrowth": "fixed-width"
           }
          ]
+        },
+        {
+         "id": "0000q",
+         "type": "rectangle",
+         "name": "B3St",
+         "x": 0,
+         "y": 0,
+         "width": 26,
+         "height": 26,
+         "cornerRadius": 13,
+         "fill": {
+          "type": "image",
+          "url": "./assets/icons/circle-check.png",
+          "mode": "fill"
+         }
         }
        ]
       },
       {
-       "id": "0000o",
+       "id": "0000y",
        "type": "frame",
-       "name": "Tl4",
+       "name": "B4",
        "x": 0,
        "y": 0,
        "width": 358,
-       "height": 78,
+       "height": 82,
        "fill": "#EA580C",
-       "cornerRadius": 18,
+       "cornerRadius": 16,
        "layout": "horizontal",
        "padding": 12,
        "gap": 10,
        "alignItems": "center",
        "children": [
         {
-         "id": "0000k",
-         "type": "text",
-         "name": "Tl4Tm",
+         "id": "0000s",
+         "type": "rectangle",
+         "name": "B4Ic",
          "x": 0,
          "y": 0,
-         "content": "13:00",
-         "fill": "#FFFFFF",
-         "fontSize": 13,
-         "fontFamily": "Nunito",
-         "fontWeight": "700",
-         "textAlign": "left",
-         "width": 52,
-         "textGrowth": "fixed-width"
+         "width": 40,
+         "height": 40,
+         "cornerRadius": 13,
+         "fill": {
+          "type": "image",
+          "url": "./assets/icons/zap.png",
+          "mode": "fill"
+         }
         },
         {
-         "id": "0000n",
+         "id": "0000w",
          "type": "frame",
-         "name": "Tl4Tx",
+         "name": "B4Tx",
          "x": 0,
          "y": 0,
-         "width": 240,
-         "height": 54,
+         "width": 230,
+         "height": 58,
          "fill": "#EA580C",
          "cornerRadius": 0,
          "layout": "vertical",
-         "gap": 2,
+         "gap": 1,
          "children": [
           {
-           "id": "0000l",
+           "id": "0000t",
            "type": "text",
-           "name": "Tl4Ti",
+           "name": "B4Tm",
+           "x": 0,
+           "y": 0,
+           "content": "13:00 - 30 MIN",
+           "fill": "#FFFFFF",
+           "fontSize": 11,
+           "fontFamily": "Nunito",
+           "fontWeight": "800",
+           "textAlign": "left",
+           "width": 230,
+           "textGrowth": "fixed-width"
+          },
+          {
+           "id": "0000u",
+           "type": "text",
+           "name": "B4Ti",
            "x": 0,
            "y": 0,
            "content": "Admin batch",
            "fill": "#FFFFFF",
            "fontSize": 15,
            "fontFamily": "Nunito",
-           "fontWeight": "700",
-           "textAlign": "left"
+           "fontWeight": "800",
+           "textAlign": "left",
+           "width": 230,
+           "textGrowth": "fixed-width"
           },
           {
-           "id": "0000m",
+           "id": "0000v",
            "type": "text",
-           "name": "Tl4Sb",
+           "name": "B4Sb",
            "x": 0,
            "y": 0,
-           "content": "Bills + inbox - 30m",
+           "content": "Bills + inbox",
            "fill": "#FFFFFF",
-           "fontSize": 13,
+           "fontSize": 12,
            "fontFamily": "Nunito",
            "fontWeight": "400",
-           "textAlign": "left"
+           "textAlign": "left",
+           "width": 230,
+           "textGrowth": "fixed-width"
           }
          ]
+        },
+        {
+         "id": "0000x",
+         "type": "rectangle",
+         "name": "B4St",
+         "x": 0,
+         "y": 0,
+         "width": 26,
+         "height": 26,
+         "cornerRadius": 13,
+         "fill": {
+          "type": "image",
+          "url": "./assets/icons/chevron-right.png",
+          "mode": "fill"
+         }
         }
        ]
       },
       {
-       "id": "0000p",
+       "id": "0000z",
        "type": "text",
-       "name": "Txt",
+       "name": "C2",
        "x": 0,
        "y": 0,
        "content": "INBOX - BRAIN DUMP",
        "fill": "#475569",
-       "fontSize": 12,
-       "fontFamily": "Cap",
-       "fontWeight": "700",
+       "fontSize": 11,
+       "fontFamily": "Nunito",
+       "fontWeight": "800",
        "textAlign": "left",
        "width": 358,
        "textGrowth": "fixed-width"
       },
       {
-       "id": "0000t",
+       "id": "0000D",
        "type": "frame",
        "name": "InboxBx",
        "x": 0,
        "y": 0,
        "width": 358,
-       "height": 118,
+       "height": 122,
        "fill": "#FFFFFF",
        "cornerRadius": 16,
        "layout": "vertical",
        "padding": 12,
        "gap": 10,
+       "stroke": "#E2E8F0",
+       "strokeWidth": 1,
        "children": [
         {
-         "id": "0000q",
+         "id": "0000A",
          "type": "text",
-         "name": "Txt",
+         "name": "InPh",
          "x": 0,
          "y": 0,
-         "content": "Dump it here... e.g. call dentist",
+         "content": "Capture it here... e.g. call dentist",
          "fill": "#475569",
          "fontSize": 14,
-         "fontFamily": "Ph",
+         "fontFamily": "Nunito",
          "fontWeight": "400",
          "textAlign": "left",
          "width": 326,
          "textGrowth": "fixed-width"
         },
         {
-         "id": "0000s",
+         "id": "0000C",
          "type": "frame",
          "name": "SortBtn",
          "x": 0,
          "y": 0,
          "width": 326,
-         "height": 52,
+         "height": 54,
          "fill": "#2563EB",
-         "cornerRadius": 26,
+         "cornerRadius": 27,
          "layout": "horizontal",
          "alignItems": "center",
          "justify": "center",
          "children": [
           {
-           "id": "0000r",
+           "id": "0000B",
            "type": "text",
            "name": "SortLb",
            "x": 0,
@@ -554,7 +740,7 @@
            "fill": "#FFFFFF",
            "fontSize": 15,
            "fontFamily": "Nunito",
-           "fontWeight": "700",
+           "fontWeight": "800",
            "textAlign": "center"
           }
          ]
@@ -562,7 +748,7 @@
        ]
       },
       {
-       "id": "0000u",
+       "id": "0000E",
        "type": "ref",
        "name": "RescueCta",
        "x": 0,
@@ -570,20 +756,20 @@
        "ref": "cmpCard",
        "descendants": {
         "cmpSlot": {
-         "content": "Frozen? - I'm Stuck, rescue me"
+         "content": "Feeling stuck? Get one tiny step"
         }
        }
       }
      ]
     },
     {
-     "id": "0000M",
+     "id": "0000V",
      "type": "frame",
      "name": "TabBar",
      "x": 0,
      "y": 0,
      "width": 390,
-     "height": 84,
+     "height": 86,
      "fill": "#FFFFFF",
      "cornerRadius": 0,
      "layout": "horizontal",
@@ -592,29 +778,29 @@
      "justify": "center",
      "children": [
       {
-       "id": "0000z",
+       "id": "0000I",
        "type": "frame",
        "name": "TbToday",
        "x": 0,
        "y": 0,
        "width": 64,
-       "height": 56,
-       "fill": "#F1F5FD",
+       "height": 58,
+       "fill": "#EFF4FF",
        "cornerRadius": 14,
        "layout": "vertical",
-       "gap": 2,
+       "gap": 3,
        "alignItems": "center",
        "justify": "center",
        "children": [
         {
-         "id": "0000x",
+         "id": "0000G",
          "type": "rectangle",
          "name": "TbTodayIc",
          "x": 0,
          "y": 0,
          "width": 24,
          "height": 24,
-         "cornerRadius": 0,
+         "cornerRadius": 6,
          "fill": {
           "type": "image",
           "url": "./assets/icons/sun.png",
@@ -622,7 +808,7 @@
          }
         },
         {
-         "id": "0000y",
+         "id": "0000H",
          "type": "text",
          "name": "TbTodayLb",
          "x": 0,
@@ -631,35 +817,35 @@
          "fill": "#2563EB",
          "fontSize": 10,
          "fontFamily": "Nunito",
-         "fontWeight": "700",
+         "fontWeight": "800",
          "textAlign": "center"
         }
        ]
       },
       {
-       "id": "0000C",
+       "id": "0000L",
        "type": "frame",
        "name": "TbFocus",
        "x": 0,
        "y": 0,
        "width": 64,
-       "height": 56,
+       "height": 58,
        "fill": "#FFFFFF",
        "cornerRadius": 14,
        "layout": "vertical",
-       "gap": 2,
+       "gap": 3,
        "alignItems": "center",
        "justify": "center",
        "children": [
         {
-         "id": "0000A",
+         "id": "0000J",
          "type": "rectangle",
          "name": "TbFocusIc",
          "x": 0,
          "y": 0,
          "width": 24,
          "height": 24,
-         "cornerRadius": 0,
+         "cornerRadius": 6,
          "fill": {
           "type": "image",
           "url": "./assets/icons/timer.png",
@@ -667,7 +853,7 @@
          }
         },
         {
-         "id": "0000B",
+         "id": "0000K",
          "type": "text",
          "name": "TbFocusLb",
          "x": 0,
@@ -676,35 +862,35 @@
          "fill": "#475569",
          "fontSize": 10,
          "fontFamily": "Nunito",
-         "fontWeight": "700",
+         "fontWeight": "800",
          "textAlign": "center"
         }
        ]
       },
       {
-       "id": "0000F",
+       "id": "0000O",
        "type": "frame",
-       "name": "TbStuck",
+       "name": "TbReset",
        "x": 0,
        "y": 0,
        "width": 64,
-       "height": 56,
+       "height": 58,
        "fill": "#FFFFFF",
        "cornerRadius": 14,
        "layout": "vertical",
-       "gap": 2,
+       "gap": 3,
        "alignItems": "center",
        "justify": "center",
        "children": [
         {
-         "id": "0000D",
+         "id": "0000M",
          "type": "rectangle",
-         "name": "TbStuckIc",
+         "name": "TbResetIc",
          "x": 0,
          "y": 0,
          "width": 24,
          "height": 24,
-         "cornerRadius": 0,
+         "cornerRadius": 6,
          "fill": {
           "type": "image",
           "url": "./assets/icons/snowflake.png",
@@ -712,44 +898,44 @@
          }
         },
         {
-         "id": "0000E",
+         "id": "0000N",
          "type": "text",
-         "name": "TbStuckLb",
+         "name": "TbResetLb",
          "x": 0,
          "y": 0,
-         "content": "Stuck",
+         "content": "Reset",
          "fill": "#475569",
          "fontSize": 10,
          "fontFamily": "Nunito",
-         "fontWeight": "700",
+         "fontWeight": "800",
          "textAlign": "center"
         }
        ]
       },
       {
-       "id": "0000I",
+       "id": "0000R",
        "type": "frame",
        "name": "TbGrows",
        "x": 0,
        "y": 0,
        "width": 64,
-       "height": 56,
+       "height": 58,
        "fill": "#FFFFFF",
        "cornerRadius": 14,
        "layout": "vertical",
-       "gap": 2,
+       "gap": 3,
        "alignItems": "center",
        "justify": "center",
        "children": [
         {
-         "id": "0000G",
+         "id": "0000P",
          "type": "rectangle",
          "name": "TbGrowsIc",
          "x": 0,
          "y": 0,
          "width": 24,
          "height": 24,
-         "cornerRadius": 0,
+         "cornerRadius": 6,
          "fill": {
           "type": "image",
           "url": "./assets/icons/trophy.png",
@@ -757,7 +943,7 @@
          }
         },
         {
-         "id": "0000H",
+         "id": "0000Q",
          "type": "text",
          "name": "TbGrowsLb",
          "x": 0,
@@ -766,35 +952,35 @@
          "fill": "#475569",
          "fontSize": 10,
          "fontFamily": "Nunito",
-         "fontWeight": "700",
+         "fontWeight": "800",
          "textAlign": "center"
         }
        ]
       },
       {
-       "id": "0000L",
+       "id": "0000U",
        "type": "frame",
        "name": "TbYours",
        "x": 0,
        "y": 0,
        "width": 64,
-       "height": 56,
+       "height": 58,
        "fill": "#FFFFFF",
        "cornerRadius": 14,
        "layout": "vertical",
-       "gap": 2,
+       "gap": 3,
        "alignItems": "center",
        "justify": "center",
        "children": [
         {
-         "id": "0000J",
+         "id": "0000S",
          "type": "rectangle",
          "name": "TbYoursIc",
          "x": 0,
          "y": 0,
          "width": 24,
          "height": 24,
-         "cornerRadius": 0,
+         "cornerRadius": 6,
          "fill": {
           "type": "image",
           "url": "./assets/icons/settings.png",
@@ -802,7 +988,7 @@
          }
         },
         {
-         "id": "0000K",
+         "id": "0000T",
          "type": "text",
          "name": "TbYoursLb",
          "x": 0,
@@ -811,7 +997,7 @@
          "fill": "#475569",
          "fontSize": 10,
          "fontFamily": "Nunito",
-         "fontWeight": "700",
+         "fontWeight": "800",
          "textAlign": "center"
         }
        ]
@@ -821,26 +1007,26 @@
    ]
   },
   {
-   "id": "0001y",
+   "id": "0001L",
    "type": "frame",
    "name": "02 Focus",
    "x": 470,
    "y": 0,
    "width": 390,
    "height": 844,
-   "fill": "#F8FAFC",
+   "fill": "#F6F8FC",
    "layout": "vertical",
    "alignItems": "center",
    "children": [
     {
-     "id": "0001h",
+     "id": "00011",
      "type": "frame",
-     "name": "02 FocusHd",
+     "name": "H2Bar",
      "x": 0,
      "y": 0,
      "width": 390,
-     "height": 64,
-     "fill": "#F8FAFC",
+     "height": 76,
+     "fill": "#F6F8FC",
      "cornerRadius": 0,
      "layout": "horizontal",
      "padding": [
@@ -853,14 +1039,14 @@
      "alignItems": "center",
      "children": [
       {
-       "id": "0000O",
+       "id": "0000X",
        "type": "rectangle",
-       "name": "HdIc",
+       "name": "H2Ic",
        "x": 0,
        "y": 0,
-       "width": 32,
-       "height": 32,
-       "cornerRadius": 0,
+       "width": 40,
+       "height": 40,
+       "cornerRadius": 13,
        "fill": {
         "type": "image",
         "url": "./assets/icons/timer.png",
@@ -868,88 +1054,90 @@
        }
       },
       {
-       "id": "0000P",
-       "type": "text",
-       "name": "HdTi",
+       "id": "00010",
+       "type": "frame",
+       "name": "H2Tx",
        "x": 0,
        "y": 0,
-       "content": "Focus",
-       "fill": "#0F172A",
-       "fontSize": 20,
-       "fontFamily": "Fredoka",
-       "fontWeight": "600",
-       "textAlign": "left",
-       "width": 280,
-       "textGrowth": "fixed-width"
+       "width": 300,
+       "height": 56,
+       "fill": "#F6F8FC",
+       "cornerRadius": 0,
+       "layout": "vertical",
+       "gap": 1,
+       "children": [
+        {
+         "id": "0000Y",
+         "type": "text",
+         "name": "H2Ti",
+         "x": 0,
+         "y": 0,
+         "content": "Deep work: portfolio",
+         "fill": "#0F172A",
+         "fontSize": 20,
+         "fontFamily": "Fredoka",
+         "fontWeight": "600",
+         "textAlign": "left",
+         "width": 300,
+         "textGrowth": "fixed-width"
+        },
+        {
+         "id": "0000Z",
+         "type": "text",
+         "name": "H2Sb",
+         "x": 0,
+         "y": 0,
+         "content": "Step 2 of 4 - sketch hero section",
+         "fill": "#475569",
+         "fontSize": 13,
+         "fontFamily": "Nunito",
+         "fontWeight": "400",
+         "textAlign": "left",
+         "width": 300,
+         "textGrowth": "fixed-width"
+        }
+       ]
       }
      ]
     },
     {
-     "id": "0001g",
+     "id": "0001u",
      "type": "frame",
      "name": "02 FocusBd",
      "x": 0,
      "y": 0,
      "width": 358,
-     "fill": "#F8FAFC",
+     "fill": "#F6F8FC",
      "cornerRadius": 0,
      "layout": "vertical",
      "gap": 10,
      "children": [
       {
-       "id": "0000Q",
-       "type": "text",
-       "name": "FTi",
-       "x": 0,
-       "y": 0,
-       "content": "Deep work: portfolio",
-       "fill": "#0F172A",
-       "fontSize": 22,
-       "fontFamily": "Fredoka",
-       "fontWeight": "600",
-       "textAlign": "left",
-       "width": 358,
-       "textGrowth": "fixed-width"
-      },
-      {
-       "id": "0000R",
-       "type": "text",
-       "name": "Txt",
-       "x": 0,
-       "y": 0,
-       "content": "Step 2 of 4 - Sketch hero section",
-       "fill": "#475569",
-       "fontSize": 14,
-       "fontFamily": "FSub",
-       "fontWeight": "400",
-       "textAlign": "left",
-       "width": 358,
-       "textGrowth": "fixed-width"
-      },
-      {
-       "id": "0000V",
+       "id": "00015",
        "type": "frame",
        "name": "DialBx",
        "x": 0,
        "y": 0,
        "width": 358,
-       "height": 190,
+       "height": 196,
        "fill": "#FFFFFF",
        "cornerRadius": 18,
        "layout": "vertical",
        "padding": 14,
        "gap": 6,
        "alignItems": "center",
+       "stroke": "#E2E8F0",
+       "strokeWidth": 1,
        "children": [
         {
-         "id": "0000S",
+         "id": "00012",
          "type": "rectangle",
          "name": "DialIc",
          "x": 0,
          "y": 0,
-         "width": 56,
-         "height": 56,
-         "cornerRadius": 0,
+         "width": 52,
+         "height": 52,
+         "cornerRadius": 10,
          "fill": {
           "type": "image",
           "url": "./assets/icons/timer.png",
@@ -957,7 +1145,7 @@
          }
         },
         {
-         "id": "0000T",
+         "id": "00013",
          "type": "text",
          "name": "DialTm",
          "x": 0,
@@ -972,15 +1160,15 @@
          "textGrowth": "fixed-width"
         },
         {
-         "id": "0000U",
+         "id": "00014",
          "type": "text",
-         "name": "Txt",
+         "name": "DialSb",
          "x": 0,
          "y": 0,
          "content": "gentle chime at end",
          "fill": "#475569",
          "fontSize": 13,
-         "fontFamily": "DialSb",
+         "fontFamily": "Nunito",
          "fontWeight": "400",
          "textAlign": "center",
          "width": 300,
@@ -989,162 +1177,106 @@
        ]
       },
       {
-       "id": "0000Z",
+       "id": "0001a",
        "type": "frame",
-       "name": "FRow",
+       "name": "SegRow",
        "x": 0,
        "y": 0,
        "width": 358,
-       "height": 56,
-       "fill": "#F1F5FD",
-       "cornerRadius": 28,
+       "height": 58,
+       "fill": "#FFFFFF",
+       "cornerRadius": 29,
        "layout": "horizontal",
+       "padding": 5,
+       "gap": 4,
        "alignItems": "center",
-       "justify": "center",
+       "stroke": "#E2E8F0",
+       "strokeWidth": 1,
        "children": [
         {
-         "id": "0000W",
+         "id": "00016",
          "type": "text",
-         "name": "Txt",
+         "name": "Sg1",
          "x": 0,
          "y": 0,
          "content": "Pause",
-         "fill": "#0891B2",
+         "fill": "#475569",
          "fontSize": 14,
-         "fontFamily": "FR1",
-         "fontWeight": "700",
+         "fontFamily": "Nunito",
+         "fontWeight": "800",
          "textAlign": "center",
          "width": 100,
          "textGrowth": "fixed-width"
         },
         {
-         "id": "0000X",
+         "id": "00017",
          "type": "text",
-         "name": "Txt",
+         "name": "Sg2",
          "x": 0,
          "y": 0,
          "content": "+5 min",
-         "fill": "#0891B2",
+         "fill": "#475569",
          "fontSize": 14,
-         "fontFamily": "FR2",
-         "fontWeight": "700",
+         "fontFamily": "Nunito",
+         "fontWeight": "800",
          "textAlign": "center",
          "width": 100,
          "textGrowth": "fixed-width"
         },
         {
-         "id": "0000Y",
-         "type": "text",
-         "name": "Txt",
-         "x": 0,
-         "y": 0,
-         "content": "Done",
-         "fill": "#0891B2",
-         "fontSize": 14,
-         "fontFamily": "FR3",
-         "fontWeight": "700",
-         "textAlign": "center",
-         "width": 100,
-         "textGrowth": "fixed-width"
-        }
-       ]
-      },
-      {
-       "id": "00010",
-       "type": "text",
-       "name": "Txt",
-       "x": 0,
-       "y": 0,
-       "content": "SUB-STEPS",
-       "fill": "#475569",
-       "fontSize": 12,
-       "fontFamily": "Cap",
-       "fontWeight": "700",
-       "textAlign": "left",
-       "width": 358,
-       "textGrowth": "fixed-width"
-      },
-      {
-       "id": "00015",
-       "type": "frame",
-       "name": "Fs1",
-       "x": 0,
-       "y": 0,
-       "width": 358,
-       "height": 72,
-       "fill": "#FFFFFF",
-       "cornerRadius": 16,
-       "layout": "horizontal",
-       "padding": 12,
-       "gap": 10,
-       "alignItems": "center",
-       "children": [
-        {
-         "id": "00011",
-         "type": "rectangle",
-         "name": "Fs1Ic",
-         "x": 0,
-         "y": 0,
-         "width": 32,
-         "height": 32,
-         "cornerRadius": 0,
-         "fill": {
-          "type": "image",
-          "url": "./assets/icons/circle-check.png",
-          "mode": "fill"
-         }
-        },
-        {
-         "id": "00014",
+         "id": "00019",
          "type": "frame",
-         "name": "Fs1Tx",
+         "name": "SgOn",
          "x": 0,
          "y": 0,
-         "width": 288,
-         "height": 52,
-         "fill": "#FFFFFF",
-         "cornerRadius": 0,
-         "layout": "vertical",
-         "gap": 2,
+         "width": 104,
+         "height": 44,
+         "fill": "#EFF4FF",
+         "cornerRadius": 22,
+         "layout": "horizontal",
+         "alignItems": "center",
+         "justify": "center",
          "children": [
           {
-           "id": "00012",
+           "id": "00018",
            "type": "text",
-           "name": "Fs1Ti",
+           "name": "Sg3",
            "x": 0,
            "y": 0,
-           "content": "Open file & music",
-           "fill": "#0F172A",
-           "fontSize": 15,
+           "content": "End",
+           "fill": "#2563EB",
+           "fontSize": 14,
            "fontFamily": "Nunito",
-           "fontWeight": "700",
-           "textAlign": "left"
-          },
-          {
-           "id": "00013",
-           "type": "text",
-           "name": "Fs1Sb",
-           "x": 0,
-           "y": 0,
-           "content": "done",
-           "fill": "#475569",
-           "fontSize": 13,
-           "fontFamily": "Nunito",
-           "fontWeight": "400",
-           "textAlign": "left"
+           "fontWeight": "800",
+           "textAlign": "center"
           }
          ]
         }
        ]
       },
       {
-       "id": "0001a",
+       "id": "0001b",
+       "type": "text",
+       "name": "C3",
+       "x": 0,
+       "y": 0,
+       "content": "SUB-STEPS",
+       "fill": "#475569",
+       "fontSize": 11,
+       "fontFamily": "Nunito",
+       "fontWeight": "800",
+       "textAlign": "left",
+       "width": 358,
+       "textGrowth": "fixed-width"
+      },
+      {
+       "id": "0001h",
        "type": "frame",
-       "name": "Fs2",
+       "name": "F1",
        "x": 0,
        "y": 0,
        "width": 358,
-       "height": 72,
+       "height": 74,
        "fill": "#FFFFFF",
        "cornerRadius": 16,
        "layout": "horizontal",
@@ -1153,71 +1285,186 @@
        "alignItems": "center",
        "children": [
         {
-         "id": "00016",
-         "type": "rectangle",
-         "name": "Fs2Ic",
+         "id": "0001d",
+         "type": "frame",
+         "name": "F1Tile",
          "x": 0,
          "y": 0,
-         "width": 32,
-         "height": 32,
-         "cornerRadius": 0,
-         "fill": {
-          "type": "image",
-          "url": "./assets/icons/play.png",
-          "mode": "fill"
-         }
+         "width": 44,
+         "height": 44,
+         "fill": "#E7F6EC",
+         "cornerRadius": 14,
+         "layout": "none",
+         "alignItems": "center",
+         "justify": "center",
+         "children": [
+          {
+           "id": "0001c",
+           "type": "rectangle",
+           "name": "F1Ic",
+           "x": 0,
+           "y": 0,
+           "width": 26,
+           "height": 26,
+           "cornerRadius": 4,
+           "fill": {
+            "type": "image",
+            "url": "./assets/icons/circle-check.png",
+            "mode": "fill"
+           }
+          }
+         ]
         },
         {
-         "id": "00019",
+         "id": "0001g",
          "type": "frame",
-         "name": "Fs2Tx",
+         "name": "F1Tx",
          "x": 0,
          "y": 0,
-         "width": 288,
-         "height": 52,
+         "width": 272,
+         "height": 54,
          "fill": "#FFFFFF",
          "cornerRadius": 0,
          "layout": "vertical",
          "gap": 2,
          "children": [
           {
-           "id": "00017",
+           "id": "0001e",
            "type": "text",
-           "name": "Fs2Ti",
+           "name": "F1Ti",
+           "x": 0,
+           "y": 0,
+           "content": "Open file and music",
+           "fill": "#0F172A",
+           "fontSize": 15,
+           "fontFamily": "Nunito",
+           "fontWeight": "800",
+           "textAlign": "left",
+           "width": 272,
+           "textGrowth": "fixed-width"
+          },
+          {
+           "id": "0001f",
+           "type": "text",
+           "name": "F1Sb",
+           "x": 0,
+           "y": 0,
+           "content": "Done",
+           "fill": "#475569",
+           "fontSize": 12,
+           "fontFamily": "Nunito",
+           "fontWeight": "400",
+           "textAlign": "left",
+           "width": 272,
+           "textGrowth": "fixed-width"
+          }
+         ]
+        }
+       ]
+      },
+      {
+       "id": "0001n",
+       "type": "frame",
+       "name": "F2",
+       "x": 0,
+       "y": 0,
+       "width": 358,
+       "height": 74,
+       "fill": "#FFFFFF",
+       "cornerRadius": 16,
+       "layout": "horizontal",
+       "padding": 12,
+       "gap": 10,
+       "alignItems": "center",
+       "stroke": "#2563EB",
+       "strokeWidth": 2,
+       "children": [
+        {
+         "id": "0001j",
+         "type": "frame",
+         "name": "F2Tile",
+         "x": 0,
+         "y": 0,
+         "width": 44,
+         "height": 44,
+         "fill": "#E0F2F7",
+         "cornerRadius": 14,
+         "layout": "none",
+         "alignItems": "center",
+         "justify": "center",
+         "children": [
+          {
+           "id": "0001i",
+           "type": "rectangle",
+           "name": "F2Ic",
+           "x": 0,
+           "y": 0,
+           "width": 26,
+           "height": 26,
+           "cornerRadius": 4,
+           "fill": {
+            "type": "image",
+            "url": "./assets/icons/play.png",
+            "mode": "fill"
+           }
+          }
+         ]
+        },
+        {
+         "id": "0001m",
+         "type": "frame",
+         "name": "F2Tx",
+         "x": 0,
+         "y": 0,
+         "width": 272,
+         "height": 54,
+         "fill": "#FFFFFF",
+         "cornerRadius": 0,
+         "layout": "vertical",
+         "gap": 2,
+         "children": [
+          {
+           "id": "0001k",
+           "type": "text",
+           "name": "F2Ti",
            "x": 0,
            "y": 0,
            "content": "Sketch hero section",
            "fill": "#0F172A",
            "fontSize": 15,
            "fontFamily": "Nunito",
-           "fontWeight": "700",
-           "textAlign": "left"
+           "fontWeight": "800",
+           "textAlign": "left",
+           "width": 272,
+           "textGrowth": "fixed-width"
           },
           {
-           "id": "00018",
+           "id": "0001l",
            "type": "text",
-           "name": "Fs2Sb",
+           "name": "F2Sb",
            "x": 0,
            "y": 0,
-           "content": "now - 10m timer",
+           "content": "In progress - 10-min timer",
            "fill": "#475569",
-           "fontSize": 13,
+           "fontSize": 12,
            "fontFamily": "Nunito",
            "fontWeight": "400",
-           "textAlign": "left"
+           "textAlign": "left",
+           "width": 272,
+           "textGrowth": "fixed-width"
           }
          ]
         }
        ]
       },
       {
-       "id": "0001f",
+       "id": "0001t",
        "type": "frame",
-       "name": "Fs3",
+       "name": "F3",
        "x": 0,
        "y": 0,
        "width": 358,
-       "height": 72,
+       "height": 74,
        "fill": "#FFFFFF",
        "cornerRadius": 16,
        "layout": "horizontal",
@@ -1226,58 +1473,78 @@
        "alignItems": "center",
        "children": [
         {
-         "id": "0001b",
-         "type": "rectangle",
-         "name": "Fs3Ic",
+         "id": "0001p",
+         "type": "frame",
+         "name": "F3Tile",
          "x": 0,
          "y": 0,
-         "width": 32,
-         "height": 32,
-         "cornerRadius": 0,
-         "fill": {
-          "type": "image",
-          "url": "./assets/icons/plus.png",
-          "mode": "fill"
-         }
+         "width": 44,
+         "height": 44,
+         "fill": "#FFFFFF",
+         "cornerRadius": 14,
+         "layout": "none",
+         "alignItems": "center",
+         "justify": "center",
+         "children": [
+          {
+           "id": "0001o",
+           "type": "rectangle",
+           "name": "F3Ic",
+           "x": 0,
+           "y": 0,
+           "width": 26,
+           "height": 26,
+           "cornerRadius": 4,
+           "fill": {
+            "type": "image",
+            "url": "./assets/icons/plus.png",
+            "mode": "fill"
+           }
+          }
+         ]
         },
         {
-         "id": "0001e",
+         "id": "0001s",
          "type": "frame",
-         "name": "Fs3Tx",
+         "name": "F3Tx",
          "x": 0,
          "y": 0,
-         "width": 288,
-         "height": 52,
+         "width": 272,
+         "height": 54,
          "fill": "#FFFFFF",
          "cornerRadius": 0,
          "layout": "vertical",
          "gap": 2,
          "children": [
           {
-           "id": "0001c",
+           "id": "0001q",
            "type": "text",
-           "name": "Fs3Ti",
+           "name": "F3Ti",
            "x": 0,
            "y": 0,
            "content": "Export PNG",
            "fill": "#0F172A",
            "fontSize": 15,
            "fontFamily": "Nunito",
-           "fontWeight": "700",
-           "textAlign": "left"
+           "fontWeight": "800",
+           "textAlign": "left",
+           "width": 272,
+           "textGrowth": "fixed-width"
           },
           {
-           "id": "0001d",
+           "id": "0001r",
            "type": "text",
-           "name": "Fs3Sb",
+           "name": "F3Sb",
            "x": 0,
            "y": 0,
-           "content": "up next",
+           "content": "Up next",
            "fill": "#475569",
-           "fontSize": 13,
+           "fontSize": 12,
            "fontFamily": "Nunito",
            "fontWeight": "400",
-           "textAlign": "left"
+           "textAlign": "left",
+           "width": 272,
+           "textGrowth": "fixed-width"
           }
          ]
         }
@@ -1286,13 +1553,13 @@
      ]
     },
     {
-     "id": "0001x",
+     "id": "0001K",
      "type": "frame",
      "name": "TabBar",
      "x": 0,
      "y": 0,
      "width": 390,
-     "height": 84,
+     "height": 86,
      "fill": "#FFFFFF",
      "cornerRadius": 0,
      "layout": "horizontal",
@@ -1301,29 +1568,29 @@
      "justify": "center",
      "children": [
       {
-       "id": "0001k",
+       "id": "0001x",
        "type": "frame",
        "name": "TbToday",
        "x": 0,
        "y": 0,
        "width": 64,
-       "height": 56,
+       "height": 58,
        "fill": "#FFFFFF",
        "cornerRadius": 14,
        "layout": "vertical",
-       "gap": 2,
+       "gap": 3,
        "alignItems": "center",
        "justify": "center",
        "children": [
         {
-         "id": "0001i",
+         "id": "0001v",
          "type": "rectangle",
          "name": "TbTodayIc",
          "x": 0,
          "y": 0,
          "width": 24,
          "height": 24,
-         "cornerRadius": 0,
+         "cornerRadius": 6,
          "fill": {
           "type": "image",
           "url": "./assets/icons/sun.png",
@@ -1331,7 +1598,7 @@
          }
         },
         {
-         "id": "0001j",
+         "id": "0001w",
          "type": "text",
          "name": "TbTodayLb",
          "x": 0,
@@ -1340,35 +1607,35 @@
          "fill": "#475569",
          "fontSize": 10,
          "fontFamily": "Nunito",
-         "fontWeight": "700",
+         "fontWeight": "800",
          "textAlign": "center"
         }
        ]
       },
       {
-       "id": "0001n",
+       "id": "0001A",
        "type": "frame",
        "name": "TbFocus",
        "x": 0,
        "y": 0,
        "width": 64,
-       "height": 56,
-       "fill": "#F1F5FD",
+       "height": 58,
+       "fill": "#EFF4FF",
        "cornerRadius": 14,
        "layout": "vertical",
-       "gap": 2,
+       "gap": 3,
        "alignItems": "center",
        "justify": "center",
        "children": [
         {
-         "id": "0001l",
+         "id": "0001y",
          "type": "rectangle",
          "name": "TbFocusIc",
          "x": 0,
          "y": 0,
          "width": 24,
          "height": 24,
-         "cornerRadius": 0,
+         "cornerRadius": 6,
          "fill": {
           "type": "image",
           "url": "./assets/icons/timer.png",
@@ -1376,7 +1643,7 @@
          }
         },
         {
-         "id": "0001m",
+         "id": "0001z",
          "type": "text",
          "name": "TbFocusLb",
          "x": 0,
@@ -1385,35 +1652,35 @@
          "fill": "#2563EB",
          "fontSize": 10,
          "fontFamily": "Nunito",
-         "fontWeight": "700",
+         "fontWeight": "800",
          "textAlign": "center"
         }
        ]
       },
       {
-       "id": "0001q",
+       "id": "0001D",
        "type": "frame",
-       "name": "TbStuck",
+       "name": "TbReset",
        "x": 0,
        "y": 0,
        "width": 64,
-       "height": 56,
+       "height": 58,
        "fill": "#FFFFFF",
        "cornerRadius": 14,
        "layout": "vertical",
-       "gap": 2,
+       "gap": 3,
        "alignItems": "center",
        "justify": "center",
        "children": [
         {
-         "id": "0001o",
+         "id": "0001B",
          "type": "rectangle",
-         "name": "TbStuckIc",
+         "name": "TbResetIc",
          "x": 0,
          "y": 0,
          "width": 24,
          "height": 24,
-         "cornerRadius": 0,
+         "cornerRadius": 6,
          "fill": {
           "type": "image",
           "url": "./assets/icons/snowflake.png",
@@ -1421,44 +1688,44 @@
          }
         },
         {
-         "id": "0001p",
+         "id": "0001C",
          "type": "text",
-         "name": "TbStuckLb",
+         "name": "TbResetLb",
          "x": 0,
          "y": 0,
-         "content": "Stuck",
+         "content": "Reset",
          "fill": "#475569",
          "fontSize": 10,
          "fontFamily": "Nunito",
-         "fontWeight": "700",
+         "fontWeight": "800",
          "textAlign": "center"
         }
        ]
       },
       {
-       "id": "0001t",
+       "id": "0001G",
        "type": "frame",
        "name": "TbGrows",
        "x": 0,
        "y": 0,
        "width": 64,
-       "height": 56,
+       "height": 58,
        "fill": "#FFFFFF",
        "cornerRadius": 14,
        "layout": "vertical",
-       "gap": 2,
+       "gap": 3,
        "alignItems": "center",
        "justify": "center",
        "children": [
         {
-         "id": "0001r",
+         "id": "0001E",
          "type": "rectangle",
          "name": "TbGrowsIc",
          "x": 0,
          "y": 0,
          "width": 24,
          "height": 24,
-         "cornerRadius": 0,
+         "cornerRadius": 6,
          "fill": {
           "type": "image",
           "url": "./assets/icons/trophy.png",
@@ -1466,7 +1733,7 @@
          }
         },
         {
-         "id": "0001s",
+         "id": "0001F",
          "type": "text",
          "name": "TbGrowsLb",
          "x": 0,
@@ -1475,35 +1742,35 @@
          "fill": "#475569",
          "fontSize": 10,
          "fontFamily": "Nunito",
-         "fontWeight": "700",
+         "fontWeight": "800",
          "textAlign": "center"
         }
        ]
       },
       {
-       "id": "0001w",
+       "id": "0001J",
        "type": "frame",
        "name": "TbYours",
        "x": 0,
        "y": 0,
        "width": 64,
-       "height": 56,
+       "height": 58,
        "fill": "#FFFFFF",
        "cornerRadius": 14,
        "layout": "vertical",
-       "gap": 2,
+       "gap": 3,
        "alignItems": "center",
        "justify": "center",
        "children": [
         {
-         "id": "0001u",
+         "id": "0001H",
          "type": "rectangle",
          "name": "TbYoursIc",
          "x": 0,
          "y": 0,
          "width": 24,
          "height": 24,
-         "cornerRadius": 0,
+         "cornerRadius": 6,
          "fill": {
           "type": "image",
           "url": "./assets/icons/settings.png",
@@ -1511,7 +1778,7 @@
          }
         },
         {
-         "id": "0001v",
+         "id": "0001I",
          "type": "text",
          "name": "TbYoursLb",
          "x": 0,
@@ -1520,7 +1787,7 @@
          "fill": "#475569",
          "fontSize": 10,
          "fontFamily": "Nunito",
-         "fontWeight": "700",
+         "fontWeight": "800",
          "textAlign": "center"
         }
        ]
@@ -1530,26 +1797,26 @@
    ]
   },
   {
-   "id": "0002e",
+   "id": "0002E",
    "type": "frame",
-   "name": "03 Rescue",
+   "name": "03 Reset",
    "x": 940,
    "y": 0,
    "width": 390,
    "height": 844,
-   "fill": "#F8FAFC",
+   "fill": "#F6F8FC",
    "layout": "vertical",
    "alignItems": "center",
    "children": [
     {
-     "id": "0001X",
+     "id": "0001Q",
      "type": "frame",
-     "name": "03 RescueHd",
+     "name": "H3Bar",
      "x": 0,
      "y": 0,
      "width": 390,
-     "height": 64,
-     "fill": "#F8FAFC",
+     "height": 76,
+     "fill": "#F6F8FC",
      "cornerRadius": 0,
      "layout": "horizontal",
      "padding": [
@@ -1562,14 +1829,14 @@
      "alignItems": "center",
      "children": [
       {
-       "id": "0001z",
+       "id": "0001M",
        "type": "rectangle",
-       "name": "HdIc",
+       "name": "H3Ic",
        "x": 0,
        "y": 0,
-       "width": 32,
-       "height": 32,
-       "cornerRadius": 0,
+       "width": 40,
+       "height": 40,
+       "cornerRadius": 13,
        "fill": {
         "type": "image",
         "url": "./assets/icons/snowflake.png",
@@ -1577,162 +1844,246 @@
        }
       },
       {
-       "id": "0001A",
-       "type": "text",
-       "name": "HdTi",
+       "id": "0001P",
+       "type": "frame",
+       "name": "H3Tx",
        "x": 0,
        "y": 0,
-       "content": "I'm Stuck",
-       "fill": "#0F172A",
-       "fontSize": 20,
-       "fontFamily": "Fredoka",
-       "fontWeight": "600",
-       "textAlign": "left",
-       "width": 280,
-       "textGrowth": "fixed-width"
+       "width": 300,
+       "height": 56,
+       "fill": "#F6F8FC",
+       "cornerRadius": 0,
+       "layout": "vertical",
+       "gap": 1,
+       "children": [
+        {
+         "id": "0001N",
+         "type": "text",
+         "name": "H3Ti",
+         "x": 0,
+         "y": 0,
+         "content": "Feeling stuck?",
+         "fill": "#0F172A",
+         "fontSize": 20,
+         "fontFamily": "Fredoka",
+         "fontWeight": "600",
+         "textAlign": "left",
+         "width": 300,
+         "textGrowth": "fixed-width"
+        },
+        {
+         "id": "0001O",
+         "type": "text",
+         "name": "H3Sb",
+         "x": 0,
+         "y": 0,
+         "content": "Freeze reset - two minutes counts.",
+         "fill": "#475569",
+         "fontSize": 13,
+         "fontFamily": "Nunito",
+         "fontWeight": "400",
+         "textAlign": "left",
+         "width": 300,
+         "textGrowth": "fixed-width"
+        }
+       ]
       }
      ]
     },
     {
-     "id": "0001W",
+     "id": "0002n",
      "type": "frame",
-     "name": "03 RescueBd",
+     "name": "03 ResetBd",
      "x": 0,
      "y": 0,
      "width": 358,
-     "fill": "#F8FAFC",
+     "fill": "#F6F8FC",
      "cornerRadius": 0,
      "layout": "vertical",
      "gap": 10,
      "children": [
       {
-       "id": "0001B",
-       "type": "rectangle",
-       "name": "Mascot",
-       "x": 0,
-       "y": 0,
-       "width": 120,
-       "height": 120,
-       "cornerRadius": 30,
-       "fill": {
-        "type": "image",
-        "url": "./assets/puduu-mascot.png",
-        "mode": "fill"
-       }
-      },
-      {
-       "id": "0001C",
-       "type": "text",
-       "name": "RTi",
-       "x": 0,
-       "y": 0,
-       "content": "Frozen? Let's thaw.",
-       "fill": "#0F172A",
-       "fontSize": 24,
-       "fontFamily": "Fredoka",
-       "fontWeight": "600",
-       "textAlign": "center",
-       "width": 358,
-       "textGrowth": "fixed-width"
-      },
-      {
-       "id": "0001D",
-       "type": "text",
-       "name": "Txt",
-       "x": 0,
-       "y": 0,
-       "content": "Pick the tiniest one. 2 minutes counts.",
-       "fill": "#475569",
-       "fontSize": 14,
-       "fontFamily": "RSub",
-       "fontWeight": "400",
-       "textAlign": "center",
-       "width": 358,
-       "textGrowth": "fixed-width"
-      },
-      {
-       "id": "0001I",
+       "id": "0001V",
        "type": "frame",
-       "name": "Rs1",
+       "name": "MascBx",
        "x": 0,
        "y": 0,
        "width": 358,
-       "height": 76,
+       "height": 150,
+       "fill": "#FFFFFF",
+       "cornerRadius": 18,
+       "layout": "horizontal",
+       "padding": 14,
+       "gap": 12,
+       "alignItems": "center",
+       "stroke": "#E2E8F0",
+       "strokeWidth": 1,
+       "children": [
+        {
+         "id": "0001R",
+         "type": "rectangle",
+         "name": "Mascot",
+         "x": 0,
+         "y": 0,
+         "width": 96,
+         "height": 96,
+         "cornerRadius": 22,
+         "fill": {
+          "type": "image",
+          "url": "./assets/puduu-mascot.png",
+          "mode": "fill"
+         }
+        },
+        {
+         "id": "0001U",
+         "type": "frame",
+         "name": "MascTx",
+         "x": 0,
+         "y": 0,
+         "width": 220,
+         "height": 120,
+         "fill": "#FFFFFF",
+         "cornerRadius": 0,
+         "layout": "vertical",
+         "gap": 4,
+         "children": [
+          {
+           "id": "0001S",
+           "type": "text",
+           "name": "RsTi",
+           "x": 0,
+           "y": 0,
+           "content": "Pick the tiniest step.",
+           "fill": "#0F172A",
+           "fontSize": 17,
+           "fontFamily": "Fredoka",
+           "fontWeight": "600",
+           "textAlign": "left",
+           "width": 220,
+           "textGrowth": "fixed-width"
+          },
+          {
+           "id": "0001T",
+           "type": "text",
+           "name": "RsSb",
+           "x": 0,
+           "y": 0,
+           "content": "Puduu the pudu deer reminds you: slow is still moving.",
+           "fill": "#475569",
+           "fontSize": 13,
+           "fontFamily": "Nunito",
+           "fontWeight": "400",
+           "textAlign": "left",
+           "width": 220,
+           "textGrowth": "fixed-width"
+          }
+         ]
+        }
+       ]
+      },
+      {
+       "id": "00021",
+       "type": "frame",
+       "name": "R1",
+       "x": 0,
+       "y": 0,
+       "width": 358,
+       "height": 74,
        "fill": "#FFFFFF",
        "cornerRadius": 16,
        "layout": "horizontal",
        "padding": 12,
        "gap": 10,
        "alignItems": "center",
-       "stroke": "#EA580C",
+       "stroke": "#2563EB",
        "strokeWidth": 2,
        "children": [
         {
-         "id": "0001E",
-         "type": "rectangle",
-         "name": "Rs1Ic",
+         "id": "0001X",
+         "type": "frame",
+         "name": "R1Tile",
          "x": 0,
          "y": 0,
-         "width": 40,
-         "height": 40,
-         "cornerRadius": 0,
-         "fill": {
-          "type": "image",
-          "url": "./assets/icons/glass-water.png",
-          "mode": "fill"
-         }
+         "width": 44,
+         "height": 44,
+         "fill": "#E0F2F7",
+         "cornerRadius": 14,
+         "layout": "none",
+         "alignItems": "center",
+         "justify": "center",
+         "children": [
+          {
+           "id": "0001W",
+           "type": "rectangle",
+           "name": "R1Ic",
+           "x": 0,
+           "y": 0,
+           "width": 26,
+           "height": 26,
+           "cornerRadius": 4,
+           "fill": {
+            "type": "image",
+            "url": "./assets/icons/glass-water.png",
+            "mode": "fill"
+           }
+          }
+         ]
         },
         {
-         "id": "0001H",
+         "id": "00020",
          "type": "frame",
-         "name": "Rs1Tx",
+         "name": "R1Tx",
          "x": 0,
          "y": 0,
-         "width": 280,
-         "height": 56,
+         "width": 272,
+         "height": 54,
          "fill": "#FFFFFF",
          "cornerRadius": 0,
          "layout": "vertical",
          "gap": 2,
          "children": [
           {
-           "id": "0001F",
+           "id": "0001Y",
            "type": "text",
-           "name": "Rs1Ti",
+           "name": "R1Ti",
            "x": 0,
            "y": 0,
            "content": "Drink a glass of water",
            "fill": "#0F172A",
            "fontSize": 15,
            "fontFamily": "Nunito",
-           "fontWeight": "700",
-           "textAlign": "left"
+           "fontWeight": "800",
+           "textAlign": "left",
+           "width": 272,
+           "textGrowth": "fixed-width"
           },
           {
-           "id": "0001G",
+           "id": "0001Z",
            "type": "text",
-           "name": "Rs1Sb",
+           "name": "R1Sb",
            "x": 0,
            "y": 0,
-           "content": "2 min - energy +1",
+           "content": "2 min - raises energy",
            "fill": "#475569",
-           "fontSize": 13,
+           "fontSize": 12,
            "fontFamily": "Nunito",
            "fontWeight": "400",
-           "textAlign": "left"
+           "textAlign": "left",
+           "width": 272,
+           "textGrowth": "fixed-width"
           }
          ]
         }
        ]
       },
       {
-       "id": "0001N",
+       "id": "00027",
        "type": "frame",
-       "name": "Rs2",
+       "name": "R2",
        "x": 0,
        "y": 0,
        "width": 358,
-       "height": 76,
+       "height": 74,
        "fill": "#FFFFFF",
        "cornerRadius": 16,
        "layout": "horizontal",
@@ -1741,71 +2092,91 @@
        "alignItems": "center",
        "children": [
         {
-         "id": "0001J",
-         "type": "rectangle",
-         "name": "Rs2Ic",
+         "id": "00023",
+         "type": "frame",
+         "name": "R2Tile",
          "x": 0,
          "y": 0,
-         "width": 40,
-         "height": 40,
-         "cornerRadius": 0,
-         "fill": {
-          "type": "image",
-          "url": "./assets/icons/footprints.png",
-          "mode": "fill"
-         }
+         "width": 44,
+         "height": 44,
+         "fill": "#E7F6EC",
+         "cornerRadius": 14,
+         "layout": "none",
+         "alignItems": "center",
+         "justify": "center",
+         "children": [
+          {
+           "id": "00022",
+           "type": "rectangle",
+           "name": "R2Ic",
+           "x": 0,
+           "y": 0,
+           "width": 26,
+           "height": 26,
+           "cornerRadius": 4,
+           "fill": {
+            "type": "image",
+            "url": "./assets/icons/footprints.png",
+            "mode": "fill"
+           }
+          }
+         ]
         },
         {
-         "id": "0001M",
+         "id": "00026",
          "type": "frame",
-         "name": "Rs2Tx",
+         "name": "R2Tx",
          "x": 0,
          "y": 0,
-         "width": 280,
-         "height": 56,
+         "width": 272,
+         "height": 54,
          "fill": "#FFFFFF",
          "cornerRadius": 0,
          "layout": "vertical",
          "gap": 2,
          "children": [
           {
-           "id": "0001K",
+           "id": "00024",
            "type": "text",
-           "name": "Rs2Ti",
+           "name": "R2Ti",
            "x": 0,
            "y": 0,
            "content": "Clear one surface",
            "fill": "#0F172A",
            "fontSize": 15,
            "fontFamily": "Nunito",
-           "fontWeight": "700",
-           "textAlign": "left"
+           "fontWeight": "800",
+           "textAlign": "left",
+           "width": 272,
+           "textGrowth": "fixed-width"
           },
           {
-           "id": "0001L",
+           "id": "00025",
            "type": "text",
-           "name": "Rs2Sb",
+           "name": "R2Sb",
            "x": 0,
            "y": 0,
            "content": "2 min - just the desk corner",
            "fill": "#475569",
-           "fontSize": 13,
+           "fontSize": 12,
            "fontFamily": "Nunito",
            "fontWeight": "400",
-           "textAlign": "left"
+           "textAlign": "left",
+           "width": 272,
+           "textGrowth": "fixed-width"
           }
          ]
         }
        ]
       },
       {
-       "id": "0001S",
+       "id": "0002d",
        "type": "frame",
-       "name": "Rs3",
+       "name": "R3",
        "x": 0,
        "y": 0,
        "width": 358,
-       "height": 76,
+       "height": 74,
        "fill": "#FFFFFF",
        "cornerRadius": 16,
        "layout": "horizontal",
@@ -1814,102 +2185,215 @@
        "alignItems": "center",
        "children": [
         {
-         "id": "0001O",
-         "type": "rectangle",
-         "name": "Rs3Ic",
+         "id": "00029",
+         "type": "frame",
+         "name": "R3Tile",
          "x": 0,
          "y": 0,
-         "width": 40,
-         "height": 40,
-         "cornerRadius": 0,
-         "fill": {
-          "type": "image",
-          "url": "./assets/icons/mail-open.png",
-          "mode": "fill"
-         }
+         "width": 44,
+         "height": 44,
+         "fill": "#FFFFFF",
+         "cornerRadius": 14,
+         "layout": "none",
+         "alignItems": "center",
+         "justify": "center",
+         "children": [
+          {
+           "id": "00028",
+           "type": "rectangle",
+           "name": "R3Ic",
+           "x": 0,
+           "y": 0,
+           "width": 26,
+           "height": 26,
+           "cornerRadius": 4,
+           "fill": {
+            "type": "image",
+            "url": "./assets/icons/mail-open.png",
+            "mode": "fill"
+           }
+          }
+         ]
         },
         {
-         "id": "0001R",
+         "id": "0002c",
          "type": "frame",
-         "name": "Rs3Tx",
+         "name": "R3Tx",
          "x": 0,
          "y": 0,
-         "width": 280,
-         "height": 56,
+         "width": 272,
+         "height": 54,
          "fill": "#FFFFFF",
          "cornerRadius": 0,
          "layout": "vertical",
          "gap": 2,
          "children": [
           {
-           "id": "0001P",
+           "id": "0002a",
            "type": "text",
-           "name": "Rs3Ti",
+           "name": "R3Ti",
            "x": 0,
            "y": 0,
-           "content": "Open the scary email",
+           "content": "Open the difficult email",
            "fill": "#0F172A",
            "fontSize": 15,
            "fontFamily": "Nunito",
-           "fontWeight": "700",
-           "textAlign": "left"
+           "fontWeight": "800",
+           "textAlign": "left",
+           "width": 272,
+           "textGrowth": "fixed-width"
           },
           {
-           "id": "0001Q",
+           "id": "0002b",
            "type": "text",
-           "name": "Rs3Sb",
+           "name": "R3Sb",
            "x": 0,
            "y": 0,
-           "content": "just open it. Reply later.",
+           "content": "Just open it. Reply later.",
            "fill": "#475569",
-           "fontSize": 13,
+           "fontSize": 12,
            "fontFamily": "Nunito",
            "fontWeight": "400",
-           "textAlign": "left"
+           "textAlign": "left",
+           "width": 272,
+           "textGrowth": "fixed-width"
           }
          ]
         }
        ]
       },
       {
-       "id": "0001V",
+       "id": "0002j",
+       "type": "frame",
+       "name": "R4",
+       "x": 0,
+       "y": 0,
+       "width": 358,
+       "height": 74,
+       "fill": "#FFFFFF",
+       "cornerRadius": 16,
+       "layout": "horizontal",
+       "padding": 12,
+       "gap": 10,
+       "alignItems": "center",
+       "children": [
+        {
+         "id": "0002f",
+         "type": "frame",
+         "name": "R4Tile",
+         "x": 0,
+         "y": 0,
+         "width": 44,
+         "height": 44,
+         "fill": "#EFF4FF",
+         "cornerRadius": 14,
+         "layout": "none",
+         "alignItems": "center",
+         "justify": "center",
+         "children": [
+          {
+           "id": "0002e",
+           "type": "rectangle",
+           "name": "R4Ic",
+           "x": 0,
+           "y": 0,
+           "width": 26,
+           "height": 26,
+           "cornerRadius": 4,
+           "fill": {
+            "type": "image",
+            "url": "./assets/icons/sparkles.png",
+            "mode": "fill"
+           }
+          }
+         ]
+        },
+        {
+         "id": "0002i",
+         "type": "frame",
+         "name": "R4Tx",
+         "x": 0,
+         "y": 0,
+         "width": 272,
+         "height": 54,
+         "fill": "#FFFFFF",
+         "cornerRadius": 0,
+         "layout": "vertical",
+         "gap": 2,
+         "children": [
+          {
+           "id": "0002g",
+           "type": "text",
+           "name": "R4Ti",
+           "x": 0,
+           "y": 0,
+           "content": "Sort my inbox",
+           "fill": "#0F172A",
+           "fontSize": 15,
+           "fontFamily": "Nunito",
+           "fontWeight": "800",
+           "textAlign": "left",
+           "width": 272,
+           "textGrowth": "fixed-width"
+          },
+          {
+           "id": "0002h",
+           "type": "text",
+           "name": "R4Sb",
+           "x": 0,
+           "y": 0,
+           "content": "Rule-based now - assisted later",
+           "fill": "#475569",
+           "fontSize": 12,
+           "fontFamily": "Nunito",
+           "fontWeight": "400",
+           "textAlign": "left",
+           "width": 272,
+           "textGrowth": "fixed-width"
+          }
+         ]
+        }
+       ]
+      },
+      {
+       "id": "0002m",
        "type": "frame",
        "name": "RNote",
        "x": 0,
        "y": 0,
        "width": 358,
-       "height": 96,
-       "fill": "#F1F5FD",
+       "height": 78,
+       "fill": "#EFF4FF",
        "cornerRadius": 14,
        "layout": "vertical",
        "padding": 12,
        "gap": 4,
        "children": [
         {
-         "id": "0001T",
+         "id": "0002k",
          "type": "text",
-         "name": "Txt",
+         "name": "RN1",
          "x": 0,
          "y": 0,
-         "content": "Free: 2 rescues/day - Pro: unlimited + custom menus.",
+         "content": "Free: 2 resets per day - Pro: unlimited + custom menus.",
          "fill": "#475569",
-         "fontSize": 13,
-         "fontFamily": "RNt",
+         "fontSize": 12,
+         "fontFamily": "Nunito",
          "fontWeight": "400",
          "textAlign": "left",
          "width": 326,
          "textGrowth": "fixed-width"
         },
         {
-         "id": "0001U",
+         "id": "0002l",
          "type": "text",
-         "name": "Txt",
+         "name": "RN2",
          "x": 0,
          "y": 0,
          "content": "Skipping is allowed - Puduu waits.",
          "fill": "#475569",
-         "fontSize": 13,
-         "fontFamily": "RN2",
+         "fontSize": 12,
+         "fontFamily": "Nunito",
          "fontWeight": "400",
          "textAlign": "left",
          "width": 326,
@@ -1920,13 +2404,13 @@
      ]
     },
     {
-     "id": "0002d",
+     "id": "0002D",
      "type": "frame",
      "name": "TabBar",
      "x": 0,
      "y": 0,
      "width": 390,
-     "height": 84,
+     "height": 86,
      "fill": "#FFFFFF",
      "cornerRadius": 0,
      "layout": "horizontal",
@@ -1935,29 +2419,29 @@
      "justify": "center",
      "children": [
       {
-       "id": "00020",
+       "id": "0002q",
        "type": "frame",
        "name": "TbToday",
        "x": 0,
        "y": 0,
        "width": 64,
-       "height": 56,
+       "height": 58,
        "fill": "#FFFFFF",
        "cornerRadius": 14,
        "layout": "vertical",
-       "gap": 2,
+       "gap": 3,
        "alignItems": "center",
        "justify": "center",
        "children": [
         {
-         "id": "0001Y",
+         "id": "0002o",
          "type": "rectangle",
          "name": "TbTodayIc",
          "x": 0,
          "y": 0,
          "width": 24,
          "height": 24,
-         "cornerRadius": 0,
+         "cornerRadius": 6,
          "fill": {
           "type": "image",
           "url": "./assets/icons/sun.png",
@@ -1965,7 +2449,7 @@
          }
         },
         {
-         "id": "0001Z",
+         "id": "0002p",
          "type": "text",
          "name": "TbTodayLb",
          "x": 0,
@@ -1974,35 +2458,35 @@
          "fill": "#475569",
          "fontSize": 10,
          "fontFamily": "Nunito",
-         "fontWeight": "700",
+         "fontWeight": "800",
          "textAlign": "center"
         }
        ]
       },
       {
-       "id": "00023",
+       "id": "0002t",
        "type": "frame",
        "name": "TbFocus",
        "x": 0,
        "y": 0,
        "width": 64,
-       "height": 56,
+       "height": 58,
        "fill": "#FFFFFF",
        "cornerRadius": 14,
        "layout": "vertical",
-       "gap": 2,
+       "gap": 3,
        "alignItems": "center",
        "justify": "center",
        "children": [
         {
-         "id": "00021",
+         "id": "0002r",
          "type": "rectangle",
          "name": "TbFocusIc",
          "x": 0,
          "y": 0,
          "width": 24,
          "height": 24,
-         "cornerRadius": 0,
+         "cornerRadius": 6,
          "fill": {
           "type": "image",
           "url": "./assets/icons/timer.png",
@@ -2010,7 +2494,7 @@
          }
         },
         {
-         "id": "00022",
+         "id": "0002s",
          "type": "text",
          "name": "TbFocusLb",
          "x": 0,
@@ -2019,35 +2503,35 @@
          "fill": "#475569",
          "fontSize": 10,
          "fontFamily": "Nunito",
-         "fontWeight": "700",
+         "fontWeight": "800",
          "textAlign": "center"
         }
        ]
       },
       {
-       "id": "00026",
+       "id": "0002w",
        "type": "frame",
-       "name": "TbStuck",
+       "name": "TbReset",
        "x": 0,
        "y": 0,
        "width": 64,
-       "height": 56,
-       "fill": "#F1F5FD",
+       "height": 58,
+       "fill": "#EFF4FF",
        "cornerRadius": 14,
        "layout": "vertical",
-       "gap": 2,
+       "gap": 3,
        "alignItems": "center",
        "justify": "center",
        "children": [
         {
-         "id": "00024",
+         "id": "0002u",
          "type": "rectangle",
-         "name": "TbStuckIc",
+         "name": "TbResetIc",
          "x": 0,
          "y": 0,
          "width": 24,
          "height": 24,
-         "cornerRadius": 0,
+         "cornerRadius": 6,
          "fill": {
           "type": "image",
           "url": "./assets/icons/snowflake.png",
@@ -2055,44 +2539,44 @@
          }
         },
         {
-         "id": "00025",
+         "id": "0002v",
          "type": "text",
-         "name": "TbStuckLb",
+         "name": "TbResetLb",
          "x": 0,
          "y": 0,
-         "content": "Stuck",
+         "content": "Reset",
          "fill": "#2563EB",
          "fontSize": 10,
          "fontFamily": "Nunito",
-         "fontWeight": "700",
+         "fontWeight": "800",
          "textAlign": "center"
         }
        ]
       },
       {
-       "id": "00029",
+       "id": "0002z",
        "type": "frame",
        "name": "TbGrows",
        "x": 0,
        "y": 0,
        "width": 64,
-       "height": 56,
+       "height": 58,
        "fill": "#FFFFFF",
        "cornerRadius": 14,
        "layout": "vertical",
-       "gap": 2,
+       "gap": 3,
        "alignItems": "center",
        "justify": "center",
        "children": [
         {
-         "id": "00027",
+         "id": "0002x",
          "type": "rectangle",
          "name": "TbGrowsIc",
          "x": 0,
          "y": 0,
          "width": 24,
          "height": 24,
-         "cornerRadius": 0,
+         "cornerRadius": 6,
          "fill": {
           "type": "image",
           "url": "./assets/icons/trophy.png",
@@ -2100,7 +2584,7 @@
          }
         },
         {
-         "id": "00028",
+         "id": "0002y",
          "type": "text",
          "name": "TbGrowsLb",
          "x": 0,
@@ -2109,35 +2593,35 @@
          "fill": "#475569",
          "fontSize": 10,
          "fontFamily": "Nunito",
-         "fontWeight": "700",
+         "fontWeight": "800",
          "textAlign": "center"
         }
        ]
       },
       {
-       "id": "0002c",
+       "id": "0002C",
        "type": "frame",
        "name": "TbYours",
        "x": 0,
        "y": 0,
        "width": 64,
-       "height": 56,
+       "height": 58,
        "fill": "#FFFFFF",
        "cornerRadius": 14,
        "layout": "vertical",
-       "gap": 2,
+       "gap": 3,
        "alignItems": "center",
        "justify": "center",
        "children": [
         {
-         "id": "0002a",
+         "id": "0002A",
          "type": "rectangle",
          "name": "TbYoursIc",
          "x": 0,
          "y": 0,
          "width": 24,
          "height": 24,
-         "cornerRadius": 0,
+         "cornerRadius": 6,
          "fill": {
           "type": "image",
           "url": "./assets/icons/settings.png",
@@ -2145,7 +2629,7 @@
          }
         },
         {
-         "id": "0002b",
+         "id": "0002B",
          "type": "text",
          "name": "TbYoursLb",
          "x": 0,
@@ -2154,7 +2638,7 @@
          "fill": "#475569",
          "fontSize": 10,
          "fontFamily": "Nunito",
-         "fontWeight": "700",
+         "fontWeight": "800",
          "textAlign": "center"
         }
        ]
@@ -2164,26 +2648,26 @@
    ]
   },
   {
-   "id": "0002N",
+   "id": "0003n",
    "type": "frame",
    "name": "04 Ritual",
    "x": 1410,
    "y": 0,
    "width": 390,
    "height": 844,
-   "fill": "#F8FAFC",
+   "fill": "#F6F8FC",
    "layout": "vertical",
    "alignItems": "center",
    "children": [
     {
-     "id": "0002w",
+     "id": "0002J",
      "type": "frame",
-     "name": "04 RitualHd",
+     "name": "H4Bar",
      "x": 0,
      "y": 0,
      "width": 390,
-     "height": 64,
-     "fill": "#F8FAFC",
+     "height": 76,
+     "fill": "#F6F8FC",
      "cornerRadius": 0,
      "layout": "horizontal",
      "padding": [
@@ -2196,14 +2680,14 @@
      "alignItems": "center",
      "children": [
       {
-       "id": "0002f",
+       "id": "0002F",
        "type": "rectangle",
-       "name": "HdIc",
+       "name": "H4Ic",
        "x": 0,
        "y": 0,
-       "width": 32,
-       "height": 32,
-       "cornerRadius": 0,
+       "width": 40,
+       "height": 40,
+       "cornerRadius": 13,
        "fill": {
         "type": "image",
         "url": "./assets/icons/sparkles.png",
@@ -2211,207 +2695,345 @@
        }
       },
       {
-       "id": "0002g",
-       "type": "text",
-       "name": "HdTi",
+       "id": "0002I",
+       "type": "frame",
+       "name": "H4Tx",
        "x": 0,
        "y": 0,
-       "content": "Switch Ritual",
-       "fill": "#0F172A",
-       "fontSize": 20,
-       "fontFamily": "Fredoka",
-       "fontWeight": "600",
-       "textAlign": "left",
-       "width": 280,
-       "textGrowth": "fixed-width"
+       "width": 300,
+       "height": 56,
+       "fill": "#F6F8FC",
+       "cornerRadius": 0,
+       "layout": "vertical",
+       "gap": 1,
+       "children": [
+        {
+         "id": "0002G",
+         "type": "text",
+         "name": "H4Ti",
+         "x": 0,
+         "y": 0,
+         "content": "Close, breathe, begin",
+         "fill": "#0F172A",
+         "fontSize": 20,
+         "fontFamily": "Fredoka",
+         "fontWeight": "600",
+         "textAlign": "left",
+         "width": 300,
+         "textGrowth": "fixed-width"
+        },
+        {
+         "id": "0002H",
+         "type": "text",
+         "name": "H4Sb",
+         "x": 0,
+         "y": 0,
+         "content": "Transition - fifteen seconds.",
+         "fill": "#475569",
+         "fontSize": 13,
+         "fontFamily": "Nunito",
+         "fontWeight": "400",
+         "textAlign": "left",
+         "width": 300,
+         "textGrowth": "fixed-width"
+        }
+       ]
       }
      ]
     },
     {
-     "id": "0002v",
+     "id": "00036",
      "type": "frame",
      "name": "04 RitualBd",
      "x": 0,
      "y": 0,
      "width": 358,
-     "fill": "#F8FAFC",
+     "fill": "#F6F8FC",
      "cornerRadius": 0,
      "layout": "vertical",
      "gap": 10,
      "children": [
       {
-       "id": "0002h",
-       "type": "text",
-       "name": "RiTi",
-       "x": 0,
-       "y": 0,
-       "content": "Close - Breathe - Begin",
-       "fill": "#0F172A",
-       "fontSize": 24,
-       "fontFamily": "Fredoka",
-       "fontWeight": "600",
-       "textAlign": "center",
-       "width": 358,
-       "textGrowth": "fixed-width"
-      },
-      {
-       "id": "0002i",
-       "type": "text",
-       "name": "Txt",
-       "x": 0,
-       "y": 0,
-       "content": "15 seconds. Then we start.",
-       "fill": "#475569",
-       "fontSize": 14,
-       "fontFamily": "RiSub",
-       "fontWeight": "400",
-       "textAlign": "center",
-       "width": 358,
-       "textGrowth": "fixed-width"
-      },
-      {
-       "id": "0002l",
+       "id": "0002P",
        "type": "frame",
-       "name": "Ri1",
+       "name": "St1",
        "x": 0,
        "y": 0,
        "width": 358,
-       "height": 64,
+       "height": 70,
        "fill": "#FFFFFF",
        "cornerRadius": 16,
        "layout": "horizontal",
        "padding": 12,
        "gap": 10,
        "alignItems": "center",
+       "stroke": "#E2E8F0",
+       "strokeWidth": 1,
        "children": [
         {
-         "id": "0002j",
-         "type": "rectangle",
-         "name": "Ri1Ic",
+         "id": "0002L",
+         "type": "frame",
+         "name": "St1N",
          "x": 0,
          "y": 0,
-         "width": 32,
-         "height": 32,
-         "cornerRadius": 0,
-         "fill": {
-          "type": "image",
-          "url": "./assets/icons/check.png",
-          "mode": "fill"
-         }
+         "width": 30,
+         "height": 30,
+         "fill": "#2563EB",
+         "cornerRadius": 15,
+         "layout": "horizontal",
+         "alignItems": "center",
+         "justify": "center",
+         "children": [
+          {
+           "id": "0002K",
+           "type": "text",
+           "name": "St1T",
+           "x": 0,
+           "y": 0,
+           "content": "1",
+           "fill": "#FFFFFF",
+           "fontSize": 14,
+           "fontFamily": "Nunito",
+           "fontWeight": "800",
+           "textAlign": "center"
+          }
+         ]
         },
         {
-         "id": "0002k",
-         "type": "text",
-         "name": "Txt",
+         "id": "0002O",
+         "type": "frame",
+         "name": "St1Tx",
          "x": 0,
          "y": 0,
-         "content": "1 - Close: portfolio file saved?",
-         "fill": "#0F172A",
-         "fontSize": 15,
-         "fontFamily": "Ri1Tx",
-         "fontWeight": "700",
-         "textAlign": "left",
-         "width": 280,
-         "textGrowth": "fixed-width"
+         "width": 286,
+         "height": 50,
+         "fill": "#FFFFFF",
+         "cornerRadius": 0,
+         "layout": "vertical",
+         "gap": 2,
+         "children": [
+          {
+           "id": "0002M",
+           "type": "text",
+           "name": "St1H",
+           "x": 0,
+           "y": 0,
+           "content": "Close",
+           "fill": "#0F172A",
+           "fontSize": 15,
+           "fontFamily": "Nunito",
+           "fontWeight": "800",
+           "textAlign": "left",
+           "width": 286,
+           "textGrowth": "fixed-width"
+          },
+          {
+           "id": "0002N",
+           "type": "text",
+           "name": "St1S",
+           "x": 0,
+           "y": 0,
+           "content": "Portfolio file saved. Put it away.",
+           "fill": "#475569",
+           "fontSize": 12,
+           "fontFamily": "Nunito",
+           "fontWeight": "400",
+           "textAlign": "left",
+           "width": 286,
+           "textGrowth": "fixed-width"
+          }
+         ]
         }
        ]
       },
       {
-       "id": "0002o",
+       "id": "0002V",
        "type": "frame",
-       "name": "Ri2",
+       "name": "St2",
        "x": 0,
        "y": 0,
        "width": 358,
-       "height": 64,
+       "height": 70,
        "fill": "#FFFFFF",
        "cornerRadius": 16,
        "layout": "horizontal",
        "padding": 12,
        "gap": 10,
        "alignItems": "center",
+       "stroke": "#E2E8F0",
+       "strokeWidth": 1,
        "children": [
         {
-         "id": "0002m",
-         "type": "rectangle",
-         "name": "Ri2Ic",
+         "id": "0002R",
+         "type": "frame",
+         "name": "St2N",
          "x": 0,
          "y": 0,
-         "width": 32,
-         "height": 32,
-         "cornerRadius": 0,
-         "fill": {
-          "type": "image",
-          "url": "./assets/icons/smile.png",
-          "mode": "fill"
-         }
+         "width": 30,
+         "height": 30,
+         "fill": "#0E7490",
+         "cornerRadius": 15,
+         "layout": "horizontal",
+         "alignItems": "center",
+         "justify": "center",
+         "children": [
+          {
+           "id": "0002Q",
+           "type": "text",
+           "name": "St2T",
+           "x": 0,
+           "y": 0,
+           "content": "2",
+           "fill": "#FFFFFF",
+           "fontSize": 14,
+           "fontFamily": "Nunito",
+           "fontWeight": "800",
+           "textAlign": "center"
+          }
+         ]
         },
         {
-         "id": "0002n",
-         "type": "text",
-         "name": "Txt",
+         "id": "0002U",
+         "type": "frame",
+         "name": "St2Tx",
          "x": 0,
          "y": 0,
-         "content": "2 - Breathe: one slow breath...",
-         "fill": "#0F172A",
-         "fontSize": 15,
-         "fontFamily": "Ri2Tx",
-         "fontWeight": "700",
-         "textAlign": "left",
-         "width": 280,
-         "textGrowth": "fixed-width"
+         "width": 286,
+         "height": 50,
+         "fill": "#FFFFFF",
+         "cornerRadius": 0,
+         "layout": "vertical",
+         "gap": 2,
+         "children": [
+          {
+           "id": "0002S",
+           "type": "text",
+           "name": "St2H",
+           "x": 0,
+           "y": 0,
+           "content": "Breathe",
+           "fill": "#0F172A",
+           "fontSize": 15,
+           "fontFamily": "Nunito",
+           "fontWeight": "800",
+           "textAlign": "left",
+           "width": 286,
+           "textGrowth": "fixed-width"
+          },
+          {
+           "id": "0002T",
+           "type": "text",
+           "name": "St2S",
+           "x": 0,
+           "y": 0,
+           "content": "One slow breath with the timer ring.",
+           "fill": "#475569",
+           "fontSize": 12,
+           "fontFamily": "Nunito",
+           "fontWeight": "400",
+           "textAlign": "left",
+           "width": 286,
+           "textGrowth": "fixed-width"
+          }
+         ]
         }
        ]
       },
       {
-       "id": "0002r",
+       "id": "00031",
        "type": "frame",
-       "name": "Ri3",
+       "name": "St3",
        "x": 0,
        "y": 0,
        "width": 358,
-       "height": 64,
+       "height": 70,
        "fill": "#FFFFFF",
        "cornerRadius": 16,
        "layout": "horizontal",
        "padding": 12,
        "gap": 10,
        "alignItems": "center",
+       "stroke": "#E2E8F0",
+       "strokeWidth": 1,
        "children": [
         {
-         "id": "0002p",
-         "type": "rectangle",
-         "name": "Ri3Ic",
+         "id": "0002X",
+         "type": "frame",
+         "name": "St3N",
          "x": 0,
          "y": 0,
-         "width": 32,
-         "height": 32,
-         "cornerRadius": 0,
-         "fill": {
-          "type": "image",
-          "url": "./assets/icons/zap.png",
-          "mode": "fill"
-         }
+         "width": 30,
+         "height": 30,
+         "fill": "#EA580C",
+         "cornerRadius": 15,
+         "layout": "horizontal",
+         "alignItems": "center",
+         "justify": "center",
+         "children": [
+          {
+           "id": "0002W",
+           "type": "text",
+           "name": "St3T",
+           "x": 0,
+           "y": 0,
+           "content": "3",
+           "fill": "#FFFFFF",
+           "fontSize": 14,
+           "fontFamily": "Nunito",
+           "fontWeight": "800",
+           "textAlign": "center"
+          }
+         ]
         },
         {
-         "id": "0002q",
-         "type": "text",
-         "name": "Txt",
+         "id": "00030",
+         "type": "frame",
+         "name": "St3Tx",
          "x": 0,
          "y": 0,
-         "content": "3 - Begin: Admin batch - 30m",
-         "fill": "#0F172A",
-         "fontSize": 15,
-         "fontFamily": "Ri3Tx",
-         "fontWeight": "700",
-         "textAlign": "left",
-         "width": 280,
-         "textGrowth": "fixed-width"
+         "width": 286,
+         "height": 50,
+         "fill": "#FFFFFF",
+         "cornerRadius": 0,
+         "layout": "vertical",
+         "gap": 2,
+         "children": [
+          {
+           "id": "0002Y",
+           "type": "text",
+           "name": "St3H",
+           "x": 0,
+           "y": 0,
+           "content": "Begin",
+           "fill": "#0F172A",
+           "fontSize": 15,
+           "fontFamily": "Nunito",
+           "fontWeight": "800",
+           "textAlign": "left",
+           "width": 286,
+           "textGrowth": "fixed-width"
+          },
+          {
+           "id": "0002Z",
+           "type": "text",
+           "name": "St3S",
+           "x": 0,
+           "y": 0,
+           "content": "Next up: Admin batch - 30 min.",
+           "fill": "#475569",
+           "fontSize": 12,
+           "fontFamily": "Nunito",
+           "fontWeight": "400",
+           "textAlign": "left",
+           "width": 286,
+           "textGrowth": "fixed-width"
+          }
+         ]
         }
        ]
       },
       {
-       "id": "0002u",
+       "id": "00033",
        "type": "frame",
        "name": "RiGo",
        "x": 0,
@@ -2421,36 +3043,51 @@
        "fill": "#2563EB",
        "cornerRadius": 27,
        "layout": "horizontal",
-       "gap": 8,
        "alignItems": "center",
        "justify": "center",
        "children": [
         {
-         "id": "0002s",
-         "type": "rectangle",
-         "name": "BtnIc",
-         "x": 0,
-         "y": 0,
-         "width": 22,
-         "height": 22,
-         "cornerRadius": 0,
-         "fill": {
-          "type": "image",
-          "url": "./assets/icons/play.png",
-          "mode": "fill"
-         }
-        },
-        {
-         "id": "0002t",
+         "id": "00032",
          "type": "text",
-         "name": "BtnLb",
+         "name": "RiGoLb",
          "x": 0,
          "y": 0,
-         "content": "Begin admin batch",
+         "content": "Begin Admin batch",
          "fill": "#FFFFFF",
          "fontSize": 15,
          "fontFamily": "Nunito",
-         "fontWeight": "700",
+         "fontWeight": "800",
+         "textAlign": "center"
+        }
+       ]
+      },
+      {
+       "id": "00035",
+       "type": "frame",
+       "name": "RiBack",
+       "x": 0,
+       "y": 0,
+       "width": 326,
+       "height": 50,
+       "fill": "#FFFFFF",
+       "cornerRadius": 25,
+       "layout": "horizontal",
+       "alignItems": "center",
+       "justify": "center",
+       "stroke": "#2563EB",
+       "strokeWidth": 1,
+       "children": [
+        {
+         "id": "00034",
+         "type": "text",
+         "name": "RiBackLb",
+         "x": 0,
+         "y": 0,
+         "content": "Not yet - back to Today",
+         "fill": "#2563EB",
+         "fontSize": 14,
+         "fontFamily": "Nunito",
+         "fontWeight": "800",
          "textAlign": "center"
         }
        ]
@@ -2458,13 +3095,13 @@
      ]
     },
     {
-     "id": "0002M",
+     "id": "0003m",
      "type": "frame",
      "name": "TabBar",
      "x": 0,
      "y": 0,
      "width": 390,
-     "height": 84,
+     "height": 86,
      "fill": "#FFFFFF",
      "cornerRadius": 0,
      "layout": "horizontal",
@@ -2473,29 +3110,29 @@
      "justify": "center",
      "children": [
       {
-       "id": "0002z",
+       "id": "00039",
        "type": "frame",
        "name": "TbToday",
        "x": 0,
        "y": 0,
        "width": 64,
-       "height": 56,
+       "height": 58,
        "fill": "#FFFFFF",
        "cornerRadius": 14,
        "layout": "vertical",
-       "gap": 2,
+       "gap": 3,
        "alignItems": "center",
        "justify": "center",
        "children": [
         {
-         "id": "0002x",
+         "id": "00037",
          "type": "rectangle",
          "name": "TbTodayIc",
          "x": 0,
          "y": 0,
          "width": 24,
          "height": 24,
-         "cornerRadius": 0,
+         "cornerRadius": 6,
          "fill": {
           "type": "image",
           "url": "./assets/icons/sun.png",
@@ -2503,7 +3140,7 @@
          }
         },
         {
-         "id": "0002y",
+         "id": "00038",
          "type": "text",
          "name": "TbTodayLb",
          "x": 0,
@@ -2512,35 +3149,35 @@
          "fill": "#475569",
          "fontSize": 10,
          "fontFamily": "Nunito",
-         "fontWeight": "700",
+         "fontWeight": "800",
          "textAlign": "center"
         }
        ]
       },
       {
-       "id": "0002C",
+       "id": "0003c",
        "type": "frame",
        "name": "TbFocus",
        "x": 0,
        "y": 0,
        "width": 64,
-       "height": 56,
-       "fill": "#F1F5FD",
+       "height": 58,
+       "fill": "#EFF4FF",
        "cornerRadius": 14,
        "layout": "vertical",
-       "gap": 2,
+       "gap": 3,
        "alignItems": "center",
        "justify": "center",
        "children": [
         {
-         "id": "0002A",
+         "id": "0003a",
          "type": "rectangle",
          "name": "TbFocusIc",
          "x": 0,
          "y": 0,
          "width": 24,
          "height": 24,
-         "cornerRadius": 0,
+         "cornerRadius": 6,
          "fill": {
           "type": "image",
           "url": "./assets/icons/timer.png",
@@ -2548,7 +3185,7 @@
          }
         },
         {
-         "id": "0002B",
+         "id": "0003b",
          "type": "text",
          "name": "TbFocusLb",
          "x": 0,
@@ -2557,35 +3194,35 @@
          "fill": "#2563EB",
          "fontSize": 10,
          "fontFamily": "Nunito",
-         "fontWeight": "700",
+         "fontWeight": "800",
          "textAlign": "center"
         }
        ]
       },
       {
-       "id": "0002F",
+       "id": "0003f",
        "type": "frame",
-       "name": "TbStuck",
+       "name": "TbReset",
        "x": 0,
        "y": 0,
        "width": 64,
-       "height": 56,
+       "height": 58,
        "fill": "#FFFFFF",
        "cornerRadius": 14,
        "layout": "vertical",
-       "gap": 2,
+       "gap": 3,
        "alignItems": "center",
        "justify": "center",
        "children": [
         {
-         "id": "0002D",
+         "id": "0003d",
          "type": "rectangle",
-         "name": "TbStuckIc",
+         "name": "TbResetIc",
          "x": 0,
          "y": 0,
          "width": 24,
          "height": 24,
-         "cornerRadius": 0,
+         "cornerRadius": 6,
          "fill": {
           "type": "image",
           "url": "./assets/icons/snowflake.png",
@@ -2593,44 +3230,44 @@
          }
         },
         {
-         "id": "0002E",
+         "id": "0003e",
          "type": "text",
-         "name": "TbStuckLb",
+         "name": "TbResetLb",
          "x": 0,
          "y": 0,
-         "content": "Stuck",
+         "content": "Reset",
          "fill": "#475569",
          "fontSize": 10,
          "fontFamily": "Nunito",
-         "fontWeight": "700",
+         "fontWeight": "800",
          "textAlign": "center"
         }
        ]
       },
       {
-       "id": "0002I",
+       "id": "0003i",
        "type": "frame",
        "name": "TbGrows",
        "x": 0,
        "y": 0,
        "width": 64,
-       "height": 56,
+       "height": 58,
        "fill": "#FFFFFF",
        "cornerRadius": 14,
        "layout": "vertical",
-       "gap": 2,
+       "gap": 3,
        "alignItems": "center",
        "justify": "center",
        "children": [
         {
-         "id": "0002G",
+         "id": "0003g",
          "type": "rectangle",
          "name": "TbGrowsIc",
          "x": 0,
          "y": 0,
          "width": 24,
          "height": 24,
-         "cornerRadius": 0,
+         "cornerRadius": 6,
          "fill": {
           "type": "image",
           "url": "./assets/icons/trophy.png",
@@ -2638,7 +3275,7 @@
          }
         },
         {
-         "id": "0002H",
+         "id": "0003h",
          "type": "text",
          "name": "TbGrowsLb",
          "x": 0,
@@ -2647,35 +3284,35 @@
          "fill": "#475569",
          "fontSize": 10,
          "fontFamily": "Nunito",
-         "fontWeight": "700",
+         "fontWeight": "800",
          "textAlign": "center"
         }
        ]
       },
       {
-       "id": "0002L",
+       "id": "0003l",
        "type": "frame",
        "name": "TbYours",
        "x": 0,
        "y": 0,
        "width": 64,
-       "height": 56,
+       "height": 58,
        "fill": "#FFFFFF",
        "cornerRadius": 14,
        "layout": "vertical",
-       "gap": 2,
+       "gap": 3,
        "alignItems": "center",
        "justify": "center",
        "children": [
         {
-         "id": "0002J",
+         "id": "0003j",
          "type": "rectangle",
          "name": "TbYoursIc",
          "x": 0,
          "y": 0,
          "width": 24,
          "height": 24,
-         "cornerRadius": 0,
+         "cornerRadius": 6,
          "fill": {
           "type": "image",
           "url": "./assets/icons/settings.png",
@@ -2683,7 +3320,7 @@
          }
         },
         {
-         "id": "0002K",
+         "id": "0003k",
          "type": "text",
          "name": "TbYoursLb",
          "x": 0,
@@ -2692,7 +3329,7 @@
          "fill": "#475569",
          "fontSize": 10,
          "fontFamily": "Nunito",
-         "fontWeight": "700",
+         "fontWeight": "800",
          "textAlign": "center"
         }
        ]
@@ -2702,26 +3339,26 @@
    ]
   },
   {
-   "id": "0003m",
+   "id": "00042",
    "type": "frame",
    "name": "05 Grows",
    "x": 1880,
    "y": 0,
    "width": 390,
    "height": 844,
-   "fill": "#F8FAFC",
+   "fill": "#F6F8FC",
    "layout": "vertical",
    "alignItems": "center",
    "children": [
     {
-     "id": "00035",
+     "id": "0003s",
      "type": "frame",
-     "name": "05 GrowsHd",
+     "name": "H5Bar",
      "x": 0,
      "y": 0,
      "width": 390,
-     "height": 64,
-     "fill": "#F8FAFC",
+     "height": 76,
+     "fill": "#F6F8FC",
      "cornerRadius": 0,
      "layout": "horizontal",
      "padding": [
@@ -2734,14 +3371,14 @@
      "alignItems": "center",
      "children": [
       {
-       "id": "0002O",
+       "id": "0003o",
        "type": "rectangle",
-       "name": "HdIc",
+       "name": "H5Ic",
        "x": 0,
        "y": 0,
-       "width": 32,
-       "height": 32,
-       "cornerRadius": 0,
+       "width": 40,
+       "height": 40,
+       "cornerRadius": 13,
        "fill": {
         "type": "image",
         "url": "./assets/icons/trophy.png",
@@ -2749,130 +3386,147 @@
        }
       },
       {
-       "id": "0002P",
-       "type": "text",
-       "name": "HdTi",
+       "id": "0003r",
+       "type": "frame",
+       "name": "H5Tx",
        "x": 0,
        "y": 0,
-       "content": "Your week",
-       "fill": "#0F172A",
-       "fontSize": 20,
-       "fontFamily": "Fredoka",
-       "fontWeight": "600",
-       "textAlign": "left",
-       "width": 280,
-       "textGrowth": "fixed-width"
+       "width": 300,
+       "height": 56,
+       "fill": "#F6F8FC",
+       "cornerRadius": 0,
+       "layout": "vertical",
+       "gap": 1,
+       "children": [
+        {
+         "id": "0003p",
+         "type": "text",
+         "name": "H5Ti",
+         "x": 0,
+         "y": 0,
+         "content": "Your week",
+         "fill": "#0F172A",
+         "fontSize": 20,
+         "fontFamily": "Fredoka",
+         "fontWeight": "600",
+         "textAlign": "left",
+         "width": 300,
+         "textGrowth": "fixed-width"
+        },
+        {
+         "id": "0003q",
+         "type": "text",
+         "name": "H5Sb",
+         "x": 0,
+         "y": 0,
+         "content": "Good days: 5 of 7 - never resets to zero.",
+         "fill": "#475569",
+         "fontSize": 13,
+         "fontFamily": "Nunito",
+         "fontWeight": "400",
+         "textAlign": "left",
+         "width": 300,
+         "textGrowth": "fixed-width"
+        }
+       ]
       }
      ]
     },
     {
-     "id": "00034",
+     "id": "0003L",
      "type": "frame",
      "name": "05 GrowsBd",
      "x": 0,
      "y": 0,
      "width": 358,
-     "fill": "#F8FAFC",
+     "fill": "#F6F8FC",
      "cornerRadius": 0,
      "layout": "vertical",
      "gap": 10,
      "children": [
       {
-       "id": "0002Q",
-       "type": "text",
-       "name": "GTi",
-       "x": 0,
-       "y": 0,
-       "content": "Good days: 5/7",
-       "fill": "#0F172A",
-       "fontSize": 24,
-       "fontFamily": "Fredoka",
-       "fontWeight": "600",
-       "textAlign": "left",
-       "width": 358,
-       "textGrowth": "fixed-width"
-      },
-      {
-       "id": "0002R",
-       "type": "text",
-       "name": "Txt",
-       "x": 0,
-       "y": 0,
-       "content": "never resets to zero - slow days are fine too",
-       "fill": "#475569",
-       "fontSize": 14,
-       "fontFamily": "GSub",
-       "fontWeight": "400",
-       "textAlign": "left",
-       "width": 358,
-       "textGrowth": "fixed-width"
-      },
-      {
-       "id": "0002V",
+       "id": "0003x",
        "type": "frame",
        "name": "ConsBx",
        "x": 0,
        "y": 0,
        "width": 358,
-       "height": 84,
+       "height": 92,
        "fill": "#FFFFFF",
        "cornerRadius": 16,
        "layout": "vertical",
        "padding": 12,
        "gap": 8,
+       "stroke": "#E2E8F0",
+       "strokeWidth": 1,
        "children": [
         {
-         "id": "0002S",
+         "id": "0003t",
          "type": "text",
-         "name": "Txt",
+         "name": "ConsT",
          "x": 0,
          "y": 0,
-         "content": "Consistency 71%",
+         "content": "Consistency - 71 percent",
          "fill": "#0F172A",
          "fontSize": 15,
-         "fontFamily": "ConsT",
-         "fontWeight": "700",
+         "fontFamily": "Nunito",
+         "fontWeight": "800",
          "textAlign": "left",
          "width": 326,
          "textGrowth": "fixed-width"
         },
         {
-         "id": "0002U",
+         "id": "0003v",
          "type": "frame",
          "name": "ConsTr",
          "x": 0,
          "y": 0,
          "width": 326,
          "height": 14,
-         "fill": "#E4ECFC",
+         "fill": "#F6F8FC",
          "cornerRadius": 7,
          "layout": "horizontal",
          "children": [
           {
-           "id": "0002T",
+           "id": "0003u",
            "type": "frame",
            "name": "ConsFl",
            "x": 0,
            "y": 0,
            "width": 232,
            "height": 14,
-           "fill": "#0891B2",
+           "fill": "#0E7490",
            "cornerRadius": 7,
            "layout": "none",
            "children": []
           }
          ]
+        },
+        {
+         "id": "0003w",
+         "type": "text",
+         "name": "ConsS",
+         "x": 0,
+         "y": 0,
+         "content": "5 steady days - 2 slow days - both are fine.",
+         "fill": "#475569",
+         "fontSize": 12,
+         "fontFamily": "Nunito",
+         "fontWeight": "400",
+         "textAlign": "left",
+         "width": 326,
+         "textGrowth": "fixed-width"
         }
        ]
       },
       {
-       "id": "0002Y",
+       "id": "0003D",
        "type": "frame",
-       "name": "TroBx",
+       "name": "G1",
        "x": 0,
        "y": 0,
        "width": 358,
-       "height": 76,
+       "height": 74,
        "fill": "#FFFFFF",
        "cornerRadius": 16,
        "layout": "horizontal",
@@ -2881,75 +3535,125 @@
        "alignItems": "center",
        "children": [
         {
-         "id": "0002W",
-         "type": "rectangle",
-         "name": "TroIc",
+         "id": "0003z",
+         "type": "frame",
+         "name": "G1Tile",
          "x": 0,
          "y": 0,
-         "width": 40,
-         "height": 40,
-         "cornerRadius": 0,
-         "fill": {
-          "type": "image",
-          "url": "./assets/icons/trophy.png",
-          "mode": "fill"
-         }
+         "width": 44,
+         "height": 44,
+         "fill": "#FFF1E7",
+         "cornerRadius": 14,
+         "layout": "none",
+         "alignItems": "center",
+         "justify": "center",
+         "children": [
+          {
+           "id": "0003y",
+           "type": "rectangle",
+           "name": "G1Ic",
+           "x": 0,
+           "y": 0,
+           "width": 26,
+           "height": 26,
+           "cornerRadius": 4,
+           "fill": {
+            "type": "image",
+            "url": "./assets/icons/trophy.png",
+            "mode": "fill"
+           }
+          }
+         ]
         },
         {
-         "id": "0002X",
-         "type": "text",
-         "name": "Txt",
+         "id": "0003C",
+         "type": "frame",
+         "name": "G1Tx",
          "x": 0,
          "y": 0,
-         "content": "Early starter x3 - Thawed x5 - Focus 25m x8",
-         "fill": "#0F172A",
-         "fontSize": 14,
-         "fontFamily": "TroTx",
-         "fontWeight": "700",
-         "textAlign": "left",
-         "width": 270,
-         "textGrowth": "fixed-width"
+         "width": 272,
+         "height": 54,
+         "fill": "#FFFFFF",
+         "cornerRadius": 0,
+         "layout": "vertical",
+         "gap": 2,
+         "children": [
+          {
+           "id": "0003A",
+           "type": "text",
+           "name": "G1Ti",
+           "x": 0,
+           "y": 0,
+           "content": "Trophies",
+           "fill": "#0F172A",
+           "fontSize": 15,
+           "fontFamily": "Nunito",
+           "fontWeight": "800",
+           "textAlign": "left",
+           "width": 272,
+           "textGrowth": "fixed-width"
+          },
+          {
+           "id": "0003B",
+           "type": "text",
+           "name": "G1Sb",
+           "x": 0,
+           "y": 0,
+           "content": "Early starter x3 - Reset used x5 - 25-min focus x8",
+           "fill": "#475569",
+           "fontSize": 12,
+           "fontFamily": "Nunito",
+           "fontWeight": "400",
+           "textAlign": "left",
+           "width": 272,
+           "textGrowth": "fixed-width"
+          }
+         ]
         }
        ]
       },
       {
-       "id": "0002Z",
+       "id": "0003E",
        "type": "text",
-       "name": "Txt",
+       "name": "C4",
        "x": 0,
        "y": 0,
        "content": "HOW WAS TODAY?",
        "fill": "#475569",
-       "fontSize": 12,
-       "fontFamily": "Cap",
-       "fontWeight": "700",
+       "fontSize": 11,
+       "fontFamily": "Nunito",
+       "fontWeight": "800",
        "textAlign": "left",
        "width": 358,
        "textGrowth": "fixed-width"
       },
       {
-       "id": "00033",
+       "id": "0003I",
        "type": "frame",
        "name": "MoodRow",
        "x": 0,
        "y": 0,
        "width": 358,
-       "height": 64,
+       "height": 84,
        "fill": "#FFFFFF",
        "cornerRadius": 16,
        "layout": "horizontal",
+       "padding": 12,
+       "gap": 12,
        "alignItems": "center",
        "justify": "center",
+       "stroke": "#E2E8F0",
+       "strokeWidth": 1,
        "children": [
         {
-         "id": "00030",
+         "id": "0003F",
          "type": "rectangle",
          "name": "Md1",
          "x": 0,
          "y": 0,
-         "width": 36,
-         "height": 36,
-         "cornerRadius": 0,
+         "width": 40,
+         "height": 40,
+         "cornerRadius": 12,
          "fill": {
           "type": "image",
           "url": "./assets/icons/smile.png",
@@ -2957,14 +3661,14 @@
          }
         },
         {
-         "id": "00031",
+         "id": "0003G",
          "type": "rectangle",
          "name": "Md2",
          "x": 0,
          "y": 0,
-         "width": 36,
-         "height": 36,
-         "cornerRadius": 0,
+         "width": 40,
+         "height": 40,
+         "cornerRadius": 12,
          "fill": {
           "type": "image",
           "url": "./assets/icons/star.png",
@@ -2972,14 +3676,14 @@
          }
         },
         {
-         "id": "00032",
+         "id": "0003H",
          "type": "rectangle",
          "name": "Md3",
          "x": 0,
          "y": 0,
-         "width": 36,
-         "height": 36,
-         "cornerRadius": 0,
+         "width": 40,
+         "height": 40,
+         "cornerRadius": 12,
          "fill": {
           "type": "image",
           "url": "./assets/icons/heart.png",
@@ -2987,17 +3691,46 @@
          }
         }
        ]
+      },
+      {
+       "id": "0003K",
+       "type": "frame",
+       "name": "MoodCap",
+       "x": 0,
+       "y": 0,
+       "width": 358,
+       "height": 50,
+       "fill": "#EFF4FF",
+       "cornerRadius": 14,
+       "layout": "horizontal",
+       "alignItems": "center",
+       "justify": "center",
+       "children": [
+        {
+         "id": "0003J",
+         "type": "text",
+         "name": "MoodTx",
+         "x": 0,
+         "y": 0,
+         "content": "Low - Flat - Okay (selected) - Good - Great",
+         "fill": "#475569",
+         "fontSize": 12,
+         "fontFamily": "Nunito",
+         "fontWeight": "400",
+         "textAlign": "center"
+        }
+       ]
       }
      ]
     },
     {
-     "id": "0003l",
+     "id": "00041",
      "type": "frame",
      "name": "TabBar",
      "x": 0,
      "y": 0,
      "width": 390,
-     "height": 84,
+     "height": 86,
      "fill": "#FFFFFF",
      "cornerRadius": 0,
      "layout": "horizontal",
@@ -3006,690 +3739,74 @@
      "justify": "center",
      "children": [
       {
-       "id": "00038",
+       "id": "0003O",
        "type": "frame",
        "name": "TbToday",
        "x": 0,
        "y": 0,
        "width": 64,
-       "height": 56,
+       "height": 58,
        "fill": "#FFFFFF",
        "cornerRadius": 14,
        "layout": "vertical",
-       "gap": 2,
+       "gap": 3,
        "alignItems": "center",
        "justify": "center",
        "children": [
-        {
-         "id": "00036",
-         "type": "rectangle",
-         "name": "TbTodayIc",
-         "x": 0,
-         "y": 0,
-         "width": 24,
-         "height": 24,
-         "cornerRadius": 0,
-         "fill": {
-          "type": "image",
-          "url": "./assets/icons/sun.png",
-          "mode": "fill"
-         }
-        },
-        {
-         "id": "00037",
-         "type": "text",
-         "name": "TbTodayLb",
-         "x": 0,
-         "y": 0,
-         "content": "Today",
-         "fill": "#475569",
-         "fontSize": 10,
-         "fontFamily": "Nunito",
-         "fontWeight": "700",
-         "textAlign": "center"
-        }
-       ]
-      },
-      {
-       "id": "0003b",
-       "type": "frame",
-       "name": "TbFocus",
-       "x": 0,
-       "y": 0,
-       "width": 64,
-       "height": 56,
-       "fill": "#FFFFFF",
-       "cornerRadius": 14,
-       "layout": "vertical",
-       "gap": 2,
-       "alignItems": "center",
-       "justify": "center",
-       "children": [
-        {
-         "id": "00039",
-         "type": "rectangle",
-         "name": "TbFocusIc",
-         "x": 0,
-         "y": 0,
-         "width": 24,
-         "height": 24,
-         "cornerRadius": 0,
-         "fill": {
-          "type": "image",
-          "url": "./assets/icons/timer.png",
-          "mode": "fill"
-         }
-        },
-        {
-         "id": "0003a",
-         "type": "text",
-         "name": "TbFocusLb",
-         "x": 0,
-         "y": 0,
-         "content": "Focus",
-         "fill": "#475569",
-         "fontSize": 10,
-         "fontFamily": "Nunito",
-         "fontWeight": "700",
-         "textAlign": "center"
-        }
-       ]
-      },
-      {
-       "id": "0003e",
-       "type": "frame",
-       "name": "TbStuck",
-       "x": 0,
-       "y": 0,
-       "width": 64,
-       "height": 56,
-       "fill": "#FFFFFF",
-       "cornerRadius": 14,
-       "layout": "vertical",
-       "gap": 2,
-       "alignItems": "center",
-       "justify": "center",
-       "children": [
-        {
-         "id": "0003c",
-         "type": "rectangle",
-         "name": "TbStuckIc",
-         "x": 0,
-         "y": 0,
-         "width": 24,
-         "height": 24,
-         "cornerRadius": 0,
-         "fill": {
-          "type": "image",
-          "url": "./assets/icons/snowflake.png",
-          "mode": "fill"
-         }
-        },
-        {
-         "id": "0003d",
-         "type": "text",
-         "name": "TbStuckLb",
-         "x": 0,
-         "y": 0,
-         "content": "Stuck",
-         "fill": "#475569",
-         "fontSize": 10,
-         "fontFamily": "Nunito",
-         "fontWeight": "700",
-         "textAlign": "center"
-        }
-       ]
-      },
-      {
-       "id": "0003h",
-       "type": "frame",
-       "name": "TbGrows",
-       "x": 0,
-       "y": 0,
-       "width": 64,
-       "height": 56,
-       "fill": "#F1F5FD",
-       "cornerRadius": 14,
-       "layout": "vertical",
-       "gap": 2,
-       "alignItems": "center",
-       "justify": "center",
-       "children": [
-        {
-         "id": "0003f",
-         "type": "rectangle",
-         "name": "TbGrowsIc",
-         "x": 0,
-         "y": 0,
-         "width": 24,
-         "height": 24,
-         "cornerRadius": 0,
-         "fill": {
-          "type": "image",
-          "url": "./assets/icons/trophy.png",
-          "mode": "fill"
-         }
-        },
-        {
-         "id": "0003g",
-         "type": "text",
-         "name": "TbGrowsLb",
-         "x": 0,
-         "y": 0,
-         "content": "Grows",
-         "fill": "#2563EB",
-         "fontSize": 10,
-         "fontFamily": "Nunito",
-         "fontWeight": "700",
-         "textAlign": "center"
-        }
-       ]
-      },
-      {
-       "id": "0003k",
-       "type": "frame",
-       "name": "TbYours",
-       "x": 0,
-       "y": 0,
-       "width": 64,
-       "height": 56,
-       "fill": "#FFFFFF",
-       "cornerRadius": 14,
-       "layout": "vertical",
-       "gap": 2,
-       "alignItems": "center",
-       "justify": "center",
-       "children": [
-        {
-         "id": "0003i",
-         "type": "rectangle",
-         "name": "TbYoursIc",
-         "x": 0,
-         "y": 0,
-         "width": 24,
-         "height": 24,
-         "cornerRadius": 0,
-         "fill": {
-          "type": "image",
-          "url": "./assets/icons/settings.png",
-          "mode": "fill"
-         }
-        },
-        {
-         "id": "0003j",
-         "type": "text",
-         "name": "TbYoursLb",
-         "x": 0,
-         "y": 0,
-         "content": "Yours",
-         "fill": "#475569",
-         "fontSize": 10,
-         "fontFamily": "Nunito",
-         "fontWeight": "700",
-         "textAlign": "center"
-        }
-       ]
-      }
-     ]
-    }
-   ]
-  },
-  {
-   "id": "00041",
-   "type": "frame",
-   "name": "06 InboxSort",
-   "x": 2350,
-   "y": 0,
-   "width": 390,
-   "height": 844,
-   "fill": "#F8FAFC",
-   "layout": "vertical",
-   "alignItems": "center",
-   "children": [
-    {
-     "id": "0003K",
-     "type": "frame",
-     "name": "06 InboxSortHd",
-     "x": 0,
-     "y": 0,
-     "width": 390,
-     "height": 64,
-     "fill": "#F8FAFC",
-     "cornerRadius": 0,
-     "layout": "horizontal",
-     "padding": [
-      8,
-      16,
-      8,
-      16
-     ],
-     "gap": 10,
-     "alignItems": "center",
-     "children": [
-      {
-       "id": "0003n",
-       "type": "rectangle",
-       "name": "HdIc",
-       "x": 0,
-       "y": 0,
-       "width": 32,
-       "height": 32,
-       "cornerRadius": 0,
-       "fill": {
-        "type": "image",
-        "url": "./assets/icons/sparkles.png",
-        "mode": "fill"
-       }
-      },
-      {
-       "id": "0003o",
-       "type": "text",
-       "name": "HdTi",
-       "x": 0,
-       "y": 0,
-       "content": "Sort for me",
-       "fill": "#0F172A",
-       "fontSize": 20,
-       "fontFamily": "Fredoka",
-       "fontWeight": "600",
-       "textAlign": "left",
-       "width": 280,
-       "textGrowth": "fixed-width"
-      }
-     ]
-    },
-    {
-     "id": "0003J",
-     "type": "frame",
-     "name": "06 InboxSortBd",
-     "x": 0,
-     "y": 0,
-     "width": 358,
-     "fill": "#F8FAFC",
-     "cornerRadius": 0,
-     "layout": "vertical",
-     "gap": 10,
-     "children": [
-      {
-       "id": "0003p",
-       "type": "text",
-       "name": "STi",
-       "x": 0,
-       "y": 0,
-       "content": "From dump to day",
-       "fill": "#0F172A",
-       "fontSize": 24,
-       "fontFamily": "Fredoka",
-       "fontWeight": "600",
-       "textAlign": "left",
-       "width": 358,
-       "textGrowth": "fixed-width"
-      },
-      {
-       "id": "0003q",
-       "type": "text",
-       "name": "Txt",
-       "x": 0,
-       "y": 0,
-       "content": "rule-based now - magic AI later, same slot",
-       "fill": "#475569",
-       "fontSize": 14,
-       "fontFamily": "SSub",
-       "fontWeight": "400",
-       "textAlign": "left",
-       "width": 358,
-       "textGrowth": "fixed-width"
-      },
-      {
-       "id": "0003v",
-       "type": "frame",
-       "name": "So1",
-       "x": 0,
-       "y": 0,
-       "width": 358,
-       "height": 72,
-       "fill": "#FFFFFF",
-       "cornerRadius": 16,
-       "layout": "horizontal",
-       "padding": 12,
-       "gap": 10,
-       "alignItems": "center",
-       "children": [
-        {
-         "id": "0003r",
-         "type": "rectangle",
-         "name": "So1Ic",
-         "x": 0,
-         "y": 0,
-         "width": 32,
-         "height": 32,
-         "cornerRadius": 0,
-         "fill": {
-          "type": "image",
-          "url": "./assets/icons/zap.png",
-          "mode": "fill"
-         }
-        },
-        {
-         "id": "0003u",
-         "type": "frame",
-         "name": "So1Tx",
-         "x": 0,
-         "y": 0,
-         "width": 288,
-         "height": 52,
-         "fill": "#FFFFFF",
-         "cornerRadius": 0,
-         "layout": "vertical",
-         "gap": 2,
-         "children": [
-          {
-           "id": "0003s",
-           "type": "text",
-           "name": "So1Ti",
-           "x": 0,
-           "y": 0,
-           "content": "Call dentist",
-           "fill": "#0F172A",
-           "fontSize": 15,
-           "fontFamily": "Nunito",
-           "fontWeight": "700",
-           "textAlign": "left"
-          },
-          {
-           "id": "0003t",
-           "type": "text",
-           "name": "So1Sb",
-           "x": 0,
-           "y": 0,
-           "content": "tiny first - 10m - 09:00",
-           "fill": "#475569",
-           "fontSize": 13,
-           "fontFamily": "Nunito",
-           "fontWeight": "400",
-           "textAlign": "left"
-          }
-         ]
-        }
-       ]
-      },
-      {
-       "id": "0003A",
-       "type": "frame",
-       "name": "So2",
-       "x": 0,
-       "y": 0,
-       "width": 358,
-       "height": 72,
-       "fill": "#FFFFFF",
-       "cornerRadius": 16,
-       "layout": "horizontal",
-       "padding": 12,
-       "gap": 10,
-       "alignItems": "center",
-       "children": [
-        {
-         "id": "0003w",
-         "type": "rectangle",
-         "name": "So2Ic",
-         "x": 0,
-         "y": 0,
-         "width": 32,
-         "height": 32,
-         "cornerRadius": 0,
-         "fill": {
-          "type": "image",
-          "url": "./assets/icons/zap.png",
-          "mode": "fill"
-         }
-        },
-        {
-         "id": "0003z",
-         "type": "frame",
-         "name": "So2Tx",
-         "x": 0,
-         "y": 0,
-         "width": 288,
-         "height": 52,
-         "fill": "#FFFFFF",
-         "cornerRadius": 0,
-         "layout": "vertical",
-         "gap": 2,
-         "children": [
-          {
-           "id": "0003x",
-           "type": "text",
-           "name": "So2Ti",
-           "x": 0,
-           "y": 0,
-           "content": "Pay electricity bill",
-           "fill": "#0F172A",
-           "fontSize": 15,
-           "fontFamily": "Nunito",
-           "fontWeight": "700",
-           "textAlign": "left"
-          },
-          {
-           "id": "0003y",
-           "type": "text",
-           "name": "So2Sb",
-           "x": 0,
-           "y": 0,
-           "content": "tiny first - 15m - 09:15",
-           "fill": "#475569",
-           "fontSize": 13,
-           "fontFamily": "Nunito",
-           "fontWeight": "400",
-           "textAlign": "left"
-          }
-         ]
-        }
-       ]
-      },
-      {
-       "id": "0003F",
-       "type": "frame",
-       "name": "So3",
-       "x": 0,
-       "y": 0,
-       "width": 358,
-       "height": 72,
-       "fill": "#FFFFFF",
-       "cornerRadius": 16,
-       "layout": "horizontal",
-       "padding": 12,
-       "gap": 10,
-       "alignItems": "center",
-       "children": [
-        {
-         "id": "0003B",
-         "type": "rectangle",
-         "name": "So3Ic",
-         "x": 0,
-         "y": 0,
-         "width": 32,
-         "height": 32,
-         "cornerRadius": 0,
-         "fill": {
-          "type": "image",
-          "url": "./assets/icons/calendar.png",
-          "mode": "fill"
-         }
-        },
-        {
-         "id": "0003E",
-         "type": "frame",
-         "name": "So3Tx",
-         "x": 0,
-         "y": 0,
-         "width": 288,
-         "height": 52,
-         "fill": "#FFFFFF",
-         "cornerRadius": 0,
-         "layout": "vertical",
-         "gap": 2,
-         "children": [
-          {
-           "id": "0003C",
-           "type": "text",
-           "name": "So3Ti",
-           "x": 0,
-           "y": 0,
-           "content": "Deep work: portfolio hero",
-           "fill": "#0F172A",
-           "fontSize": 15,
-           "fontFamily": "Nunito",
-           "fontWeight": "700",
-           "textAlign": "left"
-          },
-          {
-           "id": "0003D",
-           "type": "text",
-           "name": "So3Sb",
-           "x": 0,
-           "y": 0,
-           "content": "big block - 50m - 10:00",
-           "fill": "#475569",
-           "fontSize": 13,
-           "fontFamily": "Nunito",
-           "fontWeight": "400",
-           "textAlign": "left"
-          }
-         ]
-        }
-       ]
-      },
-      {
-       "id": "0003I",
-       "type": "frame",
-       "name": "SoGo",
-       "x": 0,
-       "y": 0,
-       "width": 326,
-       "height": 54,
-       "fill": "#2563EB",
-       "cornerRadius": 27,
-       "layout": "horizontal",
-       "gap": 8,
-       "alignItems": "center",
-       "justify": "center",
-       "children": [
-        {
-         "id": "0003G",
-         "type": "rectangle",
-         "name": "BtnIc",
-         "x": 0,
-         "y": 0,
-         "width": 22,
-         "height": 22,
-         "cornerRadius": 0,
-         "fill": {
-          "type": "image",
-          "url": "./assets/icons/check.png",
-          "mode": "fill"
-         }
-        },
-        {
-         "id": "0003H",
-         "type": "text",
-         "name": "BtnLb",
-         "x": 0,
-         "y": 0,
-         "content": "Apply to Today",
-         "fill": "#FFFFFF",
-         "fontSize": 15,
-         "fontFamily": "Nunito",
-         "fontWeight": "700",
-         "textAlign": "center"
-        }
-       ]
-      }
-     ]
-    },
-    {
-     "id": "00040",
-     "type": "frame",
-     "name": "TabBar",
-     "x": 0,
-     "y": 0,
-     "width": 390,
-     "height": 84,
-     "fill": "#FFFFFF",
-     "cornerRadius": 0,
-     "layout": "horizontal",
-     "gap": 4,
-     "alignItems": "center",
-     "justify": "center",
-     "children": [
-      {
-       "id": "0003N",
-       "type": "frame",
-       "name": "TbToday",
-       "x": 0,
-       "y": 0,
-       "width": 64,
-       "height": 56,
-       "fill": "#F1F5FD",
-       "cornerRadius": 14,
-       "layout": "vertical",
-       "gap": 2,
-       "alignItems": "center",
-       "justify": "center",
-       "children": [
-        {
-         "id": "0003L",
-         "type": "rectangle",
-         "name": "TbTodayIc",
-         "x": 0,
-         "y": 0,
-         "width": 24,
-         "height": 24,
-         "cornerRadius": 0,
-         "fill": {
-          "type": "image",
-          "url": "./assets/icons/sun.png",
-          "mode": "fill"
-         }
-        },
         {
          "id": "0003M",
+         "type": "rectangle",
+         "name": "TbTodayIc",
+         "x": 0,
+         "y": 0,
+         "width": 24,
+         "height": 24,
+         "cornerRadius": 6,
+         "fill": {
+          "type": "image",
+          "url": "./assets/icons/sun.png",
+          "mode": "fill"
+         }
+        },
+        {
+         "id": "0003N",
          "type": "text",
          "name": "TbTodayLb",
          "x": 0,
          "y": 0,
          "content": "Today",
-         "fill": "#2563EB",
+         "fill": "#475569",
          "fontSize": 10,
          "fontFamily": "Nunito",
-         "fontWeight": "700",
+         "fontWeight": "800",
          "textAlign": "center"
         }
        ]
       },
       {
-       "id": "0003Q",
+       "id": "0003R",
        "type": "frame",
        "name": "TbFocus",
        "x": 0,
        "y": 0,
        "width": 64,
-       "height": 56,
+       "height": 58,
        "fill": "#FFFFFF",
        "cornerRadius": 14,
        "layout": "vertical",
-       "gap": 2,
+       "gap": 3,
        "alignItems": "center",
        "justify": "center",
        "children": [
         {
-         "id": "0003O",
+         "id": "0003P",
          "type": "rectangle",
          "name": "TbFocusIc",
          "x": 0,
          "y": 0,
          "width": 24,
          "height": 24,
-         "cornerRadius": 0,
+         "cornerRadius": 6,
          "fill": {
           "type": "image",
           "url": "./assets/icons/timer.png",
@@ -3697,7 +3814,7 @@
          }
         },
         {
-         "id": "0003P",
+         "id": "0003Q",
          "type": "text",
          "name": "TbFocusLb",
          "x": 0,
@@ -3706,35 +3823,35 @@
          "fill": "#475569",
          "fontSize": 10,
          "fontFamily": "Nunito",
-         "fontWeight": "700",
+         "fontWeight": "800",
          "textAlign": "center"
         }
        ]
       },
       {
-       "id": "0003T",
+       "id": "0003U",
        "type": "frame",
-       "name": "TbStuck",
+       "name": "TbReset",
        "x": 0,
        "y": 0,
        "width": 64,
-       "height": 56,
+       "height": 58,
        "fill": "#FFFFFF",
        "cornerRadius": 14,
        "layout": "vertical",
-       "gap": 2,
+       "gap": 3,
        "alignItems": "center",
        "justify": "center",
        "children": [
         {
-         "id": "0003R",
+         "id": "0003S",
          "type": "rectangle",
-         "name": "TbStuckIc",
+         "name": "TbResetIc",
          "x": 0,
          "y": 0,
          "width": 24,
          "height": 24,
-         "cornerRadius": 0,
+         "cornerRadius": 6,
          "fill": {
           "type": "image",
           "url": "./assets/icons/snowflake.png",
@@ -3742,44 +3859,44 @@
          }
         },
         {
-         "id": "0003S",
+         "id": "0003T",
          "type": "text",
-         "name": "TbStuckLb",
+         "name": "TbResetLb",
          "x": 0,
          "y": 0,
-         "content": "Stuck",
+         "content": "Reset",
          "fill": "#475569",
          "fontSize": 10,
          "fontFamily": "Nunito",
-         "fontWeight": "700",
+         "fontWeight": "800",
          "textAlign": "center"
         }
        ]
       },
       {
-       "id": "0003W",
+       "id": "0003X",
        "type": "frame",
        "name": "TbGrows",
        "x": 0,
        "y": 0,
        "width": 64,
-       "height": 56,
-       "fill": "#FFFFFF",
+       "height": 58,
+       "fill": "#EFF4FF",
        "cornerRadius": 14,
        "layout": "vertical",
-       "gap": 2,
+       "gap": 3,
        "alignItems": "center",
        "justify": "center",
        "children": [
         {
-         "id": "0003U",
+         "id": "0003V",
          "type": "rectangle",
          "name": "TbGrowsIc",
          "x": 0,
          "y": 0,
          "width": 24,
          "height": 24,
-         "cornerRadius": 0,
+         "cornerRadius": 6,
          "fill": {
           "type": "image",
           "url": "./assets/icons/trophy.png",
@@ -3787,44 +3904,44 @@
          }
         },
         {
-         "id": "0003V",
+         "id": "0003W",
          "type": "text",
          "name": "TbGrowsLb",
          "x": 0,
          "y": 0,
          "content": "Grows",
-         "fill": "#475569",
+         "fill": "#2563EB",
          "fontSize": 10,
          "fontFamily": "Nunito",
-         "fontWeight": "700",
+         "fontWeight": "800",
          "textAlign": "center"
         }
        ]
       },
       {
-       "id": "0003Z",
+       "id": "00040",
        "type": "frame",
        "name": "TbYours",
        "x": 0,
        "y": 0,
        "width": 64,
-       "height": 56,
+       "height": 58,
        "fill": "#FFFFFF",
        "cornerRadius": 14,
        "layout": "vertical",
-       "gap": 2,
+       "gap": 3,
        "alignItems": "center",
        "justify": "center",
        "children": [
         {
-         "id": "0003X",
+         "id": "0003Y",
          "type": "rectangle",
          "name": "TbYoursIc",
          "x": 0,
          "y": 0,
          "width": 24,
          "height": 24,
-         "cornerRadius": 0,
+         "cornerRadius": 6,
          "fill": {
           "type": "image",
           "url": "./assets/icons/settings.png",
@@ -3832,7 +3949,7 @@
          }
         },
         {
-         "id": "0003Y",
+         "id": "0003Z",
          "type": "text",
          "name": "TbYoursLb",
          "x": 0,
@@ -3841,7 +3958,7 @@
          "fill": "#475569",
          "fontSize": 10,
          "fontFamily": "Nunito",
-         "fontWeight": "700",
+         "fontWeight": "800",
          "textAlign": "center"
         }
        ]
@@ -3853,24 +3970,24 @@
   {
    "id": "0004L",
    "type": "frame",
-   "name": "07 Yours",
-   "x": 2820,
+   "name": "06 Sort",
+   "x": 2350,
    "y": 0,
    "width": 390,
    "height": 844,
-   "fill": "#F8FAFC",
+   "fill": "#F6F8FC",
    "layout": "vertical",
    "alignItems": "center",
    "children": [
     {
-     "id": "0004u",
+     "id": "00047",
      "type": "frame",
-     "name": "07 YoursHd",
+     "name": "H6Bar",
      "x": 0,
      "y": 0,
      "width": 390,
-     "height": 64,
-     "fill": "#F8FAFC",
+     "height": 76,
+     "fill": "#F6F8FC",
      "cornerRadius": 0,
      "layout": "horizontal",
      "padding": [
@@ -3883,162 +4000,135 @@
      "alignItems": "center",
      "children": [
       {
-       "id": "00042",
+       "id": "00043",
        "type": "rectangle",
-       "name": "HdIc",
+       "name": "H6Ic",
        "x": 0,
        "y": 0,
-       "width": 32,
-       "height": 32,
-       "cornerRadius": 0,
+       "width": 40,
+       "height": 40,
+       "cornerRadius": 13,
        "fill": {
         "type": "image",
-        "url": "./assets/icons/settings.png",
+        "url": "./assets/icons/sparkles.png",
         "mode": "fill"
        }
       },
       {
-       "id": "00043",
-       "type": "text",
-       "name": "HdTi",
-       "x": 0,
-       "y": 0,
-       "content": "Settings",
-       "fill": "#0F172A",
-       "fontSize": 20,
-       "fontFamily": "Fredoka",
-       "fontWeight": "600",
-       "textAlign": "left",
-       "width": 280,
-       "textGrowth": "fixed-width"
-      }
-     ]
-    },
-    {
-     "id": "0004t",
-     "type": "frame",
-     "name": "07 YoursBd",
-     "x": 0,
-     "y": 0,
-     "width": 358,
-     "fill": "#F8FAFC",
-     "cornerRadius": 0,
-     "layout": "vertical",
-     "gap": 10,
-     "children": [
-      {
-       "id": "00048",
+       "id": "00046",
        "type": "frame",
-       "name": "ProBx",
+       "name": "H6Tx",
        "x": 0,
        "y": 0,
-       "width": 358,
-       "height": 120,
-       "fill": "#FFFFFF",
-       "cornerRadius": 18,
+       "width": 300,
+       "height": 56,
+       "fill": "#F6F8FC",
+       "cornerRadius": 0,
        "layout": "vertical",
-       "padding": 14,
-       "gap": 8,
+       "gap": 1,
        "children": [
         {
          "id": "00044",
          "type": "text",
-         "name": "Txt",
+         "name": "H6Ti",
          "x": 0,
          "y": 0,
-         "content": "Puduu Pro - $6.99/mo",
+         "content": "From dump to day",
          "fill": "#0F172A",
-         "fontSize": 17,
-         "fontFamily": "ProT",
-         "fontWeight": "700",
+         "fontSize": 20,
+         "fontFamily": "Fredoka",
+         "fontWeight": "600",
          "textAlign": "left",
-         "width": 326,
+         "width": 300,
          "textGrowth": "fixed-width"
         },
         {
          "id": "00045",
          "type": "text",
-         "name": "Txt",
+         "name": "H6Sb",
          "x": 0,
          "y": 0,
-         "content": "Unlimited rescue - magic AI (soon) - widgets - yearly $49.99",
+         "content": "Rule-based now - assisted later, same slot.",
          "fill": "#475569",
          "fontSize": 13,
-         "fontFamily": "ProS",
+         "fontFamily": "Nunito",
          "fontWeight": "400",
          "textAlign": "left",
-         "width": 326,
+         "width": 300,
          "textGrowth": "fixed-width"
-        },
-        {
-         "id": "00047",
-         "type": "frame",
-         "name": "ProBtn",
-         "x": 0,
-         "y": 0,
-         "width": 326,
-         "height": 48,
-         "fill": "#EA580C",
-         "cornerRadius": 24,
-         "layout": "horizontal",
-         "alignItems": "center",
-         "justify": "center",
-         "children": [
-          {
-           "id": "00046",
-           "type": "text",
-           "name": "ProLb",
-           "x": 0,
-           "y": 0,
-           "content": "Try 7 days free",
-           "fill": "#FFFFFF",
-           "fontSize": 15,
-           "fontFamily": "Nunito",
-           "fontWeight": "700",
-           "textAlign": "center"
-          }
-         ]
         }
        ]
-      },
+      }
+     ]
+    },
+    {
+     "id": "0004u",
+     "type": "frame",
+     "name": "06 SortBd",
+     "x": 0,
+     "y": 0,
+     "width": 358,
+     "fill": "#F6F8FC",
+     "cornerRadius": 0,
+     "layout": "vertical",
+     "gap": 10,
+     "children": [
       {
        "id": "0004d",
        "type": "frame",
-       "name": "Sr1",
+       "name": "S1",
        "x": 0,
        "y": 0,
        "width": 358,
-       "height": 72,
+       "height": 74,
        "fill": "#FFFFFF",
        "cornerRadius": 16,
        "layout": "horizontal",
        "padding": 12,
        "gap": 10,
        "alignItems": "center",
+       "stroke": "#2563EB",
+       "strokeWidth": 2,
        "children": [
         {
          "id": "00049",
-         "type": "rectangle",
-         "name": "Sr1Ic",
+         "type": "frame",
+         "name": "S1Tile",
          "x": 0,
          "y": 0,
-         "width": 32,
-         "height": 32,
-         "cornerRadius": 0,
-         "fill": {
-          "type": "image",
-          "url": "./assets/icons/bell.png",
-          "mode": "fill"
-         }
+         "width": 44,
+         "height": 44,
+         "fill": "#EFF4FF",
+         "cornerRadius": 14,
+         "layout": "none",
+         "alignItems": "center",
+         "justify": "center",
+         "children": [
+          {
+           "id": "00048",
+           "type": "rectangle",
+           "name": "S1Ic",
+           "x": 0,
+           "y": 0,
+           "width": 26,
+           "height": 26,
+           "cornerRadius": 4,
+           "fill": {
+            "type": "image",
+            "url": "./assets/icons/zap.png",
+            "mode": "fill"
+           }
+          }
+         ]
         },
         {
          "id": "0004c",
          "type": "frame",
-         "name": "Sr1Tx",
+         "name": "S1Tx",
          "x": 0,
          "y": 0,
-         "width": 288,
-         "height": 52,
+         "width": 272,
+         "height": 54,
          "fill": "#FFFFFF",
          "cornerRadius": 0,
          "layout": "vertical",
@@ -4047,41 +4137,45 @@
           {
            "id": "0004a",
            "type": "text",
-           "name": "Sr1Ti",
+           "name": "S1Ti",
            "x": 0,
            "y": 0,
-           "content": "Gentle nudges",
+           "content": "Call dentist",
            "fill": "#0F172A",
            "fontSize": 15,
            "fontFamily": "Nunito",
-           "fontWeight": "700",
-           "textAlign": "left"
+           "fontWeight": "800",
+           "textAlign": "left",
+           "width": 272,
+           "textGrowth": "fixed-width"
           },
           {
            "id": "0004b",
            "type": "text",
-           "name": "Sr1Sb",
+           "name": "S1Sb",
            "x": 0,
            "y": 0,
-           "content": "Max 6/day - quiet 22:00-07:00 ON",
+           "content": "Tiny first - 10 min - placed 09:00",
            "fill": "#475569",
-           "fontSize": 13,
+           "fontSize": 12,
            "fontFamily": "Nunito",
            "fontWeight": "400",
-           "textAlign": "left"
+           "textAlign": "left",
+           "width": 272,
+           "textGrowth": "fixed-width"
           }
          ]
         }
        ]
       },
       {
-       "id": "0004i",
+       "id": "0004j",
        "type": "frame",
-       "name": "Sr2",
+       "name": "S2",
        "x": 0,
        "y": 0,
        "width": 358,
-       "height": 72,
+       "height": 74,
        "fill": "#FFFFFF",
        "cornerRadius": 16,
        "layout": "horizontal",
@@ -4090,71 +4184,91 @@
        "alignItems": "center",
        "children": [
         {
-         "id": "0004e",
-         "type": "rectangle",
-         "name": "Sr2Ic",
+         "id": "0004f",
+         "type": "frame",
+         "name": "S2Tile",
          "x": 0,
          "y": 0,
-         "width": 32,
-         "height": 32,
-         "cornerRadius": 0,
-         "fill": {
-          "type": "image",
-          "url": "./assets/icons/volume-2.png",
-          "mode": "fill"
-         }
+         "width": 44,
+         "height": 44,
+         "fill": "#EFF4FF",
+         "cornerRadius": 14,
+         "layout": "none",
+         "alignItems": "center",
+         "justify": "center",
+         "children": [
+          {
+           "id": "0004e",
+           "type": "rectangle",
+           "name": "S2Ic",
+           "x": 0,
+           "y": 0,
+           "width": 26,
+           "height": 26,
+           "cornerRadius": 4,
+           "fill": {
+            "type": "image",
+            "url": "./assets/icons/zap.png",
+            "mode": "fill"
+           }
+          }
+         ]
         },
         {
-         "id": "0004h",
+         "id": "0004i",
          "type": "frame",
-         "name": "Sr2Tx",
+         "name": "S2Tx",
          "x": 0,
          "y": 0,
-         "width": 288,
-         "height": 52,
+         "width": 272,
+         "height": 54,
          "fill": "#FFFFFF",
          "cornerRadius": 0,
          "layout": "vertical",
          "gap": 2,
          "children": [
-          {
-           "id": "0004f",
-           "type": "text",
-           "name": "Sr2Ti",
-           "x": 0,
-           "y": 0,
-           "content": "Sounds & haptics",
-           "fill": "#0F172A",
-           "fontSize": 15,
-           "fontFamily": "Nunito",
-           "fontWeight": "700",
-           "textAlign": "left"
-          },
           {
            "id": "0004g",
            "type": "text",
-           "name": "Sr2Sb",
+           "name": "S2Ti",
            "x": 0,
            "y": 0,
-           "content": "Calm chime - soft vibration ON",
+           "content": "Pay electricity bill",
+           "fill": "#0F172A",
+           "fontSize": 15,
+           "fontFamily": "Nunito",
+           "fontWeight": "800",
+           "textAlign": "left",
+           "width": 272,
+           "textGrowth": "fixed-width"
+          },
+          {
+           "id": "0004h",
+           "type": "text",
+           "name": "S2Sb",
+           "x": 0,
+           "y": 0,
+           "content": "Tiny first - 15 min - placed 09:15",
            "fill": "#475569",
-           "fontSize": 13,
+           "fontSize": 12,
            "fontFamily": "Nunito",
            "fontWeight": "400",
-           "textAlign": "left"
+           "textAlign": "left",
+           "width": 272,
+           "textGrowth": "fixed-width"
           }
          ]
         }
        ]
       },
       {
-       "id": "0004n",
+       "id": "0004p",
        "type": "frame",
-       "name": "Sr3",
+       "name": "S3",
        "x": 0,
        "y": 0,
        "width": 358,
-       "height": 72,
+       "height": 74,
        "fill": "#FFFFFF",
        "cornerRadius": 16,
        "layout": "horizontal",
@@ -4163,133 +4277,142 @@
        "alignItems": "center",
        "children": [
         {
-         "id": "0004j",
-         "type": "rectangle",
-         "name": "Sr3Ic",
-         "x": 0,
-         "y": 0,
-         "width": 32,
-         "height": 32,
-         "cornerRadius": 0,
-         "fill": {
-          "type": "image",
-          "url": "./assets/icons/text.png",
-          "mode": "fill"
-         }
-        },
-        {
-         "id": "0004m",
+         "id": "0004l",
          "type": "frame",
-         "name": "Sr3Tx",
+         "name": "S3Tile",
          "x": 0,
          "y": 0,
-         "width": 288,
-         "height": 52,
-         "fill": "#FFFFFF",
-         "cornerRadius": 0,
-         "layout": "vertical",
-         "gap": 2,
+         "width": 44,
+         "height": 44,
+         "fill": "#E0F2F7",
+         "cornerRadius": 14,
+         "layout": "none",
+         "alignItems": "center",
+         "justify": "center",
          "children": [
           {
            "id": "0004k",
-           "type": "text",
-           "name": "Sr3Ti",
+           "type": "rectangle",
+           "name": "S3Ic",
            "x": 0,
            "y": 0,
-           "content": "Text size",
-           "fill": "#0F172A",
-           "fontSize": 15,
-           "fontFamily": "Nunito",
-           "fontWeight": "700",
-           "textAlign": "left"
-          },
-          {
-           "id": "0004l",
-           "type": "text",
-           "name": "Sr3Sb",
-           "x": 0,
-           "y": 0,
-           "content": "Default - Large - XL spacing",
-           "fill": "#475569",
-           "fontSize": 13,
-           "fontFamily": "Nunito",
-           "fontWeight": "400",
-           "textAlign": "left"
+           "width": 26,
+           "height": 26,
+           "cornerRadius": 4,
+           "fill": {
+            "type": "image",
+            "url": "./assets/icons/calendar.png",
+            "mode": "fill"
+           }
           }
          ]
-        }
-       ]
-      },
-      {
-       "id": "0004s",
-       "type": "frame",
-       "name": "Sr4",
-       "x": 0,
-       "y": 0,
-       "width": 358,
-       "height": 72,
-       "fill": "#FFFFFF",
-       "cornerRadius": 16,
-       "layout": "horizontal",
-       "padding": 12,
-       "gap": 10,
-       "alignItems": "center",
-       "children": [
-        {
-         "id": "0004o",
-         "type": "rectangle",
-         "name": "Sr4Ic",
-         "x": 0,
-         "y": 0,
-         "width": 32,
-         "height": 32,
-         "cornerRadius": 0,
-         "fill": {
-          "type": "image",
-          "url": "./assets/icons/log-out.png",
-          "mode": "fill"
-         }
         },
         {
-         "id": "0004r",
+         "id": "0004o",
          "type": "frame",
-         "name": "Sr4Tx",
+         "name": "S3Tx",
          "x": 0,
          "y": 0,
-         "width": 288,
-         "height": 52,
+         "width": 272,
+         "height": 54,
          "fill": "#FFFFFF",
          "cornerRadius": 0,
          "layout": "vertical",
          "gap": 2,
          "children": [
           {
-           "id": "0004p",
+           "id": "0004m",
            "type": "text",
-           "name": "Sr4Ti",
+           "name": "S3Ti",
            "x": 0,
            "y": 0,
-           "content": "Account",
+           "content": "Deep work: portfolio hero",
            "fill": "#0F172A",
            "fontSize": 15,
            "fontFamily": "Nunito",
-           "fontWeight": "700",
-           "textAlign": "left"
+           "fontWeight": "800",
+           "textAlign": "left",
+           "width": 272,
+           "textGrowth": "fixed-width"
           },
           {
-           "id": "0004q",
+           "id": "0004n",
            "type": "text",
-           "name": "Sr4Sb",
+           "name": "S3Sb",
            "x": 0,
            "y": 0,
-           "content": "you@puduu.app - Sign out",
+           "content": "Big block - 50 min - placed 10:00",
            "fill": "#475569",
-           "fontSize": 13,
+           "fontSize": 12,
            "fontFamily": "Nunito",
            "fontWeight": "400",
-           "textAlign": "left"
+           "textAlign": "left",
+           "width": 272,
+           "textGrowth": "fixed-width"
           }
          ]
+        }
+       ]
+      },
+      {
+       "id": "0004r",
+       "type": "frame",
+       "name": "SoGo",
+       "x": 0,
+       "y": 0,
+       "width": 326,
+       "height": 54,
+       "fill": "#2563EB",
+       "cornerRadius": 27,
+       "layout": "horizontal",
+       "alignItems": "center",
+       "justify": "center",
+       "children": [
+        {
+         "id": "0004q",
+         "type": "text",
+         "name": "SoGoLb",
+         "x": 0,
+         "y": 0,
+         "content": "Apply to Today",
+         "fill": "#FFFFFF",
+         "fontSize": 15,
+         "fontFamily": "Nunito",
+         "fontWeight": "800",
+         "textAlign": "center"
+        }
+       ]
+      },
+      {
+       "id": "0004t",
+       "type": "frame",
+       "name": "SoNt",
+       "x": 0,
+       "y": 0,
+       "width": 358,
+       "height": 60,
+       "fill": "#FFFFFF",
+       "cornerRadius": 14,
+       "layout": "vertical",
+       "padding": 12,
+       "gap": 4,
+       "stroke": "#E2E8F0",
+       "strokeWidth": 1,
+       "children": [
+        {
+         "id": "0004s",
+         "type": "text",
+         "name": "SoNtT",
+         "x": 0,
+         "y": 0,
+         "content": "Placement rules: urgent words first, tiny tasks first, low energy avoids big blocks.",
+         "fill": "#475569",
+         "fontSize": 12,
+         "fontFamily": "Nunito",
+         "fontWeight": "400",
+         "textAlign": "left",
+         "width": 326,
+         "textGrowth": "fixed-width"
         }
        ]
       }
@@ -4302,7 +4425,7 @@
      "x": 0,
      "y": 0,
      "width": 390,
-     "height": 84,
+     "height": 86,
      "fill": "#FFFFFF",
      "cornerRadius": 0,
      "layout": "horizontal",
@@ -4317,11 +4440,11 @@
        "x": 0,
        "y": 0,
        "width": 64,
-       "height": 56,
-       "fill": "#FFFFFF",
+       "height": 58,
+       "fill": "#EFF4FF",
        "cornerRadius": 14,
        "layout": "vertical",
-       "gap": 2,
+       "gap": 3,
        "alignItems": "center",
        "justify": "center",
        "children": [
@@ -4333,7 +4456,7 @@
          "y": 0,
          "width": 24,
          "height": 24,
-         "cornerRadius": 0,
+         "cornerRadius": 6,
          "fill": {
           "type": "image",
           "url": "./assets/icons/sun.png",
@@ -4347,10 +4470,10 @@
          "x": 0,
          "y": 0,
          "content": "Today",
-         "fill": "#475569",
+         "fill": "#2563EB",
          "fontSize": 10,
          "fontFamily": "Nunito",
-         "fontWeight": "700",
+         "fontWeight": "800",
          "textAlign": "center"
         }
        ]
@@ -4362,11 +4485,11 @@
        "x": 0,
        "y": 0,
        "width": 64,
-       "height": 56,
+       "height": 58,
        "fill": "#FFFFFF",
        "cornerRadius": 14,
        "layout": "vertical",
-       "gap": 2,
+       "gap": 3,
        "alignItems": "center",
        "justify": "center",
        "children": [
@@ -4378,7 +4501,7 @@
          "y": 0,
          "width": 24,
          "height": 24,
-         "cornerRadius": 0,
+         "cornerRadius": 6,
          "fill": {
           "type": "image",
           "url": "./assets/icons/timer.png",
@@ -4395,7 +4518,7 @@
          "fill": "#475569",
          "fontSize": 10,
          "fontFamily": "Nunito",
-         "fontWeight": "700",
+         "fontWeight": "800",
          "textAlign": "center"
         }
        ]
@@ -4403,27 +4526,27 @@
       {
        "id": "0004D",
        "type": "frame",
-       "name": "TbStuck",
+       "name": "TbReset",
        "x": 0,
        "y": 0,
        "width": 64,
-       "height": 56,
+       "height": 58,
        "fill": "#FFFFFF",
        "cornerRadius": 14,
        "layout": "vertical",
-       "gap": 2,
+       "gap": 3,
        "alignItems": "center",
        "justify": "center",
        "children": [
         {
          "id": "0004B",
          "type": "rectangle",
-         "name": "TbStuckIc",
+         "name": "TbResetIc",
          "x": 0,
          "y": 0,
          "width": 24,
          "height": 24,
-         "cornerRadius": 0,
+         "cornerRadius": 6,
          "fill": {
           "type": "image",
           "url": "./assets/icons/snowflake.png",
@@ -4433,14 +4556,14 @@
         {
          "id": "0004C",
          "type": "text",
-         "name": "TbStuckLb",
+         "name": "TbResetLb",
          "x": 0,
          "y": 0,
-         "content": "Stuck",
+         "content": "Reset",
          "fill": "#475569",
          "fontSize": 10,
          "fontFamily": "Nunito",
-         "fontWeight": "700",
+         "fontWeight": "800",
          "textAlign": "center"
         }
        ]
@@ -4452,11 +4575,11 @@
        "x": 0,
        "y": 0,
        "width": 64,
-       "height": 56,
+       "height": 58,
        "fill": "#FFFFFF",
        "cornerRadius": 14,
        "layout": "vertical",
-       "gap": 2,
+       "gap": 3,
        "alignItems": "center",
        "justify": "center",
        "children": [
@@ -4468,7 +4591,7 @@
          "y": 0,
          "width": 24,
          "height": 24,
-         "cornerRadius": 0,
+         "cornerRadius": 6,
          "fill": {
           "type": "image",
           "url": "./assets/icons/trophy.png",
@@ -4485,7 +4608,7 @@
          "fill": "#475569",
          "fontSize": 10,
          "fontFamily": "Nunito",
-         "fontWeight": "700",
+         "fontWeight": "800",
          "textAlign": "center"
         }
        ]
@@ -4497,11 +4620,11 @@
        "x": 0,
        "y": 0,
        "width": 64,
-       "height": 56,
-       "fill": "#F1F5FD",
+       "height": 58,
+       "fill": "#FFFFFF",
        "cornerRadius": 14,
        "layout": "vertical",
-       "gap": 2,
+       "gap": 3,
        "alignItems": "center",
        "justify": "center",
        "children": [
@@ -4513,7 +4636,7 @@
          "y": 0,
          "width": 24,
          "height": 24,
-         "cornerRadius": 0,
+         "cornerRadius": 6,
          "fill": {
           "type": "image",
           "url": "./assets/icons/settings.png",
@@ -4527,10 +4650,10 @@
          "x": 0,
          "y": 0,
          "content": "Yours",
-         "fill": "#2563EB",
+         "fill": "#475569",
          "fontSize": 10,
          "fontFamily": "Nunito",
-         "fontWeight": "700",
+         "fontWeight": "800",
          "textAlign": "center"
         }
        ]
@@ -4540,7 +4663,854 @@
    ]
   },
   {
-   "id": "0004M",
+   "id": "0005E",
+   "type": "frame",
+   "name": "07 Yours",
+   "x": 2820,
+   "y": 0,
+   "width": 390,
+   "height": 844,
+   "fill": "#F6F8FC",
+   "layout": "vertical",
+   "alignItems": "center",
+   "children": [
+    {
+     "id": "0004Q",
+     "type": "frame",
+     "name": "H7Bar",
+     "x": 0,
+     "y": 0,
+     "width": 390,
+     "height": 76,
+     "fill": "#F6F8FC",
+     "cornerRadius": 0,
+     "layout": "horizontal",
+     "padding": [
+      8,
+      16,
+      8,
+      16
+     ],
+     "gap": 10,
+     "alignItems": "center",
+     "children": [
+      {
+       "id": "0004M",
+       "type": "rectangle",
+       "name": "H7Ic",
+       "x": 0,
+       "y": 0,
+       "width": 40,
+       "height": 40,
+       "cornerRadius": 13,
+       "fill": {
+        "type": "image",
+        "url": "./assets/icons/settings.png",
+        "mode": "fill"
+       }
+      },
+      {
+       "id": "0004P",
+       "type": "frame",
+       "name": "H7Tx",
+       "x": 0,
+       "y": 0,
+       "width": 300,
+       "height": 56,
+       "fill": "#F6F8FC",
+       "cornerRadius": 0,
+       "layout": "vertical",
+       "gap": 1,
+       "children": [
+        {
+         "id": "0004N",
+         "type": "text",
+         "name": "H7Ti",
+         "x": 0,
+         "y": 0,
+         "content": "Settings",
+         "fill": "#0F172A",
+         "fontSize": 20,
+         "fontFamily": "Fredoka",
+         "fontWeight": "600",
+         "textAlign": "left",
+         "width": 300,
+         "textGrowth": "fixed-width"
+        },
+        {
+         "id": "0004O",
+         "type": "text",
+         "name": "H7Sb",
+         "x": 0,
+         "y": 0,
+         "content": "Make Puduu yours.",
+         "fill": "#475569",
+         "fontSize": 13,
+         "fontFamily": "Nunito",
+         "fontWeight": "400",
+         "textAlign": "left",
+         "width": 300,
+         "textGrowth": "fixed-width"
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "id": "0005n",
+     "type": "frame",
+     "name": "07 YoursBd",
+     "x": 0,
+     "y": 0,
+     "width": 358,
+     "fill": "#F6F8FC",
+     "cornerRadius": 0,
+     "layout": "vertical",
+     "gap": 10,
+     "children": [
+      {
+       "id": "0004Y",
+       "type": "frame",
+       "name": "ProBx",
+       "x": 0,
+       "y": 0,
+       "width": 358,
+       "height": 168,
+       "fill": "#FFFFFF",
+       "cornerRadius": 18,
+       "layout": "vertical",
+       "padding": 14,
+       "gap": 10,
+       "stroke": "#2563EB",
+       "strokeWidth": 2,
+       "children": [
+        {
+         "id": "0004V",
+         "type": "frame",
+         "name": "ProTx",
+         "x": 0,
+         "y": 0,
+         "width": 326,
+         "height": 60,
+         "fill": "#FFFFFF",
+         "cornerRadius": 0,
+         "layout": "horizontal",
+         "gap": 10,
+         "alignItems": "center",
+         "children": [
+          {
+           "id": "0004R",
+           "type": "rectangle",
+           "name": "ProIc",
+           "x": 0,
+           "y": 0,
+           "width": 40,
+           "height": 40,
+           "cornerRadius": 12,
+           "fill": {
+            "type": "image",
+            "url": "./assets/icons/crown.png",
+            "mode": "fill"
+           }
+          },
+          {
+           "id": "0004U",
+           "type": "frame",
+           "name": "ProTx2",
+           "x": 0,
+           "y": 0,
+           "width": 270,
+           "height": 56,
+           "fill": "#FFFFFF",
+           "cornerRadius": 0,
+           "layout": "vertical",
+           "gap": 2,
+           "children": [
+            {
+             "id": "0004S",
+             "type": "text",
+             "name": "ProT",
+             "x": 0,
+             "y": 0,
+             "content": "Puduu Pro - $6.99/mo",
+             "fill": "#0F172A",
+             "fontSize": 17,
+             "fontFamily": "Nunito",
+             "fontWeight": "800",
+             "textAlign": "left",
+             "width": 270,
+             "textGrowth": "fixed-width"
+            },
+            {
+             "id": "0004T",
+             "type": "text",
+             "name": "ProS",
+             "x": 0,
+             "y": 0,
+             "content": "Unlimited resets - widgets - yearly $49.99.",
+             "fill": "#475569",
+             "fontSize": 12,
+             "fontFamily": "Nunito",
+             "fontWeight": "400",
+             "textAlign": "left",
+             "width": 270,
+             "textGrowth": "fixed-width"
+            }
+           ]
+          }
+         ]
+        },
+        {
+         "id": "0004X",
+         "type": "frame",
+         "name": "ProGo",
+         "x": 0,
+         "y": 0,
+         "width": 326,
+         "height": 54,
+         "fill": "#EA580C",
+         "cornerRadius": 27,
+         "layout": "horizontal",
+         "alignItems": "center",
+         "justify": "center",
+         "children": [
+          {
+           "id": "0004W",
+           "type": "text",
+           "name": "ProGoLb",
+           "x": 0,
+           "y": 0,
+           "content": "Try 7 days free",
+           "fill": "#FFFFFF",
+           "fontSize": 15,
+           "fontFamily": "Nunito",
+           "fontWeight": "800",
+           "textAlign": "center"
+          }
+         ]
+        }
+       ]
+      },
+      {
+       "id": "00054",
+       "type": "frame",
+       "name": "Y1",
+       "x": 0,
+       "y": 0,
+       "width": 358,
+       "height": 74,
+       "fill": "#FFFFFF",
+       "cornerRadius": 16,
+       "layout": "horizontal",
+       "padding": 12,
+       "gap": 10,
+       "alignItems": "center",
+       "children": [
+        {
+         "id": "00050",
+         "type": "frame",
+         "name": "Y1Tile",
+         "x": 0,
+         "y": 0,
+         "width": 44,
+         "height": 44,
+         "fill": "#FFF1E7",
+         "cornerRadius": 14,
+         "layout": "none",
+         "alignItems": "center",
+         "justify": "center",
+         "children": [
+          {
+           "id": "0004Z",
+           "type": "rectangle",
+           "name": "Y1Ic",
+           "x": 0,
+           "y": 0,
+           "width": 26,
+           "height": 26,
+           "cornerRadius": 4,
+           "fill": {
+            "type": "image",
+            "url": "./assets/icons/bell.png",
+            "mode": "fill"
+           }
+          }
+         ]
+        },
+        {
+         "id": "00053",
+         "type": "frame",
+         "name": "Y1Tx",
+         "x": 0,
+         "y": 0,
+         "width": 272,
+         "height": 54,
+         "fill": "#FFFFFF",
+         "cornerRadius": 0,
+         "layout": "vertical",
+         "gap": 2,
+         "children": [
+          {
+           "id": "00051",
+           "type": "text",
+           "name": "Y1Ti",
+           "x": 0,
+           "y": 0,
+           "content": "Gentle nudges",
+           "fill": "#0F172A",
+           "fontSize": 15,
+           "fontFamily": "Nunito",
+           "fontWeight": "800",
+           "textAlign": "left",
+           "width": 272,
+           "textGrowth": "fixed-width"
+          },
+          {
+           "id": "00052",
+           "type": "text",
+           "name": "Y1Sb",
+           "x": 0,
+           "y": 0,
+           "content": "Max 6 per day - quiet 22:00-07:00 on",
+           "fill": "#475569",
+           "fontSize": 12,
+           "fontFamily": "Nunito",
+           "fontWeight": "400",
+           "textAlign": "left",
+           "width": 272,
+           "textGrowth": "fixed-width"
+          }
+         ]
+        }
+       ]
+      },
+      {
+       "id": "0005a",
+       "type": "frame",
+       "name": "Y2",
+       "x": 0,
+       "y": 0,
+       "width": 358,
+       "height": 74,
+       "fill": "#FFFFFF",
+       "cornerRadius": 16,
+       "layout": "horizontal",
+       "padding": 12,
+       "gap": 10,
+       "alignItems": "center",
+       "children": [
+        {
+         "id": "00056",
+         "type": "frame",
+         "name": "Y2Tile",
+         "x": 0,
+         "y": 0,
+         "width": 44,
+         "height": 44,
+         "fill": "#E0F2F7",
+         "cornerRadius": 14,
+         "layout": "none",
+         "alignItems": "center",
+         "justify": "center",
+         "children": [
+          {
+           "id": "00055",
+           "type": "rectangle",
+           "name": "Y2Ic",
+           "x": 0,
+           "y": 0,
+           "width": 26,
+           "height": 26,
+           "cornerRadius": 4,
+           "fill": {
+            "type": "image",
+            "url": "./assets/icons/volume-2.png",
+            "mode": "fill"
+           }
+          }
+         ]
+        },
+        {
+         "id": "00059",
+         "type": "frame",
+         "name": "Y2Tx",
+         "x": 0,
+         "y": 0,
+         "width": 272,
+         "height": 54,
+         "fill": "#FFFFFF",
+         "cornerRadius": 0,
+         "layout": "vertical",
+         "gap": 2,
+         "children": [
+          {
+           "id": "00057",
+           "type": "text",
+           "name": "Y2Ti",
+           "x": 0,
+           "y": 0,
+           "content": "Sounds and haptics",
+           "fill": "#0F172A",
+           "fontSize": 15,
+           "fontFamily": "Nunito",
+           "fontWeight": "800",
+           "textAlign": "left",
+           "width": 272,
+           "textGrowth": "fixed-width"
+          },
+          {
+           "id": "00058",
+           "type": "text",
+           "name": "Y2Sb",
+           "x": 0,
+           "y": 0,
+           "content": "Calm chime - soft vibration on",
+           "fill": "#475569",
+           "fontSize": 12,
+           "fontFamily": "Nunito",
+           "fontWeight": "400",
+           "textAlign": "left",
+           "width": 272,
+           "textGrowth": "fixed-width"
+          }
+         ]
+        }
+       ]
+      },
+      {
+       "id": "0005g",
+       "type": "frame",
+       "name": "Y3",
+       "x": 0,
+       "y": 0,
+       "width": 358,
+       "height": 74,
+       "fill": "#FFFFFF",
+       "cornerRadius": 16,
+       "layout": "horizontal",
+       "padding": 12,
+       "gap": 10,
+       "alignItems": "center",
+       "children": [
+        {
+         "id": "0005c",
+         "type": "frame",
+         "name": "Y3Tile",
+         "x": 0,
+         "y": 0,
+         "width": 44,
+         "height": 44,
+         "fill": "#FFFFFF",
+         "cornerRadius": 14,
+         "layout": "none",
+         "alignItems": "center",
+         "justify": "center",
+         "children": [
+          {
+           "id": "0005b",
+           "type": "rectangle",
+           "name": "Y3Ic",
+           "x": 0,
+           "y": 0,
+           "width": 26,
+           "height": 26,
+           "cornerRadius": 4,
+           "fill": {
+            "type": "image",
+            "url": "./assets/icons/text.png",
+            "mode": "fill"
+           }
+          }
+         ]
+        },
+        {
+         "id": "0005f",
+         "type": "frame",
+         "name": "Y3Tx",
+         "x": 0,
+         "y": 0,
+         "width": 272,
+         "height": 54,
+         "fill": "#FFFFFF",
+         "cornerRadius": 0,
+         "layout": "vertical",
+         "gap": 2,
+         "children": [
+          {
+           "id": "0005d",
+           "type": "text",
+           "name": "Y3Ti",
+           "x": 0,
+           "y": 0,
+           "content": "Text size",
+           "fill": "#0F172A",
+           "fontSize": 15,
+           "fontFamily": "Nunito",
+           "fontWeight": "800",
+           "textAlign": "left",
+           "width": 272,
+           "textGrowth": "fixed-width"
+          },
+          {
+           "id": "0005e",
+           "type": "text",
+           "name": "Y3Sb",
+           "x": 0,
+           "y": 0,
+           "content": "Default - Large - XL spacing",
+           "fill": "#475569",
+           "fontSize": 12,
+           "fontFamily": "Nunito",
+           "fontWeight": "400",
+           "textAlign": "left",
+           "width": 272,
+           "textGrowth": "fixed-width"
+          }
+         ]
+        }
+       ]
+      },
+      {
+       "id": "0005m",
+       "type": "frame",
+       "name": "Y4",
+       "x": 0,
+       "y": 0,
+       "width": 358,
+       "height": 74,
+       "fill": "#FFFFFF",
+       "cornerRadius": 16,
+       "layout": "horizontal",
+       "padding": 12,
+       "gap": 10,
+       "alignItems": "center",
+       "children": [
+        {
+         "id": "0005i",
+         "type": "frame",
+         "name": "Y4Tile",
+         "x": 0,
+         "y": 0,
+         "width": 44,
+         "height": 44,
+         "fill": "#FFFFFF",
+         "cornerRadius": 14,
+         "layout": "none",
+         "alignItems": "center",
+         "justify": "center",
+         "children": [
+          {
+           "id": "0005h",
+           "type": "rectangle",
+           "name": "Y4Ic",
+           "x": 0,
+           "y": 0,
+           "width": 26,
+           "height": 26,
+           "cornerRadius": 4,
+           "fill": {
+            "type": "image",
+            "url": "./assets/icons/log-out.png",
+            "mode": "fill"
+           }
+          }
+         ]
+        },
+        {
+         "id": "0005l",
+         "type": "frame",
+         "name": "Y4Tx",
+         "x": 0,
+         "y": 0,
+         "width": 272,
+         "height": 54,
+         "fill": "#FFFFFF",
+         "cornerRadius": 0,
+         "layout": "vertical",
+         "gap": 2,
+         "children": [
+          {
+           "id": "0005j",
+           "type": "text",
+           "name": "Y4Ti",
+           "x": 0,
+           "y": 0,
+           "content": "Account",
+           "fill": "#0F172A",
+           "fontSize": 15,
+           "fontFamily": "Nunito",
+           "fontWeight": "800",
+           "textAlign": "left",
+           "width": 272,
+           "textGrowth": "fixed-width"
+          },
+          {
+           "id": "0005k",
+           "type": "text",
+           "name": "Y4Sb",
+           "x": 0,
+           "y": 0,
+           "content": "you@puduu.app - Sign out",
+           "fill": "#475569",
+           "fontSize": 12,
+           "fontFamily": "Nunito",
+           "fontWeight": "400",
+           "textAlign": "left",
+           "width": 272,
+           "textGrowth": "fixed-width"
+          }
+         ]
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "id": "0005D",
+     "type": "frame",
+     "name": "TabBar",
+     "x": 0,
+     "y": 0,
+     "width": 390,
+     "height": 86,
+     "fill": "#FFFFFF",
+     "cornerRadius": 0,
+     "layout": "horizontal",
+     "gap": 4,
+     "alignItems": "center",
+     "justify": "center",
+     "children": [
+      {
+       "id": "0005q",
+       "type": "frame",
+       "name": "TbToday",
+       "x": 0,
+       "y": 0,
+       "width": 64,
+       "height": 58,
+       "fill": "#FFFFFF",
+       "cornerRadius": 14,
+       "layout": "vertical",
+       "gap": 3,
+       "alignItems": "center",
+       "justify": "center",
+       "children": [
+        {
+         "id": "0005o",
+         "type": "rectangle",
+         "name": "TbTodayIc",
+         "x": 0,
+         "y": 0,
+         "width": 24,
+         "height": 24,
+         "cornerRadius": 6,
+         "fill": {
+          "type": "image",
+          "url": "./assets/icons/sun.png",
+          "mode": "fill"
+         }
+        },
+        {
+         "id": "0005p",
+         "type": "text",
+         "name": "TbTodayLb",
+         "x": 0,
+         "y": 0,
+         "content": "Today",
+         "fill": "#475569",
+         "fontSize": 10,
+         "fontFamily": "Nunito",
+         "fontWeight": "800",
+         "textAlign": "center"
+        }
+       ]
+      },
+      {
+       "id": "0005t",
+       "type": "frame",
+       "name": "TbFocus",
+       "x": 0,
+       "y": 0,
+       "width": 64,
+       "height": 58,
+       "fill": "#FFFFFF",
+       "cornerRadius": 14,
+       "layout": "vertical",
+       "gap": 3,
+       "alignItems": "center",
+       "justify": "center",
+       "children": [
+        {
+         "id": "0005r",
+         "type": "rectangle",
+         "name": "TbFocusIc",
+         "x": 0,
+         "y": 0,
+         "width": 24,
+         "height": 24,
+         "cornerRadius": 6,
+         "fill": {
+          "type": "image",
+          "url": "./assets/icons/timer.png",
+          "mode": "fill"
+         }
+        },
+        {
+         "id": "0005s",
+         "type": "text",
+         "name": "TbFocusLb",
+         "x": 0,
+         "y": 0,
+         "content": "Focus",
+         "fill": "#475569",
+         "fontSize": 10,
+         "fontFamily": "Nunito",
+         "fontWeight": "800",
+         "textAlign": "center"
+        }
+       ]
+      },
+      {
+       "id": "0005w",
+       "type": "frame",
+       "name": "TbReset",
+       "x": 0,
+       "y": 0,
+       "width": 64,
+       "height": 58,
+       "fill": "#FFFFFF",
+       "cornerRadius": 14,
+       "layout": "vertical",
+       "gap": 3,
+       "alignItems": "center",
+       "justify": "center",
+       "children": [
+        {
+         "id": "0005u",
+         "type": "rectangle",
+         "name": "TbResetIc",
+         "x": 0,
+         "y": 0,
+         "width": 24,
+         "height": 24,
+         "cornerRadius": 6,
+         "fill": {
+          "type": "image",
+          "url": "./assets/icons/snowflake.png",
+          "mode": "fill"
+         }
+        },
+        {
+         "id": "0005v",
+         "type": "text",
+         "name": "TbResetLb",
+         "x": 0,
+         "y": 0,
+         "content": "Reset",
+         "fill": "#475569",
+         "fontSize": 10,
+         "fontFamily": "Nunito",
+         "fontWeight": "800",
+         "textAlign": "center"
+        }
+       ]
+      },
+      {
+       "id": "0005z",
+       "type": "frame",
+       "name": "TbGrows",
+       "x": 0,
+       "y": 0,
+       "width": 64,
+       "height": 58,
+       "fill": "#FFFFFF",
+       "cornerRadius": 14,
+       "layout": "vertical",
+       "gap": 3,
+       "alignItems": "center",
+       "justify": "center",
+       "children": [
+        {
+         "id": "0005x",
+         "type": "rectangle",
+         "name": "TbGrowsIc",
+         "x": 0,
+         "y": 0,
+         "width": 24,
+         "height": 24,
+         "cornerRadius": 6,
+         "fill": {
+          "type": "image",
+          "url": "./assets/icons/trophy.png",
+          "mode": "fill"
+         }
+        },
+        {
+         "id": "0005y",
+         "type": "text",
+         "name": "TbGrowsLb",
+         "x": 0,
+         "y": 0,
+         "content": "Grows",
+         "fill": "#475569",
+         "fontSize": 10,
+         "fontFamily": "Nunito",
+         "fontWeight": "800",
+         "textAlign": "center"
+        }
+       ]
+      },
+      {
+       "id": "0005C",
+       "type": "frame",
+       "name": "TbYours",
+       "x": 0,
+       "y": 0,
+       "width": 64,
+       "height": 58,
+       "fill": "#EFF4FF",
+       "cornerRadius": 14,
+       "layout": "vertical",
+       "gap": 3,
+       "alignItems": "center",
+       "justify": "center",
+       "children": [
+        {
+         "id": "0005A",
+         "type": "rectangle",
+         "name": "TbYoursIc",
+         "x": 0,
+         "y": 0,
+         "width": 24,
+         "height": 24,
+         "cornerRadius": 6,
+         "fill": {
+          "type": "image",
+          "url": "./assets/icons/settings.png",
+          "mode": "fill"
+         }
+        },
+        {
+         "id": "0005B",
+         "type": "text",
+         "name": "TbYoursLb",
+         "x": 0,
+         "y": 0,
+         "content": "Yours",
+         "fill": "#2563EB",
+         "fontSize": 10,
+         "fontFamily": "Nunito",
+         "fontWeight": "800",
+         "textAlign": "center"
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "0005F",
    "type": "text",
    "name": "01 Today",
    "x": 0,
@@ -4549,11 +5519,11 @@
    "fill": "#475569",
    "fontSize": 14,
    "fontFamily": "Nunito",
-   "fontWeight": "700",
+   "fontWeight": "800",
    "textAlign": "left"
   },
   {
-   "id": "0004N",
+   "id": "0005G",
    "type": "text",
    "name": "02 Focus",
    "x": 470,
@@ -4562,24 +5532,24 @@
    "fill": "#475569",
    "fontSize": 14,
    "fontFamily": "Nunito",
-   "fontWeight": "700",
+   "fontWeight": "800",
    "textAlign": "left"
   },
   {
-   "id": "0004O",
+   "id": "0005H",
    "type": "text",
-   "name": "03 Rescue",
+   "name": "03 Reset",
    "x": 940,
    "y": -50,
-   "content": "03 Rescue",
+   "content": "03 Reset",
    "fill": "#475569",
    "fontSize": 14,
    "fontFamily": "Nunito",
-   "fontWeight": "700",
+   "fontWeight": "800",
    "textAlign": "left"
   },
   {
-   "id": "0004P",
+   "id": "0005I",
    "type": "text",
    "name": "04 Ritual",
    "x": 1410,
@@ -4588,11 +5558,11 @@
    "fill": "#475569",
    "fontSize": 14,
    "fontFamily": "Nunito",
-   "fontWeight": "700",
+   "fontWeight": "800",
    "textAlign": "left"
   },
   {
-   "id": "0004Q",
+   "id": "0005J",
    "type": "text",
    "name": "05 Grows",
    "x": 1880,
@@ -4601,24 +5571,24 @@
    "fill": "#475569",
    "fontSize": 14,
    "fontFamily": "Nunito",
-   "fontWeight": "700",
+   "fontWeight": "800",
    "textAlign": "left"
   },
   {
-   "id": "0004R",
+   "id": "0005K",
    "type": "text",
-   "name": "06 InboxSort",
+   "name": "06 Sort",
    "x": 2350,
    "y": -50,
-   "content": "06 InboxSort",
+   "content": "06 Sort",
    "fill": "#475569",
    "fontSize": 14,
    "fontFamily": "Nunito",
-   "fontWeight": "700",
+   "fontWeight": "800",
    "textAlign": "left"
   },
   {
-   "id": "0004S",
+   "id": "0005L",
    "type": "text",
    "name": "07 Yours",
    "x": 2820,
@@ -4627,7 +5597,7 @@
    "fill": "#475569",
    "fontSize": 14,
    "fontFamily": "Nunito",
-   "fontWeight": "700",
+   "fontWeight": "800",
    "textAlign": "left"
   }
  ]

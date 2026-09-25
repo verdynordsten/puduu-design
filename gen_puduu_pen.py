@@ -56,7 +56,7 @@ def R(width=None, height=None, fill="card", radius=8, name="Box",
     if align:
         n["alignItems"] = align
     if justify:
-        n["justify"] = justify
+        n["justifyContent"] = justify
     if stroke:
         n["stroke"] = C.get(stroke, stroke)
     if sw:
@@ -306,11 +306,9 @@ def main():
          ], "Yours")
 
     screens = [s1, s2, s3, s4, s5]
-    doc = {"id": nid(), "type": "document", "name": "Puduu v5 Ledger",
-           "schema": "2.19",
-           "variables": {"paper": C["paper"], "ink": C["ink"],
-                         "ember": C["ember"], "line": C["line"],
-                         "fontDisplay": DISP, "fontUI": UI},
+    doc = {"version": "2.19", "name": "Puduu v5 Ledger",
+           "variables": {k: {"type": "color", "value": v}
+                         for k, v in C.items()},
            "children": [GLYPH()] + screens + LABELS(screens)}
     with open("puduu.pen", "w") as f:
         json.dump(doc, f)

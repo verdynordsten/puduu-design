@@ -161,14 +161,14 @@ def TABBAR(active):
     kids = []
     for num, lb in tabs:
         on = lb == active
-        kids.append(R(64, 58, "paper", 0, f"Tb{lb}", "vertical",
+        kids.append(R(62, 58, "paper", 0, f"Tb{lb}", "vertical",
                        [T(num, 10, "emberDeep" if on else "faint",
                           "700", "center", 64, UI, f"Tb{lb}Nm"),
                         T(lb, 11, "ink" if on else "faint",
                           "700" if on else "500", "center", 64, UI,
                           f"Tb{lb}Lb")],
                        gap=3, align="center", justify="center"))
-    return R(390, 76, "paper", 0, "TabBar", "horizontal", kids,
+    return R(358, 76, "paper", 0, "TabBar", "horizontal", kids,
              gap=2, align="center", justify="center",
              stroke="line", sw=1)
 

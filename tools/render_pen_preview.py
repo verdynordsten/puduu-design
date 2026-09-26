@@ -133,10 +133,14 @@ class R:
             gap = float(o.get("gap", 0) or 0)
             kids = o.get("children", [])
             layout = o.get("layout")
-            # bg
+            # bg (+ outline stroke for outlined buttons/cards/inputs)
             if isinstance(fill, str) and fill.startswith("#"):
                 h_est = self.node_h(o, avail_w)
                 self.dr.rounded_rectangle([x, y, x + W, y + h_est], radius=4, fill=fill)
+                stroke = o.get("stroke")
+                if isinstance(stroke, str) and stroke.startswith("#"):
+                    sw = int(o.get("strokeWidth", 1) or 1)
+                    self.dr.rounded_rectangle([x, y, x + W, y + h_est], radius=4, outline=stroke, width=max(1, sw))
             if layout == "vertical":
                 cy = y + pt
                 for k in kids:

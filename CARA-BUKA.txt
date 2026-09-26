@@ -1,25 +1,29 @@
-PUDUU — CARA BUKA FILE DESAIN DI PEN.DEV (v6 LEDGER)
-====================================================
+PUDUU — CARA BUKA FILE DESAIN DI PEN.DEV (v7 = cermin app 1:1)
+===============================================================
 
-ISI PAKET INI:
-- puduu.pen ........... file desain utama v6 (5 layar HP 390px, buka di pen.dev)
-- assets/ ............. WAJIB satu folder dengan puduu.pen (37 Lucide PNG).
-                        Jangan dipisah — kalau dipisah ikon jadi blank!
-- gen_puduu_pen.py .... script generator (revisi: edit lalu python3 gen_puduu_pen.py)
-- preview/pen/ ........ render JUJUR dari isi .pen (bukan mockup app)
-- mockups/v5-ledger.html .. mockup klik (referensi visual, bukan app final)
+YANG BERUBAH v7: generator ditulis ulang ngikutin kode Flutter
+(main.dart + puduu_theme.dart) — bukan mockup bebas.
+- NOW: tombol wash + ikon play ink + Skip di samping
+- Timeline: judul Inter 15, done = faint + strike, sisi Begin/check-Done/N min
+- RuleRow: ikon garis 20px tanpa tile + divider
+- Inbox: field + Add ember + Sort outline ember
+- Focus: timer Fraunces 76 + Pause ink (ikon putih) + End early sebelahan
+- Nav: monokrom outlined/filled, tanpa angka, badge ember "3" di Today
+- Note: A NOTE + italic Fraunces (Reset/Progress)
+
+ISI PAKET:
+- puduu.pen ........... 5 layar HP 390px (buka di pen.dev)
+- assets/ ............. WAJIB satu folder dengan puduu.pen (ikon Lucide
+                        per-warna: ink/soft/faint/white/ember/moss).
+                        Dipisah = ikon blank!
+- gen_puduu_pen.py .... generator (edit lalu python3 gen_puduu_pen.py)
+- preview/pen/ ........ render JUJUR dari isi .pen
+- preview/pen-v7-strip.png .. gabungan 5 layar
 
 CARA BUKA:
-A. pen.dev desktop: extract ZIP satu folder -> File -> Open -> puduu.pen.
-   Kalau kanvas kosong: Ctrl+0 (zoom to fit), cek panel Layers.
-B. VS Code / IDE: klik kanan puduu.pen -> Open With pen.dev.
+A. pen.dev desktop: extract satu folder -> File -> Open -> puduu.pen.
+   Kanvas kosong: Ctrl+0, cek Layers.
+B. VS Code: klik kanan puduu.pen -> Open With pen.dev.
 
-ISI 5 LAYAR:
-  01 Today .... NOW card + THE DAY timeline + Inbox + If you stall
-  02 Focus .... timer 32:10 + Pause + End early
-  03 Reset .... 4 opsi 2-menit + note
-  04 Progress . Weekly shelf + Focus trend + Resets that worked
-  05 Yours .... Pro $6.99 + nudges + sounds
-
-FONT: Fraunces (judul) + Inter (isi) — gratis di Google Fonts.
-Validator: 311 nodes, 0 errors, 0 emoji. Schema 2.19.
+FONT: Fraunces (judul/timer) + Inter (isi) — Google Fonts, gratis.
+Validator: 306 nodes, 0 errors, 0 emoji, 27 gambar lengkap. Schema 2.19.

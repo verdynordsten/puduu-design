@@ -199,8 +199,8 @@ def ANOTE(text, name="Nt"):
     return n
 
 def TABBAR(active):
-    # M3 NavigationBar mirror: monochrome outlined/filled, no numbers,
-    # ember badge dot with "3" on Today (inboxProvider has 3 items).
+    # Reference HP render: active icon sits on pale wash pill, badge "3"
+    # rides upper-right OF the Today icon (single icon+badge cluster).
     tabs = [("Today", "calendar-days"), ("Focus", "timer"),
             ("Reset", "refresh-ccw"), ("Progress", "bar-chart-3"),
             ("Yours", "settings")]
@@ -208,21 +208,28 @@ def TABBAR(active):
     for lb, ic in tabs:
         on = lb == active
         iconf = f"{A}/{ic}-{'ink' if on else 'faint'}.png"
-        cell = [IMG(iconf, 23, 23, 5, f"Tb{lb}Ic"),
-                T(lb, 11, "ink" if on else "faint",
-                  "700" if on else "500", "center", 62, UI,
-                  f"Tb{lb}Lb")]
         if lb == "Today":
-            cell = [R(46, 30, "paper", 0, "TbBadgeRow", "horizontal",
-                      [IMG(iconf, 23, 23, 5, "TbTodayIc"),
-                       R(18, 18, "ember", 9, "TbBadge", "none",
-                         [T("3", 10, "white", "700", "center", 18, UI,
-                            "TbBadgeN")])],
-                      gap=2, align="center", justify="center"),
+            icon_cluster = R(52, 34, "wash" if on else "paper", 17,
+                             "TbTodayPill", "horizontal",
+                             [IMG(iconf, 23, 23, 5, "TbTodayIc"),
+                              R(16, 16, "ember", 8, "TbBadge", "none",
+                                [T("3", 10, "white", "700", "center",
+                                   16, UI, "TbBadgeN")])],
+                             gap=-8, align="center", justify="center")
+            cell = [icon_cluster,
                     T(lb, 11, "ink" if on else "faint",
                       "700" if on else "500", "center", 62, UI,
                       f"Tb{lb}Lb")]
-        kids.append(R(68, 60, "paper", 0, f"Tb{lb}", "vertical",
+        else:
+            icon_cluster = R(52, 34, "wash" if on else "paper", 17,
+                             f"Tb{lb}Pill", "horizontal",
+                             [IMG(iconf, 23, 23, 5, f"Tb{lb}Ic")],
+                             gap=0, align="center", justify="center")
+            cell = [icon_cluster,
+                    T(lb, 11, "ink" if on else "faint",
+                      "700" if on else "500", "center", 62, UI,
+                      f"Tb{lb}Lb")]
+        kids.append(R(68, 64, "paper", 0, f"Tb{lb}", "vertical",
                       cell, gap=3, align="center", justify="center"))
     return R(358, 76, "paper", 0, "TabBar", "horizontal", kids,
              gap=2, align="center", justify="center",
@@ -277,23 +284,20 @@ def main():
          SEC("The day", "See all", "S1"),
          LINE("08:00", "25m", "Morning reset",
               "Meds, water, five-minute tidy", "open", "L1"),
-         DIV("D1"),
          LINE("09:00", "50m", "Deep work: portfolio",
               "Hero section, timer on, phone away", "current", "L2"),
-         DIV("D2"),
          LINE("11:00", "15m", "Walk outside",
               "Fifteen minutes, no podcast", "done", "L3"),
-         DIV("D3"),
          LINE("13:00", "30m", "Admin batch",
               "Bills and inbox, one pass", "open", "L4"),
          SEC("Inbox", "3 waiting", "S2"),
          R(350, None, "card", 8, "InboxBx", "vertical",
            [R(318, 48, "card", 10, "InField", "horizontal",
               [T("Capture a task, idea, or reminder…", 14, "faint",
-                 "400", "left", 210, UI, "InPh"),
-               R(86, 40, "ember", 8, "AddBtn", "horizontal",
-                 [IMG(f"{A}/plus-white.png", 17, 17, 4, "AddIc"),
-                  T("Add", 13.5, "white", "700", "left", 40, UI,
+                 "400", "left", 196, UI, "InPh"),
+               R(96, 40, "ember", 8, "AddBtn", "horizontal",
+                 [IMG(f"{A}/plus-white.png", 15, 15, 4, "AddIc"),
+                  T("+ Add", 13.5, "white", "700", "left", 48, UI,
                     "AddLb")],
                  gap=5, align="center", justify="center")],
               gap=8, align="center", stroke="line", sw=1),
@@ -363,7 +367,7 @@ def main():
               "Up 20% vs last week. Mornings work best.",
               "+20%", "G2"),
          DIV("D8"),
-         RULE("heart-soft", "Resets that worked",
+         RULE("refresh-ccw-soft", "Resets that worked",
               "Water first, then air. Evenings stay hard.",
               "×5", "G3"),
          SEC("A note", "", "S5"),

@@ -189,7 +189,8 @@ def main():
     os.makedirs(OUT, exist_ok=True)
     n = 0
     for c in d["children"]:
-        if c.get("type") == "frame" and not c.get("reusable") and c.get("name", "")[:1] == "0":
+        import re as _re
+        if c.get("type") == "frame" and not c.get("reusable") and _re.match(r"^\d\d ", c.get("name", "")):
             img = render_screen(c)
             p = os.path.join(OUT, c["name"].replace(" ", "-") + ".png")
             img.save(p)

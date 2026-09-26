@@ -79,6 +79,10 @@ class R:
         if t == "frame":
             if o.get("layout") in (None, "none") or not o.get("children"):
                 return float(o.get("height", 0) or 0)
+            # explicit height wins (tab bar 76, cells 64, pills 34):
+            # content-sum underestimates when children are centered/flexed.
+            if o.get("height") is not None:
+                return float(o["height"])
             pad = o.get("padding", 0)
             pl = pad if isinstance(pad, (int, float)) else (pad[1] if len(pad) == 2 else pad[3] if len(pad) == 4 else 0)
             gap = float(o.get("gap", 0) or 0)
@@ -166,17 +170,19 @@ class R:
 
 def render_screen(scr):
     W = int(scr.get("width", 390))
+    H = int(scr.get("height", 844))  # full phone template, never crop
     r = R()
-    r.img = Image.new("RGB", (W, 2200), "#F6F3EC")
+    r.img = Image.new("RGB", (W, max(H, 844)), "#F6F3EC")
     r.dr = ImageDraw.Draw(r.img)
+    # absolute layout: walk children top→bottom, spacer frames push tab down
     y = 12
     for child in scr.get("children", []):
-        y += r.draw(child, 16, y, W - 32) + 10
-        if y > 2050:
-            break
-    # bottom nav band marker
-    r.dr.rectangle([0, y + 6, W, y + 12], fill="#E3DAC7")
-    return r.img.crop((0, 0, W, min(int(y + 20), 2200)))
+        h = r.node_h(child, W - 32)
+        r.draw(child, 16, y, W - 32)
+        y += h + 10
+    # tab bar bottom pin check: draw baseline at H-8 so a floating tab is visible
+    r.dr.line([(0, max(H, 844) - 1), (W, max(H, 844) - 1)], fill="#E3DAC7")
+    return r.img.crop((0, 0, W, max(H, 844)))
 
 def main():
     d = json.load(open(SRC, encoding="utf-8"))

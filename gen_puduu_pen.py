@@ -235,16 +235,22 @@ def TABBAR(active):
              gap=2, align="center", justify="center",
              stroke="line", sw=1)
 
-def SCREEN(name, x, head, body, tab):
+PHONE_W, PHONE_H = 390, 844  # every screen = one full phone template
+
+def SPACER(name, h):
+    # flexible filler so short content still fills the 844 phone frame
+    # and the tab bar pins to the bottom like a real phone screen.
+    return R(358, max(0, int(h)), "paper", 0, name, "none", [])
+
+def SCREEN(name, x, head, body, tab, spacer_h=0):
+    # head(101) + body + spacer + tabbar(76): always 844 total.
     col = [head,
            R(358, None, "paper", 0, f"{name}Bd", "vertical",
              body, gap=0, padding=[0, 4, 0, 4]),
+           SPACER(f"{name}Fill", spacer_h),
            TABBAR(tab)]
     return {"id": nid(), "type": "frame", "name": name, "x": x,
-            "y": 0, "width": 390,
-            "height": {"01 Today": 1250, "02 Focus": 980,
-                       "03 Reset": 844, "04 Progress": 844,
-                       "05 Yours": 844}.get(name, 844),
+            "y": 0, "width": PHONE_W, "height": PHONE_H,
             "fill": C["paper"],
             "layout": "vertical", "alignItems": "center",
             "children": col}
@@ -311,7 +317,7 @@ def main():
          SEC("If you stall", "", "S3"),
          RULE("refresh-ccw-soft", "Take a two-minute reset",
               "Water, air, one small surface.", "2 min", "R0"),
-         ], "Today")
+         ], "Today", 6)
 
     s2 = SCREEN("02 Focus", 470,
         HEAD("Focus session", "Stay with it.",
@@ -335,7 +341,7 @@ def main():
               align="center", justify="center",
               stroke="line", sw=1)],
            gap=10, align="center", justify="center"),
-         ], "Focus")
+         ], "Focus", 425)
 
     s3 = SCREEN("03 Reset", 940,
         HEAD("Freeze reset", "Hit a wall?",
@@ -354,7 +360,7 @@ def main():
          SEC("A note", "", "S4"),
          ANOTE("Slow is still moving. Skipping is allowed — "
                "Puduu waits.", "Nt1"),
-         ], "Reset")
+         ], "Reset", 389)
 
     s4 = SCREEN("04 Progress", 1410,
         HEAD("Progress", "Keep growing.",
@@ -372,7 +378,7 @@ def main():
               "×5", "G3"),
          SEC("A note", "", "S5"),
          ANOTE("Done is a direction, not a streak.", "Nt2"),
-         ], "Progress")
+         ], "Progress", 397)
 
     s5 = SCREEN("05 Yours", 1880,
         HEAD("Settings", "Make it yours.",
@@ -386,7 +392,7 @@ def main():
          DIV("D10"),
          RULE("volume-2-soft", "Sounds and haptics",
               "Calm chime · soft vibration.", "On", "Y3"),
-         ], "Yours")
+         ], "Yours", 497)
 
     screens = [s1, s2, s3, s4, s5]
     doc = {"version": "2.19",

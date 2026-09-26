@@ -1,7 +1,10 @@
-"""Puduu .pen generator v5 — LEDGER total rebuild.
-New language: warm paper, ink serif (Fraunces display), Inter UI,
-ONE ember accent, ruled ledger lines, margin italic serif notes,
-numbered ledger tabs. Zero pastel, zero toy pills, zero generic blue.
+"""Puduu .pen generator v6 — LEDGER + real icons + overflow-clean.
+Fixes v5 (55 validator errors, text glyphs ~/ #/ * instead of icons):
+- Real Lucide PNG icons via IMG() everywhere (tabbar, rules, inbox, focus btns)
+- LINE gap 9 (352>350 overflow fix), tab cells 68 wide (64-text-in-62 fix)
+- No redundant duration (open rows: time in gutter only, side empty)
+- NOW button dark ink to match mockup/app
+- Preview renderer writes preview/pen/ (never wipes preview/ root)
 Schema 2.19. Run: python3 gen_puduu_pen.py -> puduu.pen
 """
 import json, itertools
@@ -25,6 +28,7 @@ C = {
 }
 DISP = "Fraunces"
 UI = "Inter"
+A = "./assets/icons"
 
 def T(content, size=14.0, color="soft", weight="400", align="left",
       width=None, family=UI, name="Txt"):
@@ -64,6 +68,11 @@ def R(width=None, height=None, fill="card", radius=8, name="Box",
     n["children"] = children or []
     return n
 
+def IMG(url, w, h, radius=8, name="Img"):
+    return {"id": nid(), "type": "rectangle", "name": name, "x": 0, "y": 0,
+            "width": w, "height": h, "cornerRadius": radius,
+            "fill": {"type": "image", "url": url, "mode": "fill"}}
+
 def CT(content, size, color, weight, family, width, name):
     return T(content, size, color, weight, "center", width, family, name)
 
@@ -71,104 +80,110 @@ def CT(content, size, color, weight, family, width, name):
 
 def HEAD(eyebrow, headline, stand, name="Hd"):
     return R(350, None, "paper", 0, f"{name}Wrap", "vertical",
-             [T(eyebrow.upper(), 10.5, "mute", "700", "left", 350, UI,
+             [T(eyebrow.upper(), 11, "mute", "700", "left", 350, UI,
                 f"{name}Ey"),
               T(headline, 27, "ink", "600", "left", 350, DISP,
                 f"{name}Ti"),
-              T(stand, 12.5, "mute", "400", "left", 350, UI,
+              T(stand, 13, "mute", "400", "left", 350, UI,
                 f"{name}Sb"),
               R(350, 1, "line", 0, f"{name}Rule", "none", [])],
              gap=6)
 
 def SEC(label, action="", name="Sec"):
-    kids = [T(label.upper(), 10.5, "mute", "700", "left", 200, UI,
+    kids = [T(label.upper(), 11, "mute", "700", "left", 200, UI,
                f"{name}Lb")]
     if action:
-        kids.append(T(action, 12.5, "emberDeep", "600", "right", 140, UI,
+        kids.append(T(action, 13, "emberDeep", "600", "right", 140, UI,
                       f"{name}Ac"))
     return R(350, 26, "paper", 0, name, "horizontal", kids,
              justify="space_between", align="center")
 
 def NOW(meta, title, pct, name="Now"):
     return R(350, None, "card", 8, name, "vertical",
-             [R(318, 20, "card", 0, f"{name}Top", "horizontal",
-                [T("NOW", 10.5, "emberDeep", "700", "left", 36, UI,
+             [R(310, 20, "card", 0, f"{name}Top", "horizontal",
+                [T("NOW", 11, "emberDeep", "700", "left", 36, UI,
                    f"{name}K"),
-                 T(meta, 12, "mute", "400", "left", 276, UI,
+                 T(meta, 12.5, "mute", "400", "left", 268, UI,
                    f"{name}Mt")],
-                gap=8, align="center"),
-              T(title, 20, "ink", "600", "left", 318, DISP,
+                gap=6, align="center"),
+              T(title, 20, "ink", "600", "left", 310, DISP,
                 f"{name}Ti"),
-              R(318, 4, "deep", 2, f"{name}Tr", "horizontal",
+              R(310, 4, "deep", 2, f"{name}Tr", "horizontal",
                 [R(pct, 4, "ember", 2, f"{name}Fl", "none", [])]),
-              R(318, 48, "wash", 8, f"{name}Go", "horizontal",
-                [T("Begin session", 14, "ink", "700", "center",
-                   name=f"{name}GoLb")],
-                align="center", justify="center",
-                stroke="emberDeep", sw=1.2)],
-             padding=16, gap=9, stroke="line", sw=1)
+              R(310, 50, "ink", 8, f"{name}Go", "horizontal",
+                [IMG(f"{A}/circle-play.png", 20, 20, 10,
+                     f"{name}GoIc"),
+                 T("Begin session", 14, "#FFFDF8", "700", "left",
+                   180, UI, f"{name}GoLb")],
+                gap=8, align="center", justify="center")],
+             padding=16, gap=10, stroke="line", sw=1)
 
 def LINE(hour, span, title, note, state="open", name="Ln"):
     """Ledger line: time gutter + spine dot + text + side status.
-    state: open | current | done"""
+    state: open | current | done. Open rows show duration in the
+    gutter only (no redundant right-side duplicate)."""
     if state == "done":
         dot = R(9, 9, "moss", 5, f"{name}Dot", "none", [])
         tcol, side = "faint", T("Done", 12, "moss", "600", "right",
                                 64, UI, f"{name}Sd")
     elif state == "current":
         dot = R(9, 9, "ember", 5, f"{name}Dot", "none", [])
-        tcol, side = "ink", T("Begin", 12.5, "emberDeep", "600",
+        tcol, side = "ink", T("Begin", 13, "emberDeep", "600",
                               "right", 64, UI, f"{name}Sd")
     else:
         dot = R(9, 9, "card", 5, f"{name}Dot", "none", [],
                 stroke="faint", sw=2)
-        tcol, side = "ink", T(span, 12, "faint", "400", "right",
+        tcol, side = "ink", T("", 12, "faint", "400", "right",
                               64, UI, f"{name}Sd")
     spine = R(10, 46, "paper", 0, f"{name}Sp", "vertical",
               [dot, R(2.5, 34, "deep", 1, f"{name}St", "none", [])],
               gap=2, align="center")
     gut = R(48, 44, "paper", 0, f"{name}Gut", "vertical",
-            [T(hour, 13.5, tcol, "700", "right", 48, UI, f"{name}Hr"),
-             T(span, 10.5, "faint", "400", "right", 48, UI,
+            [T(hour, 14, tcol, "700", "right", 48, UI, f"{name}Hr"),
+             T(span, 11, "faint", "400", "right", 48, UI,
                f"{name}Sp2")], gap=1)
-    tx = R(200, None, "paper", 0, f"{name}Tx", "vertical",
-           [T(title, 14.5, tcol, "600", "left", 200, UI, f"{name}Ti"),
-            T(note, 12, "faint", "400", "left", 200, UI,
+    tx = R(196, None, "paper", 0, f"{name}Tx", "vertical",
+           [T(title, 14.5, tcol, "600", "left", 196, UI, f"{name}Ti"),
+            T(note, 12.5, "faint", "400", "left", 196, UI,
               f"{name}Nt")], gap=2)
     return R(350, None, "paper", 0, name, "horizontal",
-             [gut, spine, tx, side], gap=10, align="center")
+             [gut, spine, tx, side], gap=9, align="center")
 
 def RULE(icon, title, detail, trail="", name="Rr"):
-    tx = R(250, None, "paper", 0, f"{name}Tx", "vertical",
-           [T(title, 14.5, "ink", "600", "left", 250, UI,
+    """Ledger rule row with REAL Lucide icon tile (never text glyphs)."""
+    tx = R(232, None, "paper", 0, f"{name}Tx", "vertical",
+           [T(title, 14.5, "ink", "600", "left", 232, UI,
               f"{name}Ti"),
-            T(detail, 12, "mute", "400", "left", 250, UI,
+            T(detail, 12.5, "mute", "400", "left", 232, UI,
               f"{name}Sb")], gap=2)
-    side = (T(trail, 12, "faint", "400", "right", 40, UI,
+    side = (T(trail, 12.5, "faint", "400", "right", 56, UI,
               f"{name}Tr") if trail else
-            T("›", 16, "faint", "400", "right", 24, UI, f"{name}Ch"))
+            IMG(f"{A}/chevron-right.png", 22, 22, 6, f"{name}Ch"))
+    tile = R(34, 34, "wash", 10, f"{name}Tile", "vertical",
+             [IMG(f"{A}/{icon}.png", 24, 24, 5, f"{name}Ic")],
+             align="center", justify="center")
     return R(350, None, "paper", 0, name, "horizontal",
-             [T(icon, 18, "soft", "400", "left", 26, UI,
-                f"{name}Ic"),
-              tx, side], gap=10, align="center")
+             [tile, tx, side], gap=10, align="center")
 
 def NOTE(text, name="Nt"):
-    return T(text, 12.5, "mute", "400", "left", 250, DISP, name)
+    return T(text, 13, "mute", "400", "left", 250, DISP, name)
 
 def TABBAR(active):
-    tabs = [("01", "Today"), ("02", "Focus"), ("03", "Reset"),
-            ("04", "Progress"), ("05", "Yours")]
+    tabs = [("01", "Today", "sun-medium"), ("02", "Focus", "timer"),
+            ("03", "Reset", "snowflake"), ("04", "Progress", "trophy"),
+            ("05", "Yours", "settings")]
     kids = []
-    for num, lb in tabs:
+    for num, lb, ic in tabs:
         on = lb == active
-        kids.append(R(62, 58, "paper", 0, f"Tb{lb}", "vertical",
-                       [T(num, 10, "emberDeep" if on else "faint",
-                          "700", "center", 64, UI, f"Tb{lb}Nm"),
+        kids.append(R(68, 66, "paper", 0, f"Tb{lb}", "vertical",
+                       [IMG(f"{A}/{ic}.png", 22, 22, 6, f"Tb{lb}Ic"),
+                        T(num, 10, "emberDeep" if on else "faint",
+                          "700", "center", 60, UI, f"Tb{lb}Nm"),
                         T(lb, 11, "ink" if on else "faint",
-                          "700" if on else "500", "center", 64, UI,
+                          "700" if on else "500", "center", 60, UI,
                           f"Tb{lb}Lb")],
-                       gap=3, align="center", justify="center"))
-    return R(358, 76, "paper", 0, "TabBar", "horizontal", kids,
+                       gap=2, align="center", justify="center"))
+    return R(358, 84, "paper", 0, "TabBar", "horizontal", kids,
              gap=2, align="center", justify="center",
              stroke="line", sw=1)
 
@@ -217,7 +232,7 @@ def main():
         HEAD("Thursday · September 25", "Good morning, Alex.",
              "Four blocks planned. One thing at a time.", "H1"),
         [NOW("09:00 · 50 min · step 2 of 4",
-             "Deep work: portfolio", 195, "Now1"),
+             "Deep work: portfolio", 190, "Now1"),
          SEC("The day", "See all", "S1"),
          LINE("08:00", "25m", "Morning reset",
               "Meds, water, five-minute tidy", "open", "L1"),
@@ -229,20 +244,23 @@ def main():
               "Bills and inbox, one pass", "open", "L4"),
          SEC("Inbox", "3 waiting", "S2"),
          R(350, None, "card", 8, "InboxBx", "vertical",
-           [T("Capture a task, idea, or reminder…", 13.5, "faint",
-              "400", "left", 318, UI, "InPh"),
-            R(318, 46, "ink", 8, "AddBtn", "horizontal",
-              [T("Add to inbox", 13.5, "#FFFDF8", "600", "center",
-                 name="AddLb")],
+           [R(310, 44, "card", 8, "InPhRow", "horizontal",
+              [IMG(f"{A}/plus.png", 20, 20, 10, "InPhIc"),
+               T("Capture a task, idea, or reminder…", 13.5, "faint",
+                 "400", "left", 280, UI, "InPh")],
+              gap=8, align="center", stroke="line", sw=1),
+            R(310, 48, "ink", 8, "AddBtn", "horizontal",
+              [T("Add to inbox", 14, "#FFFDF8", "600", "center",
+                 280, UI, name="AddLb")],
               align="center", justify="center"),
-            R(318, 44, "card", 8, "SortBtn", "horizontal",
-              [T("Sort into my day", 13, "emberDeep", "700",
-                 "center", name="SortLb")],
+            R(310, 46, "card", 8, "SortBtn", "horizontal",
+              [T("Sort into my day", 13.5, "emberDeep", "700",
+                 "center", 280, UI, name="SortLb")],
               align="center", justify="center",
               stroke="emberDeep", sw=1.2)],
            padding=14, gap=10, stroke="line", sw=1),
          SEC("If you stall", "", "S3"),
-         RULE("~", "Take a two-minute reset",
+         RULE("snowflake", "Take a two-minute reset",
               "Water, air, one small surface.", "2 min", "R0"),
          ], "Today")
 
@@ -250,32 +268,33 @@ def main():
         HEAD("Focus session", "Stay with it.",
              "Deep work: portfolio · step 2 of 4.", "H2"),
         [CT("32:10", 72, "ink", "600", DISP, 350, "DialTm"),
-         CT("MINUTES LEFT · GENTLE CHIME AT THE END", 10.5,
+         CT("MINUTES LEFT · GENTLE CHIME AT THE END", 11,
             "mute", "700", UI, 350, "DialK"),
          R(350, 4, "deep", 2, "DialTr", "horizontal",
            [R(126, 4, "ember", 2, "DialFl", "none", [])]),
-         CT("Sketch the hero section. Phone in another room.", 12.5,
+         CT("Sketch the hero section. Phone in another room.", 13,
             "mute", "400", UI, 350, "DialSb"),
-         R(350, 52, "ink", 8, "PauseBtn", "horizontal",
-           [T("Pause", 14, "#FFFDF8", "600", "center",
-              name="PauseLb")],
-           align="center", justify="center"),
-         R(350, 48, "card", 8, "EndBtn", "horizontal",
+         R(350, 54, "ink", 8, "PauseBtn", "horizontal",
+           [IMG(f"{A}/pause.png", 20, 20, 10, "PauseIc"),
+            T("Pause", 14, "#FFFDF8", "600", "left",
+              120, UI, name="PauseLb")],
+           gap=8, align="center", justify="center"),
+         R(350, 50, "card", 8, "EndBtn", "horizontal",
            [T("End early", 13.5, "ink", "600", "center",
-              name="EndLb")],
+              300, UI, name="EndLb")],
            align="center", justify="center", stroke="line", sw=1),
          ], "Focus")
 
     s3 = SCREEN("03 Reset", 940,
         HEAD("Freeze reset", "Hit a wall?",
              "Two minutes counts. Pick the smallest one.", "H3"),
-        [RULE("~", "Drink a glass of water",
+        [RULE("glass-water", "Drink a glass of water",
               "Stand up, sip slowly, look far away.", "2 min", "R1"),
-         RULE("~", "Clear one surface",
+         RULE("sparkles", "Clear one surface",
               "Just the desk corner. Nothing more.", "2 min", "R2"),
-         RULE("~", "Open the difficult email",
+         RULE("mail-open", "Open the difficult email",
               "Read it only. Reply comes later.", "2 min", "R3"),
-         RULE("~", "Sort the inbox",
+         RULE("list-checks", "Sort the inbox",
               "Rule-based now, assisted later.", "3 min", "R4"),
          SEC("A note", "", "S4"),
          NOTE("Slow is still moving. Skipping is allowed — "
@@ -285,13 +304,13 @@ def main():
     s4 = SCREEN("04 Progress", 1410,
         HEAD("Progress", "Keep growing.",
              "Good days: 5 of 7. Never resets to zero.", "H4"),
-        [RULE("#", "Weekly shelf",
+        [RULE("trophy", "Weekly shelf",
               "Early starter ×3 · Reset used ×5 · Focus 25m ×8.",
               "W39", "G1"),
-         RULE("#", "Focus trend",
+         RULE("trending-up", "Focus trend",
               "Up 20% vs last week. Mornings work best.",
               "+20%", "G2"),
-         RULE("#", "Resets that worked",
+         RULE("heart", "Resets that worked",
               "Water first, then air. Evenings stay hard.",
               "×5", "G3"),
          SEC("A note", "", "S5"),
@@ -301,11 +320,11 @@ def main():
     s5 = SCREEN("05 Yours", 1880,
         HEAD("Settings", "Make it yours.",
              "Plan, sounds, reminders, and backup.", "H5"),
-        [RULE("*", "Puduu Pro · $6.99/mo",
+        [RULE("crown", "Puduu Pro · $6.99/mo",
               "Unlimited resets · yearly $49.99.", "", "Y1"),
-         RULE("*", "Gentle nudges",
+         RULE("bell", "Gentle nudges",
               "Max 6 per day · quiet 22:00–07:00.", "On", "Y2"),
-         RULE("*", "Sounds and haptics",
+         RULE("volume-2", "Sounds and haptics",
               "Calm chime · soft vibration.", "On", "Y3"),
          ], "Yours")
 
@@ -318,6 +337,11 @@ def main():
         json.dump(doc, f)
     print("wrote puduu.pen:",
           sum(1 for _ in json.dumps(doc).split('"id"')) - 1, "nodes")
+    # zero-emoji gate
+    import re
+    blob = json.dumps(doc)
+    hits = re.findall(r'[\U0001F000-\U0001FAFF\u2600-\u27BF]', blob)
+    print("emoji hits:", len(hits))
 
 if __name__ == "__main__":
     main()

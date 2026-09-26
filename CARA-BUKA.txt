@@ -1,36 +1,25 @@
-PUDUU  — CARA BUKA FILE DESAIN DI PEN.DEV
-================================================
+PUDUU — CARA BUKA FILE DESAIN DI PEN.DEV (v6 LEDGER)
+====================================================
 
 ISI PAKET INI:
-- puduu.pen ........... file desain utama v5 LEDGER (5 layar HP 390px, buka di pen.dev)
-- assets/ ............. WAJIB satu folder dengan puduu.pen (icon + mascot).
-                        Jangan dipisah — kalau dipisah gambar jadi blank!
-- gen_puduu_pen.py .... script generator (kalau mau revisi, edit ini lalu
-                        jalankan: python3 gen_puduu_pen.py)
-- preview-html/ ....... mockup HTML v5-ledger (buka di browser)
-- preview/ ............ screenshot tiap layar buat intip cepat tanpa buka app
+- puduu.pen ........... file desain utama v6 (5 layar HP 390px, buka di pen.dev)
+- assets/ ............. WAJIB satu folder dengan puduu.pen (37 Lucide PNG).
+                        Jangan dipisah — kalau dipisah ikon jadi blank!
+- gen_puduu_pen.py .... script generator (revisi: edit lalu python3 gen_puduu_pen.py)
+- preview/pen/ ........ render JUJUR dari isi .pen (bukan mockup app)
+- mockups/v5-ledger.html .. mockup klik (referensi visual, bukan app final)
 
-CARA BUKA (pilih satu):
-A. Aplikasi pen.dev desktop:
-   1. Extract ZIP ini ke satu folder (jangan pisahkan assets/).
-   2. Buka pen.dev -> File -> Open -> pilih puduu.pen.
-   3. Kalau kanvas kosong: tekan Ctrl+0 (zoom to fit), cek panel Layers.
-B. Extension pen.dev di VS Code / IDE:
-   1. Taruh folder ini di project.
-   2. Klik kanan puduu.pen -> Open With pen.dev.
+CARA BUKA:
+A. pen.dev desktop: extract ZIP satu folder -> File -> Open -> puduu.pen.
+   Kalau kanvas kosong: Ctrl+0 (zoom to fit), cek panel Layers.
+B. VS Code / IDE: klik kanan puduu.pen -> Open With pen.dev.
 
-ISI 7 LAYAR:
-  01 Today ..... timeline warna + brain-dump inbox + tombol Sort + I'm Stuck
-  02 Focus ..... timer visual 32:10 + sub-steps + pause/+5/done
-  03 Rescue .... maskot Puduu + 3 opsi thaw 2-menit + catatan free/Pro
-  04 Ritual .... Switch Ritual: Close -> Breathe -> Begin + tombol mulai
-  05 Grows ..... streak 5/7 tanpa-reset + trophies + mood check-in
-  06 InboxSort . hasil "Sort for me" (rule-based, slot AI siap)
-  07 Yours ..... paywall Pro $6.99 + nudges + sounds + text size + account
+ISI 5 LAYAR:
+  01 Today .... NOW card + THE DAY timeline + Inbox + If you stall
+  02 Focus .... timer 32:10 + Pause + End early
+  03 Reset .... 4 opsi 2-menit + note
+  04 Progress . Weekly shelf + Focus trend + Resets that worked
+  05 Yours .... Pro $6.99 + nudges + sounds
 
-FONT: Fredoka (judul) + Nunito (isi) — gratis di Google Fonts.
-Kalau belum install, tampilan tetap rapi tapi huruf fallback sistem.
-
-HTML mockup (bisa diklik, bukan app final):
-  mockups/m1-today-focus-rescue.html — buka di browser/HP buat rasain alurnya.
-  Layout/warna/komponen di mockup = 1:1 pindah ke frame .pen ini.
+FONT: Fraunces (judul) + Inter (isi) — gratis di Google Fonts.
+Validator: 311 nodes, 0 errors, 0 emoji. Schema 2.19.

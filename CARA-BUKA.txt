@@ -1,29 +1,26 @@
-PUDUU — CARA BUKA FILE DESAIN DI PEN.DEV (v7 = cermin app 1:1)
-===============================================================
-
-YANG BERUBAH v7: generator ditulis ulang ngikutin kode Flutter
-(main.dart + puduu_theme.dart) — bukan mockup bebas.
-- NOW: tombol wash + ikon play ink + Skip di samping
-- Timeline: judul Inter 15, done = faint + strike, sisi Begin/check-Done/N min
-- RuleRow: ikon garis 20px tanpa tile + divider
-- Inbox: field + Add ember + Sort outline ember
-- Focus: timer Fraunces 76 + Pause ink (ikon putih) + End early sebelahan
-- Nav: monokrom outlined/filled, tanpa angka, badge ember "3" di Today
-- Note: A NOTE + italic Fraunces (Reset/Progress)
+PUDUU — CARA BUKA FILE DESAIN DI PEN.DEV (v10 FRESH START)
+==========================================================
+ROMBAK TOTAL: DNA ledger (paper/ember/serif/ruled lines) MATI.
+Bahasa baru DocSpot-class: white cards r16, teal, dark ink,
+Outfit + Work Sans, dark pill nav + white active pill,
+dark hero cards, tinted icon tiles, stat chips.
 
 ISI PAKET:
-- puduu.pen ........... 5 layar HP 390px (buka di pen.dev)
-- assets/ ............. WAJIB satu folder dengan puduu.pen (ikon Lucide
-                        per-warna: ink/soft/faint/white/ember/moss).
+- puduu.pen ........... 5 layar HP 390x844 (buka di pen.dev)
+- assets/ ............. WAJIB satu folder dengan puduu.pen
+                        (ikon Lucide v10-* per slot warna).
                         Dipisah = ikon blank!
-- gen_puduu_pen.py .... generator (edit lalu python3 gen_puduu_pen.py)
-- preview/pen/ ........ render JUJUR dari isi .pen
-- preview/pen-v7-strip.png .. gabungan 5 layar
+- gen_puduu_pen.py .... generator v10 (edit lalu python3 gen_puduu_pen.py)
+- gen_puduu_pen_v9ledger.py .. arsip generator ledger lama
+- mockups/v10-fresh.html .. mockup klik (referensi visual 8.7/10)
+- preview/pen/ ........ render JUJUR dari isi .pen v10
+- preview/pen-v10-strip.png .. gabungan 5 layar
+- preview/app-v10/ .... screenshot app Flutter asli 390px (7.6/10)
 
 CARA BUKA:
 A. pen.dev desktop: extract satu folder -> File -> Open -> puduu.pen.
    Kanvas kosong: Ctrl+0, cek Layers.
 B. VS Code: klik kanan puduu.pen -> Open With pen.dev.
 
-FONT: Fraunces (judul/timer) + Inter (isi) — Google Fonts, gratis.
-Validator: 306 nodes, 0 errors, 0 emoji, 27 gambar lengkap. Schema 2.19.
+FONT: Outfit (judul) + Work Sans (isi) — Google Fonts, gratis.
+Validator: 321 nodes, 0 errors, 0 emoji, 23 gambar. Schema 2.19.

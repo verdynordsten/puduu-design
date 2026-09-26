@@ -1,0 +1,257 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Puduu v10 — Fresh Start (DocSpot-class)</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Work+Sans:wght@400;500;600;700&display=swap');
+:root{
+  --bg:#F2F5F4; --card:#FFFFFF; --ink:#0F1F1E; --soft:#3E5452; --mute:#7A8F8D;
+  --line:#E4EBEA; --teal:#0E9384; --teal-deep:#0B7468; --teal-wash:#DDF3F0;
+  --amber:#F59E0B; --amber-wash:#FEF3DF; --moss:#4D7C0F; --moss-wash:#EFF6DF;
+  --dark:#101E1D; --danger:#DC2626;
+}
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+body{background:#101314;font-family:'Work Sans',system-ui,sans-serif;color:var(--ink);
+  min-height:100vh;display:flex;flex-direction:column;align-items:center;padding:44px 20px 70px}
+.kicker{color:#8FA3A1;font-size:12px;letter-spacing:3px;font-weight:700;margin-bottom:10px}
+h1{font-family:Outfit,sans-serif;color:#F4F7F6;font-size:30px;font-weight:700;letter-spacing:-.3px}
+.sub{color:#8FA3A1;font-size:13px;margin:8px 0 30px}
+.board{display:flex;gap:26px;flex-wrap:wrap;justify-content:center}
+.phone{background:var(--bg);border-radius:44px;padding:14px 14px 18px;width:344px;
+  box-shadow:0 40px 90px rgba(0,0,0,.55)}
+.screen{background:var(--bg);border-radius:32px;overflow:hidden;height:700px;
+  display:flex;flex-direction:column;position:relative}
+.statusbar{display:flex;justify-content:space-between;align-items:center;
+  padding:12px 22px 2px;font:600 12px 'Work Sans';color:var(--ink)}
+.body{flex:1;overflow:hidden;padding:10px 16px 0}
+.hello{font-family:Outfit,sans-serif;font-size:23px;font-weight:700;letter-spacing:-.2px}
+.loc{display:flex;align-items:center;gap:4px;color:var(--teal-deep);font-size:12.5px;font-weight:600;margin-top:2px}
+.toprow{display:flex;justify-content:space-between;align-items:flex-start}
+.avatars{display:flex;align-items:center;gap:8px}
+.bell{width:36px;height:36px;border-radius:50%;background:#fff;border:1px solid var(--line);
+  display:flex;align-items:center;justify-content:center;font-size:15px;position:relative}
+.bell i{position:absolute;top:8px;right:9px;width:8px;height:8px;border-radius:50%;background:var(--danger);border:1.5px solid #fff}
+.face{width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,#0E9384,#0B7468);
+  color:#fff;display:flex;align-items:center;justify-content:center;font:700 14px Outfit}
+.search{margin-top:12px;background:#fff;border:1px solid var(--line);border-radius:16px;
+  padding:12px 14px;display:flex;gap:10px;align-items:center;color:var(--mute);font-size:13px}
+.now{margin-top:12px;background:var(--dark);border-radius:20px;padding:16px;color:#fff;position:relative;overflow:hidden}
+.now::after{content:'';position:absolute;right:-40px;top:-40px;width:150px;height:150px;border-radius:50%;
+  background:radial-gradient(circle,rgba(14,147,132,.55),transparent 70%)}
+.nowtag{font-size:10.5px;font-weight:700;letter-spacing:1.6px;color:#7DD3C7}
+.nowtitle{font-family:Outfit,sans-serif;font-size:19px;font-weight:700;margin:5px 0 2px}
+.nowmeta{font-size:12px;color:#B9CDC9}
+.bar{height:6px;border-radius:4px;background:rgba(255,255,255,.16);margin-top:10px;overflow:hidden}
+.bar i{display:block;height:100%;width:61%;background:#2DD4BF;border-radius:4px}
+.btnrow{display:flex;gap:8px;margin-top:12px}
+.btn{flex:1;border:none;border-radius:14px;padding:13px;font:700 13.5px Outfit;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;gap:8px}
+.btn-teal{background:var(--teal);color:#fff}
+.btn-ghost{background:rgba(255,255,255,.12);color:#fff}
+.sec{display:flex;justify-content:space-between;align-items:baseline;margin:16px 2px 8px}
+.seclbl{font:700 12.5px Outfit;letter-spacing:.4px;text-transform:uppercase;color:var(--soft)}
+.seclink{font:700 12px 'Work Sans';color:var(--teal-deep)}
+.grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+.cat{background:#fff;border:1px solid var(--line);border-radius:14px;padding:10px 4px;text-align:center}
+.cat b{display:block;font:600 10.5px 'Work Sans';color:var(--ink);margin-top:6px}
+.tile{width:34px;height:34px;border-radius:12px;margin:0 auto;display:flex;align-items:center;justify-content:center;font-size:16px}
+.rowcard{background:#fff;border:1px solid var(--line);border-radius:16px;padding:12px 14px;
+  display:flex;gap:12px;align-items:center;margin-bottom:8px}
+.rowcard .txt{flex:1}
+.rowcard b{font:600 13.5px 'Work Sans';color:var(--ink)}
+.rowcard p{font-size:11.5px;color:var(--mute);margin-top:2px}
+.side{font:700 11.5px 'Work Sans';color:var(--teal-deep);white-space:nowrap}
+.done{color:var(--moss)}
+.dot{width:10px;height:10px;border-radius:50%;flex:none}
+.dial{font-family:Outfit,sans-serif;font-size:64px;font-weight:700;text-align:center;letter-spacing:-1px;margin-top:6px}
+.dialsub{text-align:center;font:700 10.5px 'Work Sans';letter-spacing:1.4px;color:var(--mute);margin-top:2px}
+.hero{background:var(--dark);border-radius:20px;padding:18px 16px;color:#fff;text-align:center;margin-top:12px;position:relative;overflow:hidden}
+.hero::after{content:'';position:absolute;left:30%;top:-60px;width:160px;height:160px;border-radius:50%;
+  background:radial-gradient(circle,rgba(45,212,191,.35),transparent 70%)}
+.chiprow{display:flex;gap:8px;margin-top:12px}
+.chip{flex:1;background:#fff;border:1px solid var(--line);border-radius:12px;padding:10px;text-align:center}
+.chip b{font:700 15px Outfit;display:block}
+.chip span{font-size:10.5px;color:var(--mute)}
+.tabbar{margin:10px 12px 0;background:var(--dark);border-radius:24px;padding:8px;
+  display:flex;justify-content:space-around;align-items:center}
+.tab{flex:1;text-align:center;color:#8FA3A1;font:600 9.5px 'Work Sans';padding:6px 0;border-radius:16px}
+.tab span{display:block;font-size:17px;margin-bottom:2px}
+.tab.on{background:#fff;color:var(--ink);font-weight:700}
+.cap{color:#8FA3A1;font:600 12px 'Work Sans';text-align:center;margin-top:12px}
+</style>
+</head>
+<body>
+<div class="kicker">PUDUU — V10 FRESH START</div>
+<h1>DocSpot-class rebuild.</h1>
+<p class="sub">White cards · teal accent · dark pill nav · Outfit + Work Sans · zero ledger DNA</p>
+<div class="board">
+
+<!-- 01 TODAY -->
+<div class="phone"><div class="screen">
+  <div class="statusbar"><span>9:41</span><span>●●● ○ 90</span></div>
+  <div class="body">
+    <div class="toprow">
+      <div><div class="hello">Hello, Alex</div>
+        <div class="loc">◉ Morning plan ▾</div></div>
+      <div class="avatars"><div class="bell">○<i></i></div><div class="face">A</div></div>
+    </div>
+    <div class="search">○ &nbsp;Search a task or ritual</div>
+    <div class="now">
+      <div class="nowtag">NOW · 09:00 · 50 MIN</div>
+      <div class="nowtitle">Deep work: portfolio</div>
+      <div class="nowmeta">Step 2 of 4 · timer ready</div>
+      <div class="bar"><i></i></div>
+      <div class="btnrow">
+        <button class="btn btn-teal">▶ Begin session</button>
+        <button class="btn btn-ghost">Skip</button>
+      </div>
+    </div>
+    <div class="sec"><span class="seclbl">CATEGORIES</span><span class="seclink">See all ›</span></div>
+    <div class="grid4">
+      <div class="cat"><div class="tile" style="background:var(--teal-wash)">◉</div><b>Focus</b></div>
+      <div class="cat"><div class="tile" style="background:var(--amber-wash)">✦</div><b>Reset</b></div>
+      <div class="cat"><div class="tile" style="background:var(--moss-wash)">✔</div><b>Habits</b></div>
+      <div class="cat"><div class="tile" style="background:#E8F1F6">···</div><b>More</b></div>
+    </div>
+    <div class="sec"><span class="seclbl">UP NEXT</span><span class="seclink">See all ›</span></div>
+    <div class="rowcard"><span class="dot" style="background:var(--teal)"></span>
+      <div class="txt"><b>Deep work: portfolio</b><p>09:00 · Hero section, phone away</p></div>
+      <span class="side">Begin</span></div>
+    <div class="rowcard"><span class="dot" style="background:var(--moss)"></span>
+      <div class="txt"><b>Walk outside</b><p>11:00 · Fifteen minutes, no podcast</p></div>
+      <span class="side done">✓ Done</span></div>
+  </div>
+  <div class="tabbar">
+    <div class="tab on"><span>◉</span>Today</div><div class="tab"><span>◷</span>Focus</div>
+    <div class="tab"><span>✦</span>Reset</div><div class="tab"><span>▥</span>Progress</div>
+    <div class="tab"><span>⚙</span>Yours</div>
+  </div>
+</div><div class="cap">01 Today — 390×844</div></div>
+
+<!-- 02 FOCUS -->
+<div class="phone"><div class="screen">
+  <div class="statusbar"><span>9:41</span><span>●●● ○ 90</span></div>
+  <div class="body">
+    <div class="toprow">
+      <div><div class="hello">Stay with it</div>
+        <div class="loc">◷ Focus session · step 2 of 4</div></div>
+      <div class="avatars"><div class="face">A</div></div>
+    </div>
+    <div class="hero">
+      <div class="dial" style="font-size:58px">32:10</div>
+      <div class="dialsub" style="color:#7DD3C7">MINUTES LEFT · GENTLE CHIME AT END</div>
+      <div class="bar"><i style="width:36%"></i></div>
+      <div class="nowmeta" style="margin-top:8px">Sketch the hero section. Phone in another room.</div>
+      <div class="btnrow">
+        <button class="btn btn-teal">⏸ Pause</button>
+        <button class="btn btn-ghost">End early</button>
+      </div>
+    </div>
+    <div class="sec"><span class="seclbl">SESSION STEPS</span></div>
+    <div class="rowcard"><span class="dot" style="background:var(--moss)"></span>
+      <div class="txt"><b>Open the file</b><p>Done · 2 min</p></div><span class="side done">✓</span></div>
+    <div class="rowcard"><span class="dot" style="background:var(--teal)"></span>
+      <div class="txt"><b>Sketch hero section</b><p>Now · 25 min</p></div><span class="side">25 min</span></div>
+    <div class="rowcard"><span class="dot" style="background:var(--line)"></span>
+      <div class="txt"><b>Review + save</b><p>Next · 10 min</p></div><span class="side">10 min</span></div>
+  </div>
+  <div class="tabbar">
+    <div class="tab"><span>◉</span>Today</div><div class="tab on"><span>◷</span>Focus</div>
+    <div class="tab"><span>✦</span>Reset</div><div class="tab"><span>▥</span>Progress</div>
+    <div class="tab"><span>⚙</span>Yours</div>
+  </div>
+</div><div class="cap">02 Focus — 390×844</div></div>
+
+<!-- 03 RESET -->
+<div class="phone"><div class="screen">
+  <div class="statusbar"><span>9:41</span><span>●●● ○ 90</span></div>
+  <div class="body">
+    <div class="toprow">
+      <div><div class="hello">Hit a wall?</div>
+        <div class="loc">✦ Two minutes counts</div></div>
+      <div class="avatars"><div class="face">A</div></div>
+    </div>
+    <div class="search">○ &nbsp;Search a reset</div>
+    <div class="sec"><span class="seclbl">PICK THE SMALLEST ONE</span></div>
+    <div class="rowcard"><div class="tile" style="background:var(--teal-wash)">~</div>
+      <div class="txt"><b>Drink a glass of water</b><p>Stand up, sip slowly, look far away</p></div><span class="side">2 min</span></div>
+    <div class="rowcard"><div class="tile" style="background:var(--amber-wash)">✦</div>
+      <div class="txt"><b>Clear one surface</b><p>Just the desk corner. Nothing more</p></div><span class="side">2 min</span></div>
+    <div class="rowcard"><div class="tile" style="background:var(--moss-wash)">✉</div>
+      <div class="txt"><b>Open the difficult email</b><p>Read it only. Reply comes later</p></div><span class="side">2 min</span></div>
+    <div class="rowcard"><div class="tile" style="background:#E8F1F6">☰</div>
+      <div class="txt"><b>Sort the inbox</b><p>Rule-based now, assisted later</p></div><span class="side">3 min</span></div>
+    <div class="rowcard" style="background:var(--teal-wash);border-color:var(--teal)"><div class="txt"><b>Slow is still moving.</b><p>Skipping is allowed — Puduu waits.</p></div></div>
+  </div>
+  <div class="tabbar">
+    <div class="tab"><span>◉</span>Today</div><div class="tab"><span>◷</span>Focus</div>
+    <div class="tab on"><span>✦</span>Reset</div><div class="tab"><span>▥</span>Progress</div>
+    <div class="tab"><span>⚙</span>Yours</div>
+  </div>
+</div><div class="cap">03 Reset — 390×844</div></div>
+
+<!-- 04 PROGRESS -->
+<div class="phone"><div class="screen">
+  <div class="statusbar"><span>9:41</span><span>●●● ○ 90</span></div>
+  <div class="body">
+    <div class="toprow">
+      <div><div class="hello">Keep growing</div>
+        <div class="loc">▥ Good days: 5 of 7</div></div>
+      <div class="avatars"><div class="face">A</div></div>
+    </div>
+    <div class="chiprow">
+      <div class="chip"><b>5/7</b><span>good days</span></div>
+      <div class="chip"><b>+20%</b><span>focus</span></div>
+      <div class="chip"><b>×5</b><span>resets</span></div>
+    </div>
+    <div class="sec"><span class="seclbl">THIS WEEK</span><span class="seclink">See all ›</span></div>
+    <div class="rowcard"><div class="tile" style="background:var(--teal-wash)">▥</div>
+      <div class="txt"><b>Weekly shelf</b><p>Early starter ×3 · Reset ×5 · Focus 25m ×8</p></div><span class="side">W39</span></div>
+    <div class="rowcard"><div class="tile" style="background:var(--amber-wash)">◷</div>
+      <div class="txt"><b>Focus trend</b><p>Up 20% vs last week. Mornings win</p></div><span class="side">+20%</span></div>
+    <div class="rowcard"><div class="tile" style="background:var(--moss-wash)">✦</div>
+      <div class="txt"><b>Resets that worked</b><p>Water first, then air. Evenings hard</p></div><span class="side">×5</span></div>
+    <div class="rowcard" style="background:var(--dark);border-color:var(--dark)"><div class="txt"><b style="color:#fff">Done is a direction.</b><p style="color:#B9CDC9">Not a streak. Never resets to zero.</p></div></div>
+  </div>
+  <div class="tabbar">
+    <div class="tab"><span>◉</span>Today</div><div class="tab"><span>◷</span>Focus</div>
+    <div class="tab"><span>✦</span>Reset</div><div class="tab on"><span>▥</span>Progress</div>
+    <div class="tab"><span>⚙</span>Yours</div>
+  </div>
+</div><div class="cap">04 Progress — 390×844</div></div>
+
+<!-- 05 YOURS -->
+<div class="phone"><div class="screen">
+  <div class="statusbar"><span>9:41</span><span>●●● ○ 90</span></div>
+  <div class="body">
+    <div class="toprow">
+      <div><div class="hello">Make it yours</div>
+        <div class="loc">⚙ Plan, sounds, reminders</div></div>
+      <div class="avatars"><div class="face">A</div></div>
+    </div>
+    <div class="now" style="background:var(--teal)">
+      <div class="nowtag" style="color:#DDF3F0">PUDUU PRO · $6.99/MO</div>
+      <div class="nowtitle">Unlimited resets</div>
+      <div class="nowmeta" style="color:#DDF3F0">Yearly $49.99 · calm history · backup</div>
+      <div class="btnrow"><button class="btn" style="background:#fff;color:var(--teal-deep)">Upgrade</button></div>
+    </div>
+    <div class="sec"><span class="seclbl">SETTINGS</span></div>
+    <div class="rowcard"><div class="tile" style="background:var(--amber-wash)">○</div>
+      <div class="txt"><b>Gentle nudges</b><p>Max 6 per day · quiet 22:00–07:00</p></div><span class="side">On</span></div>
+    <div class="rowcard"><div class="tile" style="background:var(--teal-wash)">♪</div>
+      <div class="txt"><b>Sounds and haptics</b><p>Calm chime · soft vibration</p></div><span class="side">On</span></div>
+    <div class="rowcard"><div class="tile" style="background:#E8F1F6">◉</div>
+      <div class="txt"><b>Backup and export</b><p>Weekly backup · CSV export</p></div><span class="side">›</span></div>
+  </div>
+  <div class="tabbar">
+    <div class="tab"><span>◉</span>Today</div><div class="tab"><span>◷</span>Focus</div>
+    <div class="tab"><span>✦</span>Reset</div><div class="tab"><span>▥</span>Progress</div>
+    <div class="tab on"><span>⚙</span>Yours</div>
+  </div>
+</div><div class="cap">05 Yours — 390×844</div></div>
+
+</div>
+</body>
+</html>
